@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, Calendar, MapPin, Star, ChevronDown } from 'lucide-react';
 
@@ -49,10 +50,10 @@ const Header = () => {
   return (
     <>
       {/* Top Bar */}
-      <div className="bg-gradient-to-r from-[#7c9768] to-[#4c673d] text-white py-2 px-4">
+      <div className="bg-gradient-to-r from-aura-primary-500 to-aura-primary-700 text-white py-2 px-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:5125552872" className="flex items-center gap-1 hover:text-[#e1e9d9] transition-colors">
+            <a href="tel:5125552872" className="flex items-center gap-1 hover:text-aura-primary-100 transition-colors">
               <Phone className="w-3 h-3" />
               (512) 555-2872
             </a>
@@ -84,12 +85,17 @@ const Header = () => {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
               <div className="relative w-12 h-12">
-                {/* Logo placeholder */}
-                <div className="w-full h-full bg-gradient-to-br from-[#7c9768] to-[#4c673d] rounded-lg" />
+                <Image
+                  src="/images/AuraClean.svg"
+                  alt="Aura Spring Cleaning Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-[#7c9768]">Aura Spring Cleaning</h1>
-                <p className="text-xs text-gray-600">Premium Cleaning Service</p>
+                <h1 className="text-xl font-bold text-aura-primary-500">Aura Spring Cleaning</h1>
+                <p className="text-xs text-aura-secondary-500">Premium Cleaning Service</p>
               </div>
             </Link>
 
@@ -104,7 +110,7 @@ const Header = () => {
                 >
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1 text-gray-700 hover:text-[#7c9768] font-medium transition-colors"
+                    className="flex items-center gap-1 text-gray-700 hover:text-aura-primary-500 font-medium transition-colors"
                   >
                     {item.name}
                     {item.dropdown && <ChevronDown className="w-4 h-4" />}
@@ -124,7 +130,7 @@ const Header = () => {
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block px-4 py-3 text-gray-700 hover:bg-[#7c9768]/10 hover:text-[#7c9768] transition-colors"
+                            className="block px-4 py-3 text-gray-700 hover:bg-aura-primary-500/10 hover:text-aura-primary-500 transition-colors"
                           >
                             {subItem.name}
                           </Link>
@@ -140,7 +146,7 @@ const Header = () => {
             <div className="hidden lg:flex items-center gap-4">
               <Link
                 href="/booking"
-                className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-[#7c9768] to-[#4c673d] text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+                className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-aura-primary-500 to-aura-primary-700 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
               >
                 <Calendar className="w-4 h-4" />
                 Book Now
@@ -176,7 +182,7 @@ const Header = () => {
                   <div key={item.name}>
                     <Link
                       href={item.href}
-                      className="block py-2 text-gray-700 font-medium hover:text-[#7c9768] transition-colors"
+                      className="block py-2 text-gray-700 font-medium hover:text-aura-primary-500 transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}
@@ -187,7 +193,7 @@ const Header = () => {
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block py-1 text-sm text-gray-600 hover:text-[#7c9768] transition-colors"
+                            className="block py-1 text-sm text-gray-600 hover:text-aura-primary-500 transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                           >
                             {subItem.name}
@@ -201,7 +207,7 @@ const Header = () => {
                 <div className="pt-4 border-t border-gray-100">
                   <Link
                     href="/booking"
-                    className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-[#7c9768] to-[#4c673d] text-white font-semibold rounded-lg"
+                    className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-aura-primary-500 to-aura-primary-700 text-white font-semibold rounded-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <Calendar className="w-4 h-4" />
