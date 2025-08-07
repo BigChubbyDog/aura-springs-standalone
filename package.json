@@ -12,10 +12,18 @@
     "lint": "next lint",
     "analyze": "ANALYZE=true next build",
     "sitemap": "next-sitemap",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "deploy": "powershell -ExecutionPolicy Bypass -File ./scripts/deploy-to-azure.ps1",
+    "deploy:staging": "powershell -ExecutionPolicy Bypass -File ./scripts/deploy-to-azure.ps1 -Environment staging",
+    "deploy:prod": "npm run build && npm run deploy",
+    "azure:login": "az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID",
+    "azure:deploy": "az webapp deployment source config-zip --resource-group rg-auraspringcleaning-prod --name auraspringcleaning --src deploy.zip"
   },
   "dependencies": {
+    "@azure/identity": "^4.11.1",
     "@hookform/resolvers": "^3.6.0",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "@paypal/checkout-server-sdk": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.0",
     "@radix-ui/react-dropdown-menu": "^2.0.0",
     "@radix-ui/react-select": "^2.0.0",
@@ -33,6 +41,8 @@
     "react-hook-form": "^7.52.0",
     "react-hot-toast": "^2.4.0",
     "react-intersection-observer": "^9.10.0",
+    "square": "^43.0.1",
+    "stripe": "^18.4.0",
     "swr": "^2.2.0",
     "tailwind-merge": "^2.3.0",
     "zod": "^3.23.0"
