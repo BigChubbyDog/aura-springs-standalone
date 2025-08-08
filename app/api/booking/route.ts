@@ -8,10 +8,12 @@ import {
 import { syncBookingToDynamics } from '@/lib/dynamics365Integration';
 import { sendBookingToTeams } from '@/lib/teamsWebhook';
 
-// Initialize Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2025-07-30.basil',
-});
+// Initialize Stripe (only if key is provided)
+const stripe = process.env.STRIPE_SECRET_KEY 
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: '2025-07-30.basil',
+    })
+  : null;
 
 // Email transporter
 const transporter = nodemailer.createTransport({
