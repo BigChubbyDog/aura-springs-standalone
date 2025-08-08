@@ -56,7 +56,7 @@ const ServicesShowcase = () => {
               Cleaning Services
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Tailored solutions for Austin's downtown luxury living. 
             We don't just clean - we create an aura of excellence in your space.
           </p>
@@ -84,18 +84,18 @@ const ServicesShowcase = () => {
                     {service.icon}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">{service.title}</h3>
+                    <h3 className="text-2xl font-bold text-gray-500 mb-2">{service.title}</h3>
                     <p className="text-[#7c9768] font-semibold text-lg">{service.price}</p>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-600 mb-6">{service.description}</p>
+                <p className="text-gray-400 mb-6">{service.description}</p>
 
                 {/* Features */}
                 <ul className="space-y-3 mb-6">
                   {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center text-gray-700">
+                    <li key={feature} className="flex items-center text-gray-400">
                       <svg className="w-5 h-5 text-[#7c9768] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
@@ -157,7 +157,7 @@ const ServicesShowcase = () => {
               className="flex flex-col items-center text-center p-4 bg-white rounded-xl shadow-md"
             >
               <div className="text-[#7c9768] mb-2">{badge.icon}</div>
-              <span className="text-sm font-medium text-gray-700">{badge.text}</span>
+              <span className="text-sm font-medium text-gray-400">{badge.text}</span>
             </motion.div>
           ))}
         </div>

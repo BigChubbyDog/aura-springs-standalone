@@ -246,7 +246,7 @@ const CommercialCleaningPage = () => {
                 Choose Aura Spring
               </span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Measurable benefits that impact your bottom line
             </p>
           </motion.div>
@@ -264,7 +264,7 @@ const CommercialCleaningPage = () => {
                 <benefit.icon className="w-12 h-12 mx-auto mb-4 text-green-600" />
                 <div className="text-3xl font-bold text-blue-600 mb-2">{benefit.stat}</div>
                 <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
+                <p className="text-gray-400">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
@@ -286,7 +286,7 @@ const CommercialCleaningPage = () => {
                 for Every Business
               </span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               From startups to enterprises, we have you covered
             </p>
           </motion.div>
@@ -316,14 +316,14 @@ const CommercialCleaningPage = () => {
                   <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                   
                   <div className="mb-4">
-                    <span className="text-4xl font-bold text-gray-800">
+                    <span className="text-4xl font-bold text-gray-500">
                       ${plan.monthlyPrice}
                     </span>
-                    <span className="text-gray-600">/month</span>
+                    <span className="text-gray-400">/month</span>
                   </div>
 
                   <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-4 mb-6">
-                    <div className="text-sm text-gray-600">Up to {plan.sqftIncluded.toLocaleString()} sq ft</div>
+                    <div className="text-sm text-gray-400">Up to {plan.sqftIncluded.toLocaleString()} sq ft</div>
                     <div className="font-semibold text-green-700">{plan.frequency} Service</div>
                   </div>
 
@@ -331,17 +331,17 @@ const CommercialCleaningPage = () => {
                     {plan.features.slice(0, 6).map((feature, i) => (
                       <div key={i} className="flex items-start gap-2">
                         <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-gray-700">{feature}</span>
+                        <span className="text-sm text-gray-400">{feature}</span>
                       </div>
                     ))}
                     {plan.features.length > 6 && (
-                      <div className="text-sm text-gray-600 font-semibold pl-7">
+                      <div className="text-sm text-gray-400 font-semibold pl-7">
                         +{plan.features.length - 6} more features
                       </div>
                     )}
                   </div>
 
-                  <div className="text-sm text-gray-600 italic mb-6">
+                  <div className="text-sm text-gray-400 italic mb-6">
                     Ideal for: {plan.idealFor}
                   </div>
 
@@ -357,7 +357,7 @@ const CommercialCleaningPage = () => {
           </div>
 
           <div className="text-center mt-8">
-            <p className="text-gray-600">
+            <p className="text-gray-400">
               Need a custom solution? 
               <Link href="/contact" className="text-green-600 font-semibold ml-1 hover:underline">
                 Contact us for enterprise pricing
@@ -382,7 +382,7 @@ const CommercialCleaningPage = () => {
                 Expertise
               </span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Specialized cleaning protocols for every industry
             </p>
           </motion.div>
@@ -400,7 +400,7 @@ const CommercialCleaningPage = () => {
               >
                 <div className="text-4xl mb-3">{industry.icon}</div>
                 <h3 className="font-bold mb-2">{industry.name}</h3>
-                <p className="text-sm text-gray-600">{industry.special}</p>
+                <p className="text-sm text-gray-400">{industry.special}</p>
               </motion.div>
             ))}
           </div>
@@ -448,7 +448,7 @@ const CommercialCleaningPage = () => {
                   </div>
                   <item.icon className="w-10 h-10 mx-auto mb-3 text-blue-600" />
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.desc}</p>
+                  <p className="text-sm text-gray-400">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -488,10 +488,10 @@ const CommercialCleaningPage = () => {
                     <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <p className="text-gray-700 italic mb-4">"{testimonial.content}"</p>
+                <p className="text-gray-400 italic mb-4">"{testimonial.content}"</p>
                 <div className="border-t pt-4">
                   <div className="font-bold">{testimonial.company}</div>
-                  <div className="text-sm text-gray-600">{testimonial.contact}</div>
+                  <div className="text-sm text-gray-400">{testimonial.contact}</div>
                   <div className="text-xs text-green-600 mt-1">{testimonial.employees}</div>
                 </div>
               </motion.div>
@@ -578,7 +578,7 @@ const CommercialCleaningPage = () => {
                 className="bg-gradient-to-br from-blue-50 to-green-50 rounded-lg p-3 text-center flex items-center justify-center gap-2"
               >
                 <MapPin className="w-4 h-4 text-blue-600" />
-                <span className="font-semibold text-gray-700">{area}</span>
+                <span className="font-semibold text-gray-400">{area}</span>
               </motion.div>
             ))}
           </div>
@@ -596,7 +596,7 @@ const CommercialCleaningPage = () => {
           <h2 className="text-4xl font-bold mb-6">
             Ready to Elevate Your Workspace?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-gray-400 mb-8">
             Join 200+ Austin businesses that trust Aura Spring for pristine offices
           </p>
 
@@ -607,7 +607,7 @@ const CommercialCleaningPage = () => {
             <div className="text-3xl font-bold text-blue-600 mb-2">
               First Month 50% OFF
             </div>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-400 mb-6">
               Plus free deep clean service ($500 value)
             </p>
 
@@ -621,7 +621,7 @@ const CommercialCleaningPage = () => {
               </Link>
               <a
                 href="tel:5127810527"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gray-100 text-gray-700 font-bold rounded-lg hover:bg-gray-200 transition-all"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gray-100 text-gray-400 font-bold rounded-lg hover:bg-gray-200 transition-all"
               >
                 <Phone className="w-5 h-5" />
                 Call for Free Quote

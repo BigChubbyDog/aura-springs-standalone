@@ -110,7 +110,7 @@ const Header = () => {
                 >
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1 text-gray-700 hover:text-aura-primary-500 font-medium transition-colors"
+                    className="flex items-center gap-1 text-gray-400 hover:text-aura-primary-500 font-medium transition-colors"
                   >
                     {item.name}
                     {item.dropdown && <ChevronDown className="w-4 h-4" />}
@@ -130,7 +130,7 @@ const Header = () => {
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block px-4 py-3 text-gray-700 hover:bg-aura-primary-500/10 hover:text-aura-primary-500 transition-colors"
+                            className="block px-4 py-3 text-gray-400 hover:bg-aura-primary-500/10 hover:text-aura-primary-500 transition-colors"
                           >
                             {subItem.name}
                           </Link>
@@ -159,9 +159,9 @@ const Header = () => {
               className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6 text-gray-700" />
+                <X className="w-6 h-6 text-gray-400" />
               ) : (
-                <Menu className="w-6 h-6 text-gray-700" />
+                <Menu className="w-6 h-6 text-gray-400" />
               )}
             </button>
           </div>
@@ -182,7 +182,7 @@ const Header = () => {
                   <div key={item.name}>
                     <Link
                       href={item.href}
-                      className="block py-2 text-gray-700 font-medium hover:text-aura-primary-500 transition-colors"
+                      className="block py-2 text-gray-400 font-medium hover:text-aura-primary-500 transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}
@@ -193,7 +193,7 @@ const Header = () => {
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block py-1 text-sm text-gray-600 hover:text-aura-primary-500 transition-colors"
+                            className="block py-1 text-sm text-gray-400 hover:text-aura-primary-500 transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                           >
                             {subItem.name}

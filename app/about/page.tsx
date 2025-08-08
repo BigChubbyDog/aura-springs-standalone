@@ -5,10 +5,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
-  Clock, Heart, Users, Star, TreePine, Waves, Dog, Coffee,
-  CheckCircle, Calendar, Phone, Mail, MapPin, Timer, TrendingUp,
-  Target, Zap, Leaf, HandshakeIcon, Gem, Mountain, Bike, Music,
-  Sunrise, Sparkles, Home, Shield, Award, Building2
+  Clock, Heart, TreePine, Waves, Dog, Coffee,
+  CheckCircle, Calendar, Phone, Mail, Timer,
+  Bike, Music,
+  Sparkles, Shield
 } from 'lucide-react';
 
 const AboutPage = () => {
@@ -214,12 +214,12 @@ const AboutPage = () => {
             className="text-center mb-12"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-gray-800">What Will You Do </span>
+              <span className="text-gray-500">What Will You Do </span>
               <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
                 With Your Time Back?
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Every cleaning session gives you 3-5 hours to experience the best of Austin. 
               That's a full afternoon at the Greenbelt or a perfect brunch on South Congress.
             </p>
@@ -240,12 +240,12 @@ const AboutPage = () => {
                   <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-blue-100 rounded-lg flex items-center justify-center">
                     <activity.icon className="w-6 h-6 text-green-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800">{activity.title}</h3>
+                  <h3 className="text-xl font-bold text-gray-500">{activity.title}</h3>
                 </div>
                 
                 <div className="space-y-2 mb-4">
                   {activity.activities.map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 text-gray-600">
+                    <div key={i} className="flex items-center gap-2 text-gray-400">
                       <CheckCircle className="w-4 h-4 text-green-500" />
                       <span className="text-sm">{item}</span>
                     </div>
@@ -274,24 +274,24 @@ const AboutPage = () => {
               className="order-2 lg:order-1"
             >
               <h2 className="text-4xl font-bold mb-6">
-                <span className="text-gray-800">Your Home is Your </span>
+                <span className="text-gray-500">Your Home is Your </span>
                 <span className="text-green-600">Sanctuary</span>
               </h2>
               
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              <p className="text-lg text-gray-400 mb-6 leading-relaxed">
                 In a city as vibrant as Austin, your home should be your peaceful retreat. 
                 A place where the energy of 6th Street fades into tranquility, where the 
                 dust from mountain biking trails stays outside, and where you can truly 
                 recharge after paddleboarding at sunset.
               </p>
               
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              <p className="text-lg text-gray-400 mb-6 leading-relaxed">
                 <strong>But here's what we discovered:</strong> Austinites were spending their 
                 precious weekends cleaning instead of exploring. Missing perfect weather days 
                 scrubbing bathrooms. Choosing chores over connections.
               </p>
               
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              <p className="text-lg text-gray-400 mb-6 leading-relaxed">
                 That's why we created Aura Spring Cleaning - to give you back what matters most: 
                 <span className="font-bold text-green-600"> your time</span>. Time for sunrise 
                 yoga at Zilker. Time for discovering new food trucks. Time for floating the river 
@@ -299,10 +299,10 @@ const AboutPage = () => {
               </p>
               
               <div className="bg-green-50 rounded-lg p-6 border-l-4 border-green-500">
-                <p className="text-lg font-semibold text-gray-800 mb-2">
+                <p className="text-lg font-semibold text-gray-500 mb-2">
                   "Life is meant to be lived, not cleaned away."
                 </p>
-                <p className="text-sm text-gray-600">- The Aura Philosophy</p>
+                <p className="text-sm text-gray-400">- The Aura Philosophy</p>
               </div>
             </motion.div>
             
@@ -330,8 +330,8 @@ const AboutPage = () => {
                   className="absolute -bottom-4 -left-4 bg-white rounded-lg shadow-xl p-4 border-2 border-green-500"
                 >
                   <Timer className="w-6 h-6 text-green-600 mb-2" />
-                  <p className="font-bold text-gray-800">5 Hours Saved</p>
-                  <p className="text-sm text-gray-600">Every week</p>
+                  <p className="font-bold text-gray-500">5 Hours Saved</p>
+                  <p className="text-sm text-gray-400">Every week</p>
                 </motion.div>
                 
                 <motion.div
@@ -361,10 +361,10 @@ const AboutPage = () => {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold mb-4">
-              <span className="text-gray-800">Meet Your </span>
+              <span className="text-gray-500">Meet Your </span>
               <span className="text-green-600">Time Creators</span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Austin locals who understand the value of weekend adventures
             </p>
           </motion.div>
@@ -394,13 +394,13 @@ const AboutPage = () => {
                 </div>
                 
                 <div className="p-6">
-                  <p className="text-gray-700 mb-4 leading-relaxed">
+                  <p className="text-gray-400 mb-4 leading-relaxed">
                     {founder.bio}
                   </p>
                   
                   <div className="bg-green-50 rounded-lg p-4 mb-4">
                     <p className="text-sm font-semibold text-green-700 mb-1">Austin Favorites:</p>
-                    <p className="text-sm text-gray-600">{founder.favorites}</p>
+                    <p className="text-sm text-gray-400">{founder.favorites}</p>
                   </div>
                   
                   <a 
@@ -462,12 +462,12 @@ const AboutPage = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold mb-6">
-              <span className="text-gray-800">The Aura </span>
+              <span className="text-gray-500">The Aura </span>
               <span className="text-green-600">Promise</span>
             </h2>
             
             <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 shadow-xl">
-              <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+              <p className="text-xl text-gray-400 mb-6 leading-relaxed">
                 Every time you book with Aura, you're not just getting a clean home. 
                 You're getting time to live your Austin dream. Time to explore every 
                 trail, try every taco, catch every sunset, and make every memory.
@@ -476,18 +476,18 @@ const AboutPage = () => {
               <div className="grid md:grid-cols-3 gap-6 mt-8">
                 <div className="text-center">
                   <Shield className="w-12 h-12 mx-auto mb-3 text-green-600" />
-                  <h3 className="font-bold text-gray-800 mb-2">100% Trust</h3>
-                  <p className="text-sm text-gray-600">Licensed, insured, background-checked</p>
+                  <h3 className="font-bold text-gray-500 mb-2">100% Trust</h3>
+                  <p className="text-sm text-gray-400">Licensed, insured, background-checked</p>
                 </div>
                 <div className="text-center">
                   <Sparkles className="w-12 h-12 mx-auto mb-3 text-blue-600" />
-                  <h3 className="font-bold text-gray-800 mb-2">Pristine Results</h3>
-                  <p className="text-sm text-gray-600">Your sanctuary, perfectly maintained</p>
+                  <h3 className="font-bold text-gray-500 mb-2">Pristine Results</h3>
+                  <p className="text-sm text-gray-400">Your sanctuary, perfectly maintained</p>
                 </div>
                 <div className="text-center">
                   <Clock className="w-12 h-12 mx-auto mb-3 text-purple-600" />
-                  <h3 className="font-bold text-gray-800 mb-2">Time Freedom</h3>
-                  <p className="text-sm text-gray-600">Live your life, we'll handle the rest</p>
+                  <h3 className="font-bold text-gray-500 mb-2">Time Freedom</h3>
+                  <p className="text-sm text-gray-400">Live your life, we'll handle the rest</p>
                 </div>
               </div>
             </div>

@@ -3,14 +3,14 @@ import nodemailer from 'nodemailer';
 import Stripe from 'stripe';
 import { 
   BookingData, 
-  processNewBooking, 
-  sendCustomerConfirmation 
+  processNewBooking
 } from '@/lib/microsoftIntegration';
 import { syncBookingToDynamics } from '@/lib/dynamics365Integration';
+import { sendBookingToTeams } from '@/lib/teamsWebhook';
 
 // Initialize Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2024-12-18.acacia',
+  apiVersion: '2025-07-30.basil',
 });
 
 // Email transporter
@@ -19,7 +19,7 @@ const transporter = nodemailer.createTransport({
   port: parseInt(process.env.SMTP_PORT || '587'),
   secure: false,
   auth: {
-    user: process.env.SMTP_USER || 'Schedule@AuraSpringCleaning.com',
+    user: process.env.SMTP_USER || 'Mail@auraspringcleaning.com',
     pass: process.env.SMTP_PASSWORD,
   },
 });
@@ -74,6 +74,13 @@ export async function POST(request: NextRequest) {
     
     // Send enhanced booking emails
     await sendBookingEmails(booking, bookingId);
+    
+    // Send notification to Teams
+    const teamsResult = await sendBookingToTeams({
+      ...booking,
+      bookingId: bookingId
+    });
+    console.log('Teams Webhook Result:', teamsResult);
 
     // Return success response with integration status
     return NextResponse.json({
@@ -90,7 +97,8 @@ export async function POST(request: NextRequest) {
           opportunityCreated: !!dynamicsResults.opportunity,
           appointmentCreated: !!dynamicsResults.appointment
         },
-        emailSent: true
+        emailSent: true,
+        teamsNotification: teamsResult?.success || false
       },
       booking: {
         ...booking,
@@ -115,8 +123,8 @@ async function sendBookingEmails(booking: BookingData, bookingId: string) {
   try {
     // Email to business - using brand colors (green/purple)
     const businessBookingEmail = {
-      from: process.env.SMTP_USER || 'Schedule@AuraSpringCleaning.com',
-      to: process.env.BUSINESS_EMAIL || 'Schedule@AuraSpringCleaning.com',
+      from: process.env.SMTP_USER || 'Mail@auraspringcleaning.com',
+      to: process.env.BUSINESS_EMAIL || 'Mail@auraspringcleaning.com',
       subject: `New Booking: ${booking.serviceType} - ${booking.customerName}`,
       html: `
         <div style="font-family: 'Inter', Arial, sans-serif; max-width: 700px; margin: 0 auto;">
@@ -165,7 +173,7 @@ async function sendBookingEmails(booking: BookingData, bookingId: string) {
 
     // Confirmation email to customer - using brand colors
     const customerBookingEmail = {
-      from: process.env.SMTP_USER || 'Schedule@AuraSpringCleaning.com',
+      from: process.env.SMTP_USER || 'Mail@auraspringcleaning.com',
       to: booking.customerEmail,
       subject: `Booking Confirmed: ${booking.serviceType} - ${bookingId}`,
       html: `

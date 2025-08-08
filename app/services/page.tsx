@@ -94,19 +94,19 @@ export default function ServicesPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="flex items-center justify-center gap-2">
               <Shield className="w-5 h-5 text-[#7c9768]" />
-              <span className="text-gray-700 font-medium">Licensed & Insured</span>
+              <span className="text-gray-400 font-medium">Licensed & Insured</span>
             </div>
             <div className="flex items-center justify-center gap-2">
               <Star className="w-5 h-5 text-[#7c9768]" />
-              <span className="text-gray-700 font-medium">4.9 Star Rating</span>
+              <span className="text-gray-400 font-medium">4.9 Star Rating</span>
             </div>
             <div className="flex items-center justify-center gap-2">
               <Clock className="w-5 h-5 text-[#7c9768]" />
-              <span className="text-gray-700 font-medium">Same Day Service</span>
+              <span className="text-gray-400 font-medium">Same Day Service</span>
             </div>
             <div className="flex items-center justify-center gap-2">
               <CheckCircle className="w-5 h-5 text-[#7c9768]" />
-              <span className="text-gray-700 font-medium">Satisfaction Guaranteed</span>
+              <span className="text-gray-400 font-medium">Satisfaction Guaranteed</span>
             </div>
           </div>
         </div>
@@ -134,16 +134,16 @@ export default function ServicesPage() {
                     <div className="w-12 h-12 bg-[#7c9768]/10 rounded-lg flex items-center justify-center">
                       <service.icon className="w-6 h-6 text-[#7c9768]" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-800">{service.title}</h3>
+                    <h3 className="text-xl font-semibold text-gray-500">{service.title}</h3>
                   </div>
                   
-                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <p className="text-gray-400 mb-4">{service.description}</p>
                   
                   <ul className="space-y-2 mb-6">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2">
                         <CheckCircle className="w-4 h-4 text-[#7c9768] mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">{feature}</span>
+                        <span className="text-sm text-gray-400">{feature}</span>
                       </li>
                     ))}
                   </ul>

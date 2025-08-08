@@ -7,7 +7,7 @@ const transporter = nodemailer.createTransport({
   port: parseInt(process.env.SMTP_PORT || '587'),
   secure: false,
   auth: {
-    user: process.env.SMTP_USER || 'Schedule@AuraSpringCleaning.com',
+    user: process.env.SMTP_USER || 'Mail@auraspringcleaning.com',
     pass: process.env.SMTP_PASSWORD,
   },
 });
@@ -38,8 +38,8 @@ export async function POST(request: NextRequest) {
 
     // Email to business - using current brand colors (green/purple)
     const businessEmail = {
-      from: process.env.SMTP_USER || 'Schedule@AuraSpringCleaning.com',
-      to: process.env.BUSINESS_EMAIL || 'Schedule@AuraSpringCleaning.com',
+      from: process.env.SMTP_USER || 'Mail@auraspringcleaning.com',
+      to: process.env.BUSINESS_EMAIL || 'Mail@auraspringcleaning.com',
       subject: `New Contact Form Submission - ${serviceType}`,
       html: `
         <div style="font-family: 'Inter', Arial, sans-serif; max-width: 600px; margin: 0 auto;">

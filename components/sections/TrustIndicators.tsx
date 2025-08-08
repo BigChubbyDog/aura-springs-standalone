@@ -77,7 +77,7 @@ const TrustIndicators = () => {
                 {stat.icon}
               </motion.div>
               <motion.h3 
-                className="text-3xl font-bold text-gray-800 mb-1"
+                className="text-3xl font-bold text-gray-500 mb-1"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
@@ -85,7 +85,7 @@ const TrustIndicators = () => {
               >
                 {stat.number}
               </motion.h3>
-              <p className="text-gray-600">{stat.label}</p>
+              <p className="text-gray-400">{stat.label}</p>
             </motion.div>
           ))}
         </div>
@@ -120,7 +120,7 @@ const TrustIndicators = () => {
                     {review.name.charAt(0)}
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-semibold text-gray-800">{review.name}</h4>
+                    <h4 className="font-semibold text-gray-500">{review.name}</h4>
                     <p className="text-sm text-[#7c9768]">{review.location}</p>
                   </div>
                 </div>
@@ -131,7 +131,7 @@ const TrustIndicators = () => {
                   ))}
                 </div>
                 
-                <p className="text-gray-600 italic">"{review.text}"</p>
+                <p className="text-gray-400 italic">"{review.text}"</p>
               </motion.div>
             ))}
           </div>
@@ -148,24 +148,24 @@ const TrustIndicators = () => {
             <div className="flex items-center gap-3">
               <Shield className="w-8 h-8 text-[#7c9768]" />
               <div>
-                <p className="font-semibold text-gray-800">Fully Licensed</p>
-                <p className="text-sm text-gray-600">Texas State #CLN2024</p>
+                <p className="font-semibold text-gray-500">Fully Licensed</p>
+                <p className="text-sm text-gray-400">Texas State #CLN2024</p>
               </div>
             </div>
             
             <div className="flex items-center gap-3">
               <Award className="w-8 h-8 text-[#443474]" />
               <div>
-                <p className="font-semibold text-gray-800">BBB Accredited</p>
-                <p className="text-sm text-gray-600">A+ Rating</p>
+                <p className="font-semibold text-gray-500">BBB Accredited</p>
+                <p className="text-sm text-gray-400">A+ Rating</p>
               </div>
             </div>
             
             <div className="flex items-center gap-3">
               <Heart className="w-8 h-8 text-[#4c673d]" />
               <div>
-                <p className="font-semibold text-gray-800">100% Guarantee</p>
-                <p className="text-sm text-gray-600">Satisfaction Promise</p>
+                <p className="font-semibold text-gray-500">100% Guarantee</p>
+                <p className="text-sm text-gray-400">Satisfaction Promise</p>
               </div>
             </div>
           </div>

@@ -248,7 +248,7 @@ const DeepCleaningPage = () => {
               >
                 <situation.icon className={`w-12 h-12 mb-4 text-${situation.color}-600`} />
                 <h3 className="text-xl font-bold mb-2">{situation.title}</h3>
-                <p className="text-gray-600">{situation.description}</p>
+                <p className="text-gray-400">{situation.description}</p>
               </motion.div>
             ))}
           </div>
@@ -268,7 +268,7 @@ const DeepCleaningPage = () => {
               Room-by-Room
               <span className="text-purple-600 ml-2">Deep Clean Details</span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Click each room to see exactly what we clean
             </p>
           </motion.div>
@@ -294,7 +294,7 @@ const DeepCleaningPage = () => {
                     <div>
                       <h3 className="text-xl font-bold">{room.name}</h3>
                       <p className={`text-sm ${
-                        selectedRoom === key ? 'text-purple-100' : 'text-gray-600'
+                        selectedRoom === key ? 'text-purple-100' : 'text-gray-400'
                       }`}>
                         {room.tasks.length} detailed tasks
                       </p>
@@ -312,7 +312,7 @@ const DeepCleaningPage = () => {
                 exit={{ opacity: 0, x: -20 }}
                 className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8"
               >
-                <h3 className="text-2xl font-bold mb-6 text-gray-800">
+                <h3 className="text-2xl font-bold mb-6 text-gray-500">
                   {deepCleanFeatures[selectedRoom as keyof typeof deepCleanFeatures].name} Checklist
                 </h3>
                 <div className="space-y-3">
@@ -325,7 +325,7 @@ const DeepCleaningPage = () => {
                       className="flex items-start gap-3"
                     >
                       <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700">{task}</span>
+                      <span className="text-gray-400">{task}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -366,7 +366,7 @@ const DeepCleaningPage = () => {
                   <div className="bg-white rounded-xl p-6 shadow-lg">
                     <div className="text-purple-600 font-bold mb-2">Step {step.step}</div>
                     <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                    <p className="text-gray-600 mb-2">{step.description}</p>
+                    <p className="text-gray-400 mb-2">{step.description}</p>
                     <div className="text-sm text-purple-600 font-semibold">{step.time}</div>
                   </div>
                 </div>
@@ -396,7 +396,7 @@ const DeepCleaningPage = () => {
 
           <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8">
             <div className="mb-8">
-              <label className="block text-sm font-semibold text-gray-700 mb-4">
+              <label className="block text-sm font-semibold text-gray-400 mb-4">
                 Select Your Home Size
               </label>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -412,7 +412,7 @@ const DeepCleaningPage = () => {
                   >
                     <Home className="w-6 h-6 mx-auto mb-2 text-purple-600" />
                     <div className="font-semibold">{tier.label}</div>
-                    <div className="text-sm text-gray-600">{tier.beds}</div>
+                    <div className="text-sm text-gray-400">{tier.beds}</div>
                     <div className="text-2xl font-bold text-purple-600 mt-2">${tier.price}</div>
                     <div className="text-xs text-gray-500">{tier.hours} hours</div>
                   </button>
@@ -456,7 +456,7 @@ const DeepCleaningPage = () => {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-xl p-6">
               <h3 className="text-xl font-bold mb-4 text-green-600">✓ Regular Cleaning Includes</h3>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-gray-400">
                 <li>• Surface cleaning</li>
                 <li>• Visible area dusting</li>
                 <li>• Standard vacuuming</li>
@@ -466,7 +466,7 @@ const DeepCleaningPage = () => {
             </div>
             <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl p-6 border-2 border-purple-200">
               <h3 className="text-xl font-bold mb-4 text-purple-600">✓✓ Deep Cleaning Adds</h3>
-              <ul className="space-y-2 text-gray-700 font-semibold">
+              <ul className="space-y-2 text-gray-400 font-semibold">
                 <li>• Inside appliances & cabinets</li>
                 <li>• Behind & under furniture</li>
                 <li>• Light fixtures & ceiling fans</li>

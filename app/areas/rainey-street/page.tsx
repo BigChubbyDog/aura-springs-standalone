@@ -188,10 +188,10 @@ export default function RaineyStreetPage() {
       {/* Buildings We Serve */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-4">
+          <h2 className="text-4xl font-bold text-center text-gray-500 mb-4">
             Rainey Street Towers We Service
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+          <p className="text-center text-gray-400 mb-12 max-w-3xl mx-auto">
             We're proud to be the preferred cleaning service for Rainey Street's premier residential buildings. 
             Our team knows each building's unique requirements and works seamlessly with concierge teams.
           </p>
@@ -211,8 +211,8 @@ export default function RaineyStreetPage() {
                 )}
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-800">{tower.name}</h3>
-                    <p className="text-sm text-gray-600 flex items-center gap-1 mt-1">
+                    <h3 className="text-xl font-bold text-gray-500">{tower.name}</h3>
+                    <p className="text-sm text-gray-400 flex items-center gap-1 mt-1">
                       <MapPin className="w-3 h-3" />
                       {tower.address}
                     </p>
@@ -222,7 +222,7 @@ export default function RaineyStreetPage() {
                 <p className="text-sm font-semibold text-aura-primary-600 mb-3">{tower.units}</p>
                 <ul className="space-y-2">
                   {tower.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+                    <li key={idx} className="flex items-center gap-2 text-sm text-gray-400">
                       <CheckCircle className="w-4 h-4 text-green-500" />
                       {feature}
                     </li>
@@ -235,7 +235,7 @@ export default function RaineyStreetPage() {
                         <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
                       ))}
                     </div>
-                    <p className="text-sm text-gray-600 italic">"{tower.testimonial.text}"</p>
+                    <p className="text-sm text-gray-400 italic">"{tower.testimonial.text}"</p>
                     <p className="text-xs text-gray-500 mt-2">- {tower.testimonial.author}</p>
                   </div>
                 )}
@@ -253,10 +253,10 @@ export default function RaineyStreetPage() {
               <div className="bg-aura-primary-600 text-white text-sm font-bold px-4 py-2 rounded-full inline-block mb-4">
                 EXCLUSIVE PARTNERSHIP
               </div>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              <h2 className="text-4xl font-bold text-gray-500 mb-4">
                 The Quincy's Preferred Cleaning Service
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-400 mb-6">
                 For over 2 years, we've been the trusted cleaning partner for The Quincy residents. 
                 Our team works seamlessly with the building's concierge to ensure smooth service delivery 
                 and maintains the high standards expected by Quincy residents.
@@ -266,21 +266,21 @@ export default function RaineyStreetPage() {
                   <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
                   <div>
                     <p className="font-semibold">Concierge Coordination</p>
-                    <p className="text-sm text-gray-600">We work directly with your concierge for seamless access</p>
+                    <p className="text-sm text-gray-400">We work directly with your concierge for seamless access</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
                   <div>
                     <p className="font-semibold">Building Familiarity</p>
-                    <p className="text-sm text-gray-600">Our team knows The Quincy's layouts and requirements</p>
+                    <p className="text-sm text-gray-400">Our team knows The Quincy's layouts and requirements</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
                   <div>
                     <p className="font-semibold">Resident Referral Program</p>
-                    <p className="text-sm text-gray-600">Get 15% off when you refer a neighbor</p>
+                    <p className="text-sm text-gray-400">Get 15% off when you refer a neighbor</p>
                   </div>
                 </li>
               </ul>
@@ -292,7 +292,7 @@ export default function RaineyStreetPage() {
               </Link>
             </div>
             <div className="bg-white rounded-2xl shadow-xl p-8">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Quincy Resident Special</h3>
+              <h3 className="text-2xl font-bold text-gray-500 mb-4">Quincy Resident Special</h3>
               <div className="space-y-4">
                 <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
                   <p className="font-bold text-green-800">New Resident Offer</p>
@@ -316,10 +316,10 @@ export default function RaineyStreetPage() {
       {/* Services & Pricing */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-4">
+          <h2 className="text-4xl font-bold text-center text-gray-500 mb-4">
             Rainey Street Cleaning Services
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
             Tailored cleaning solutions for Rainey Street's unique high-rise living. 
             All prices include parking fees and building access coordination.
           </p>
@@ -338,11 +338,11 @@ export default function RaineyStreetPage() {
                   </div>
                 )}
                 <Sparkles className="w-10 h-10 text-aura-primary-500 mb-4" />
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">{service.title}</h3>
+                <h3 className="text-2xl font-bold text-gray-500 mb-2">{service.title}</h3>
                 <p className="text-3xl font-bold text-aura-primary-600 mb-6">{service.price}</p>
                 <ul className="space-y-3 mb-8">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-gray-700">
+                    <li key={idx} className="flex items-start gap-2 text-gray-400">
                       <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
                       <span className="text-sm">{feature}</span>
                     </li>
@@ -373,10 +373,10 @@ export default function RaineyStreetPage() {
       {/* Pricing Calculator */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-4">
+          <h2 className="text-4xl font-bold text-center text-gray-500 mb-4">
             Get Your Rainey Street Quote
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
             Instant pricing for your Rainey Street residence. Special rates for Quincy residents!
           </p>
           <PricingCalculator />
@@ -386,7 +386,7 @@ export default function RaineyStreetPage() {
       {/* Why Choose Us */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
+          <h2 className="text-4xl font-bold text-center text-gray-500 mb-12">
             Why Rainey Street Residents Choose Aura
           </h2>
           
@@ -395,8 +395,8 @@ export default function RaineyStreetPage() {
               <div className="bg-aura-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Building2 className="w-8 h-8 text-aura-primary-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">High-Rise Experts</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-500 mb-2">High-Rise Experts</h3>
+              <p className="text-gray-400">
                 Specialized in luxury high-rise cleaning with experience in all major Rainey towers
               </p>
             </div>
@@ -405,8 +405,8 @@ export default function RaineyStreetPage() {
               <div className="bg-aura-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-aura-primary-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Trusted & Insured</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-500 mb-2">Trusted & Insured</h3>
+              <p className="text-gray-400">
                 Fully bonded, insured, and background-checked team trusted by 100+ Rainey residents
               </p>
             </div>
@@ -415,8 +415,8 @@ export default function RaineyStreetPage() {
               <div className="bg-aura-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-8 h-8 text-aura-primary-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Flexible Scheduling</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-500 mb-2">Flexible Scheduling</h3>
+              <p className="text-gray-400">
                 Same-day service, weekend availability, and coordination with concierge teams
               </p>
             </div>

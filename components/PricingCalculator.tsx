@@ -46,7 +46,7 @@ export default function PricingCalculator() {
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-400 mb-2">
               Service Type
             </label>
             <select
@@ -64,7 +64,7 @@ export default function PricingCalculator() {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
+              <label className="flex items-center gap-2 text-sm font-semibold text-gray-400 mb-2">
                 <Bed className="w-4 h-4" /> Bedrooms
               </label>
               <input
@@ -78,7 +78,7 @@ export default function PricingCalculator() {
             </div>
             
             <div>
-              <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
+              <label className="flex items-center gap-2 text-sm font-semibold text-gray-400 mb-2">
                 <Bath className="w-4 h-4" /> Bathrooms
               </label>
               <input
@@ -93,7 +93,7 @@ export default function PricingCalculator() {
           </div>
 
           <div>
-            <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-400 mb-2">
               <Home className="w-4 h-4" /> Square Feet
             </label>
             <input
@@ -108,7 +108,7 @@ export default function PricingCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-400 mb-2">
               Cleaning Frequency
             </label>
             <select
@@ -124,7 +124,7 @@ export default function PricingCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-400 mb-2">
               Location
             </label>
             <select
@@ -143,7 +143,7 @@ export default function PricingCalculator() {
 
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-semibold text-gray-700 mb-3">Add-On Services</h3>
+            <h3 className="text-lg font-semibold text-gray-400 mb-3">Add-On Services</h3>
             <div className="space-y-2 max-h-96 overflow-y-auto">
               {Object.entries(ADD_ONS).map(([key, addon]) => (
                 <label
@@ -177,25 +177,25 @@ export default function PricingCalculator() {
         <div className="bg-gradient-to-r from-aura-primary-50 to-aura-primary-100 rounded-2xl p-6">
           <div className="grid md:grid-cols-3 gap-4 mb-4">
             <div className="text-center">
-              <p className="text-sm text-gray-600">Base Price</p>
+              <p className="text-sm text-gray-400">Base Price</p>
               <p className="text-2xl font-bold text-aura-primary-700">${pricing.subtotal}</p>
             </div>
             {pricing.discount > 0 && (
               <div className="text-center">
-                <p className="text-sm text-gray-600">Frequency Discount</p>
+                <p className="text-sm text-gray-400">Frequency Discount</p>
                 <p className="text-2xl font-bold text-green-600">-${pricing.discount}</p>
               </div>
             )}
             {pricing.addOnsTotal > 0 && (
               <div className="text-center">
-                <p className="text-sm text-gray-600">Add-Ons</p>
+                <p className="text-sm text-gray-400">Add-Ons</p>
                 <p className="text-2xl font-bold text-aura-primary-600">+${pricing.addOnsTotal}</p>
               </div>
             )}
           </div>
 
           <div className="text-center border-t-2 border-aura-primary-200 pt-4">
-            <p className="text-lg text-gray-700 mb-2">Your Total Price</p>
+            <p className="text-lg text-gray-400 mb-2">Your Total Price</p>
             <p className="text-5xl font-bold text-aura-primary-700">${pricing.total}</p>
             {pricing.savings > 0 && (
               <p className="text-sm text-green-600 mt-2">
@@ -209,15 +209,15 @@ export default function PricingCalculator() {
           <h4 className="font-semibold text-amber-900 mb-2">Competitor Comparison</h4>
           <div className="grid grid-cols-3 gap-2 text-sm">
             <div>
-              <span className="text-gray-600">Molly Maid:</span>
+              <span className="text-gray-400">Molly Maid:</span>
               <span className="font-semibold text-red-600 ml-2">${competitors.mollyMaid}</span>
             </div>
             <div>
-              <span className="text-gray-600">Merry Maids:</span>
+              <span className="text-gray-400">Merry Maids:</span>
               <span className="font-semibold text-red-600 ml-2">${competitors.merryMaids}</span>
             </div>
             <div>
-              <span className="text-gray-600">TCA:</span>
+              <span className="text-gray-400">TCA:</span>
               <span className="font-semibold text-red-600 ml-2">${competitors.theCleaningAuthority}</span>
             </div>
           </div>

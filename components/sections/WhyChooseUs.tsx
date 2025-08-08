@@ -96,7 +96,7 @@ const WhyChooseUs = () => {
               Aura Springs
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             We're not just another cleaning service. We're Austin's trusted partner for 
             creating pristine living spaces that match your lifestyle.
           </p>
@@ -121,8 +121,8 @@ const WhyChooseUs = () => {
                 <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${reason.color} text-white mb-4`}>
                   {reason.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{reason.title}</h3>
-                <p className="text-gray-600">{reason.description}</p>
+                <h3 className="text-xl font-bold text-gray-500 mb-2">{reason.title}</h3>
+                <p className="text-gray-400">{reason.description}</p>
               </div>
             </motion.div>
           ))}
@@ -158,8 +158,8 @@ const WhyChooseUs = () => {
                     <span className="text-2xl font-bold">{step.number}</span>
                   </div>
                 </motion.div>
-                <h4 className="text-xl font-bold text-gray-800 mb-2">{step.title}</h4>
-                <p className="text-gray-600">{step.description}</p>
+                <h4 className="text-xl font-bold text-gray-500 mb-2">{step.title}</h4>
+                <p className="text-gray-400">{step.description}</p>
                 
                 {index < processSteps.length - 1 && (
                   <div className="hidden md:block absolute top-1/3 right-0 transform translate-x-1/2 -translate-y-1/2">
@@ -199,7 +199,7 @@ const WhyChooseUs = () => {
               >
                 {stat.value}
               </motion.h3>
-              <p className="text-gray-600 font-medium">{stat.label}</p>
+              <p className="text-gray-400 font-medium">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -220,7 +220,7 @@ const WhyChooseUs = () => {
             <table className="w-full">
               <thead>
                 <tr>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700">Features</th>
+                  <th className="text-left py-3 px-4 font-semibold text-gray-400">Features</th>
                   <th className="text-center py-3 px-4">
                     <div className="inline-flex items-center gap-2">
                       <Star className="w-5 h-5 text-[#7c9768]" />
@@ -249,7 +249,7 @@ const WhyChooseUs = () => {
                     transition={{ delay: index * 0.05 }}
                     className="border-t border-gray-100"
                   >
-                    <td className="py-3 px-4 text-gray-700">{feature}</td>
+                    <td className="py-3 px-4 text-gray-400">{feature}</td>
                     <td className="text-center py-3 px-4">
                       <motion.div
                         initial={{ scale: 0 }}

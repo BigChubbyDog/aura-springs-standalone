@@ -187,7 +187,7 @@ const AustinLocations = () => {
               Premier Neighborhoods
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             From downtown high-rises to lakeside estates, we bring our signature 
             cleaning excellence to every corner of Austin.
           </p>
@@ -197,7 +197,7 @@ const AustinLocations = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {/* Location Selector */}
           <div className="lg:col-span-1 space-y-3">
-            <h3 className="text-lg font-semibold text-gray-700 mb-4">Select Your Area</h3>
+            <h3 className="text-lg font-semibold text-gray-400 mb-4">Select Your Area</h3>
             {Object.entries(locations).map(([key, location]) => (
               <motion.button
                 key={key}
@@ -207,7 +207,7 @@ const AustinLocations = () => {
                 className={`w-full text-left p-4 rounded-xl transition-all duration-300 ${
                   selectedArea === key
                     ? 'bg-gradient-to-r from-[#7c9768] to-[#4c673d] text-white shadow-lg'
-                    : 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200'
+                    : 'bg-white hover:bg-gray-50 text-gray-400 border border-gray-200'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -262,26 +262,26 @@ const AustinLocations = () => {
                     <div className="text-2xl font-bold text-[#7c9768]">
                       {locations[selectedArea].stats.customers}
                     </div>
-                    <div className="text-sm text-gray-600">Active Customers</div>
+                    <div className="text-sm text-gray-400">Active Customers</div>
                   </div>
                   <div className="p-4 text-center border-r border-gray-100">
                     <div className="text-2xl font-bold text-[#443474]">
                       {locations[selectedArea].stats.responseTime}
                     </div>
-                    <div className="text-sm text-gray-600">Avg Response</div>
+                    <div className="text-sm text-gray-400">Avg Response</div>
                   </div>
                   <div className="p-4 text-center">
                     <div className="text-2xl font-bold text-[#4c673d]">
                       {locations[selectedArea].stats.rating}★
                     </div>
-                    <div className="text-sm text-gray-600">Rating</div>
+                    <div className="text-sm text-gray-400">Rating</div>
                   </div>
                 </div>
 
                 <div className="p-6">
                   {/* Highlights */}
                   <div className="mb-6">
-                    <h4 className="font-semibold text-gray-700 mb-3">Popular Areas We Serve</h4>
+                    <h4 className="font-semibold text-gray-400 mb-3">Popular Areas We Serve</h4>
                     <div className="grid grid-cols-2 gap-2">
                       {locations[selectedArea].highlights.map((highlight: string, index: number) => (
                         <motion.div
@@ -289,7 +289,7 @@ const AustinLocations = () => {
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 }}
-                          className="flex items-center gap-2 text-gray-600"
+                          className="flex items-center gap-2 text-gray-400"
                         >
                           <div className="w-2 h-2 rounded-full bg-[#7c9768]" />
                           {highlight}
@@ -300,7 +300,7 @@ const AustinLocations = () => {
 
                   {/* Specialties */}
                   <div>
-                    <h4 className="font-semibold text-gray-700 mb-3">Area Specialties</h4>
+                    <h4 className="font-semibold text-gray-400 mb-3">Area Specialties</h4>
                     <div className="flex flex-wrap gap-2">
                       {locations[selectedArea].specialties.map((specialty: string, index: number) => (
                         <motion.span
@@ -349,8 +349,8 @@ const AustinLocations = () => {
               <div className="inline-flex p-3 rounded-lg bg-gradient-to-br from-[#7c9768] to-[#4c673d] text-white mb-4">
                 {feature.icon}
               </div>
-              <h4 className="font-semibold text-gray-800 mb-2">{feature.title}</h4>
-              <p className="text-gray-600 text-sm">{feature.description}</p>
+              <h4 className="font-semibold text-gray-500 mb-2">{feature.title}</h4>
+              <p className="text-gray-400 text-sm">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -363,10 +363,10 @@ const AustinLocations = () => {
           className="bg-gradient-to-r from-[#ddddde] to-white rounded-2xl p-8 text-center"
         >
           <Map className="w-12 h-12 text-[#7c9768] mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">
+          <h3 className="text-2xl font-bold text-gray-500 mb-2">
             Don't See Your Area?
           </h3>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-400 mb-6">
             We're expanding! Contact us to check if we service your location.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

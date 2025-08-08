@@ -68,23 +68,23 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="flex flex-col items-center text-center">
             <Shield className="w-8 h-8 text-[#7c9768] mb-2" />
-            <h4 className="font-semibold text-gray-800">Licensed & Insured</h4>
-            <p className="text-sm text-gray-600">Full protection guaranteed</p>
+            <h4 className="font-semibold text-gray-500">Licensed & Insured</h4>
+            <p className="text-sm text-gray-400">Full protection guaranteed</p>
           </div>
           <div className="flex flex-col items-center text-center">
             <Star className="w-8 h-8 text-[#7c9768] mb-2" />
-            <h4 className="font-semibold text-gray-800">4.9 Star Rating</h4>
-            <p className="text-sm text-gray-600">500+ happy customers</p>
+            <h4 className="font-semibold text-gray-500">4.9 Star Rating</h4>
+            <p className="text-sm text-gray-400">500+ happy customers</p>
           </div>
           <div className="flex flex-col items-center text-center">
             <Award className="w-8 h-8 text-[#7c9768] mb-2" />
-            <h4 className="font-semibold text-gray-800">Award Winning</h4>
-            <p className="text-sm text-gray-600">Best of Austin 2024</p>
+            <h4 className="font-semibold text-gray-500">Award Winning</h4>
+            <p className="text-sm text-gray-400">Best of Austin 2024</p>
           </div>
           <div className="flex flex-col items-center text-center">
             <Heart className="w-8 h-8 text-[#7c9768] mb-2" />
-            <h4 className="font-semibold text-gray-800">Eco-Friendly</h4>
-            <p className="text-sm text-gray-600">Green cleaning products</p>
+            <h4 className="font-semibold text-gray-500">Eco-Friendly</h4>
+            <p className="text-sm text-gray-400">Green cleaning products</p>
           </div>
         </div>
       </div>
@@ -101,29 +101,29 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-[#7c9768]">Aura Spring</h3>
-                <p className="text-xs text-gray-600">Cleaning Excellence</p>
+                <p className="text-xs text-gray-400">Cleaning Excellence</p>
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-gray-400 mb-4">
               Austin&apos;s premier luxury cleaning service, specializing in high-rise condos, 
               penthouses, and Airbnb properties.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-2">
-              <a href="tel:5127810527" className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#7c9768] transition-colors">
+              <a href="tel:5127810527" className="flex items-center gap-2 text-sm text-gray-400 hover:text-[#7c9768] transition-colors">
                 <Phone className="w-4 h-4" />
                 (512) 781-0527
               </a>
-              <a href="mailto:Schedule@AuraSpringCleaning.com" className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#7c9768] transition-colors">
+              <a href="mailto:Schedule@AuraSpringCleaning.com" className="flex items-center gap-2 text-sm text-gray-400 hover:text-[#7c9768] transition-colors">
                 <Mail className="w-4 h-4" />
                 Schedule@AuraSpringCleaning.com
               </a>
-              <div className="flex items-start gap-2 text-sm text-gray-600">
+              <div className="flex items-start gap-2 text-sm text-gray-400">
                 <MapPin className="w-4 h-4 mt-0.5" />
                 <span>Serving Austin, TX<br />& Surrounding Areas</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="flex items-center gap-2 text-sm text-gray-400">
                 <Clock className="w-4 h-4" />
                 Mon-Fri: 8AM-6PM
               </div>
@@ -132,13 +132,13 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-gray-800 font-semibold mb-4">Our Services</h3>
+            <h3 className="text-gray-500 font-semibold mb-4">Our Services</h3>
             <ul className="space-y-2">
               {services.map((service) => (
                 <li key={service.name}>
                   <Link 
                     href={service.href}
-                    className="text-sm text-gray-600 hover:text-[#7c9768] transition-colors"
+                    className="text-sm text-gray-400 hover:text-[#7c9768] transition-colors"
                   >
                     {service.name}
                   </Link>
@@ -149,13 +149,13 @@ const Footer = () => {
 
           {/* Service Areas */}
           <div>
-            <h3 className="text-gray-800 font-semibold mb-4">Service Areas</h3>
+            <h3 className="text-gray-500 font-semibold mb-4">Service Areas</h3>
             <ul className="space-y-2">
               {areas.map((area) => (
                 <li key={area.name}>
                   <Link 
                     href={area.href}
-                    className="text-sm text-gray-600 hover:text-[#7c9768] transition-colors"
+                    className="text-sm text-gray-400 hover:text-[#7c9768] transition-colors"
                   >
                     {area.name}
                   </Link>
@@ -166,13 +166,13 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h3 className="text-gray-800 font-semibold mb-4">Company</h3>
+            <h3 className="text-gray-500 font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
               {company.map((item) => (
                 <li key={item.name}>
                   <Link 
                     href={item.href}
-                    className="text-sm text-gray-600 hover:text-[#7c9768] transition-colors"
+                    className="text-sm text-gray-400 hover:text-[#7c9768] transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -183,8 +183,8 @@ const Footer = () => {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-gray-800 font-semibold mb-4">Stay Updated</h3>
-            <p className="text-sm text-gray-600 mb-4">
+            <h3 className="text-gray-500 font-semibold mb-4">Stay Updated</h3>
+            <p className="text-sm text-gray-400 mb-4">
               Get cleaning tips and exclusive offers delivered to your inbox.
             </p>
             <form className="space-y-2">
@@ -203,7 +203,7 @@ const Footer = () => {
 
             {/* Social Links */}
             <div className="mt-6">
-              <h4 className="text-sm font-semibold text-gray-800 mb-3">Follow Us</h4>
+              <h4 className="text-sm font-semibold text-gray-500 mb-3">Follow Us</h4>
               <div className="flex gap-3">
                 {socialLinks.map((social) => (
                   <a
@@ -225,7 +225,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 pb-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-sm text-gray-600 text-center md:text-left">
+            <div className="text-sm text-gray-400 text-center md:text-left">
               © {currentYear} Aura Spring Cleaning. All rights reserved. 
               <span className="hidden md:inline"> | Part of BigChubbyDog Holdings</span>
             </div>
@@ -235,7 +235,7 @@ const Footer = () => {
                 <React.Fragment key={item.name}>
                   <Link 
                     href={item.href}
-                    className="text-gray-600 hover:text-[#7c9768] transition-colors"
+                    className="text-gray-400 hover:text-[#7c9768] transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -249,12 +249,12 @@ const Footer = () => {
           <div className="mt-6 text-center">
             <p className="text-xs text-gray-500 mb-2">Secure Payment Options</p>
             <div className="flex justify-center gap-2">
-              <span className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-600">Visa</span>
-              <span className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-600">Mastercard</span>
-              <span className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-600">Amex</span>
-              <span className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-600">Discover</span>
-              <span className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-600">PayPal</span>
-              <span className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-600">Apple Pay</span>
+              <span className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-400">Visa</span>
+              <span className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-400">Mastercard</span>
+              <span className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-400">Amex</span>
+              <span className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-400">Discover</span>
+              <span className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-400">PayPal</span>
+              <span className="px-2 py-1 bg-gray-100 rounded text-xs text-gray-400">Apple Pay</span>
             </div>
           </div>
         </div>

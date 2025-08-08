@@ -120,7 +120,7 @@ export default function BookingPage() {
           </span>
         </h1>
         
-        <p className="text-center text-gray-600 mb-12">
+        <p className="text-center text-gray-400 mb-12">
           Experience Austin's premier cleaning service. Get location-based pricing instantly.
         </p>
 
@@ -144,14 +144,14 @@ export default function BookingPage() {
           <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Price Display */}
             <div className="text-center p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg">
-              <div className="text-sm text-gray-600">Estimated Price</div>
+              <div className="text-sm text-gray-400">Estimated Price</div>
               <div className="text-3xl font-bold text-green-600">${calculatePrice()}</div>
               <div className="text-xs text-gray-500">Final price confirmed after home assessment</div>
             </div>
 
             {/* Service Type */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Service Type
               </label>
               <select 
@@ -170,7 +170,7 @@ export default function BookingPage() {
 
             {/* Location */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Your Neighborhood
               </label>
               <select 
@@ -193,7 +193,7 @@ export default function BookingPage() {
 
             {/* Date */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Preferred Date
               </label>
               <input
@@ -209,7 +209,7 @@ export default function BookingPage() {
 
             {/* Time */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Preferred Time
               </label>
               <select 
@@ -230,7 +230,7 @@ export default function BookingPage() {
             {/* Contact Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-400 mb-2">
                   Your Name
                 </label>
                 <input
@@ -244,7 +244,7 @@ export default function BookingPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-400 mb-2">
                   Phone Number
                 </label>
                 <input
@@ -261,7 +261,7 @@ export default function BookingPage() {
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Email Address
               </label>
               <input
@@ -277,7 +277,7 @@ export default function BookingPage() {
 
             {/* Address */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Service Address
               </label>
               <input
@@ -293,7 +293,7 @@ export default function BookingPage() {
 
             {/* Special Notes */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Special Instructions (Optional)
               </label>
               <textarea
@@ -337,7 +337,7 @@ export default function BookingPage() {
 
           {/* Trust Badges */}
           <div className="mt-8 pt-8 border-t border-gray-200">
-            <div className="flex justify-around text-center text-sm text-gray-600">
+            <div className="flex justify-around text-center text-sm text-gray-400">
               <div>
                 <div className="font-bold text-[#7c9768]">✓</div>
                 <div>Licensed & Insured</div>
@@ -358,25 +358,25 @@ export default function BookingPage() {
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white rounded-lg p-6 shadow-md">
             <h3 className="font-bold text-[#7c9768] mb-2">Location-Based Pricing</h3>
-            <p className="text-gray-600">
+            <p className="text-gray-400">
               Our smart system adjusts pricing based on your Austin neighborhood for the best value.
             </p>
           </div>
           <div className="bg-white rounded-lg p-6 shadow-md">
             <h3 className="font-bold text-[#443474] mb-2">Same-Day Service</h3>
-            <p className="text-gray-600">
+            <p className="text-gray-400">
               Available for downtown high-rises and urgent cleaning needs.
             </p>
           </div>
           <div className="bg-white rounded-lg p-6 shadow-md">
             <h3 className="font-bold text-[#4c673d] mb-2">Eco-Friendly Options</h3>
-            <p className="text-gray-600">
+            <p className="text-gray-400">
               Green cleaning products safe for pets, kids, and the environment.
             </p>
           </div>
           <div className="bg-white rounded-lg p-6 shadow-md">
             <h3 className="font-bold text-[#8d9199] mb-2">Trusted Teams</h3>
-            <p className="text-gray-600">
+            <p className="text-gray-400">
               Background-checked professionals experienced with Austin's premier properties.
             </p>
           </div>

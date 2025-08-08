@@ -222,7 +222,7 @@ const MoveInOutCleaningPage = () => {
                 Moving Service
               </span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Professional deep cleaning for every moving situation
             </p>
           </motion.div>
@@ -243,14 +243,14 @@ const MoveInOutCleaningPage = () => {
                 <div className="p-8">
                   <service.icon className="w-12 h-12 mb-4 text-green-600" />
                   <h3 className="text-2xl font-bold mb-2">{service.name}</h3>
-                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <p className="text-gray-400 mb-4">{service.description}</p>
                   
                   <div className="mb-6">
-                    <span className="text-4xl font-bold text-gray-800">
+                    <span className="text-4xl font-bold text-gray-500">
                       ${service.basePrice}
                     </span>
-                    <span className="text-gray-600">+</span>
-                    <div className="text-sm text-gray-600">Base price for 2,000 sq ft</div>
+                    <span className="text-gray-400">+</span>
+                    <div className="text-sm text-gray-400">Base price for 2,000 sq ft</div>
                   </div>
 
                   <div className="bg-gradient-to-r from-green-50 to-purple-50 rounded-lg p-4 mb-6">
@@ -263,10 +263,10 @@ const MoveInOutCleaningPage = () => {
                     {service.features.slice(0, 5).map((feature, i) => (
                       <div key={i} className="flex items-start gap-2">
                         <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-gray-700">{feature}</span>
+                        <span className="text-sm text-gray-400">{feature}</span>
                       </div>
                     ))}
-                    <div className="text-sm text-gray-600 font-semibold pl-7">
+                    <div className="text-sm text-gray-400 font-semibold pl-7">
                       +{service.features.length - 5} more included
                     </div>
                   </div>
@@ -299,7 +299,7 @@ const MoveInOutCleaningPage = () => {
                 Pricing Structure
               </span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Fair pricing based on your home size
             </p>
           </motion.div>
@@ -314,14 +314,14 @@ const MoveInOutCleaningPage = () => {
                   className="bg-gradient-to-br from-green-50 to-purple-50 rounded-lg p-4 text-center"
                 >
                   <div className="font-bold text-lg">{tier.range}</div>
-                  <div className="text-sm text-gray-600 mb-2">{tier.label}</div>
+                  <div className="text-sm text-gray-400 mb-2">{tier.label}</div>
                   <div className="text-2xl font-bold text-green-600">
                     ${Math.round(services[selectedService as keyof typeof services].basePrice * tier.multiplier)}
                   </div>
                 </motion.div>
               ))}
             </div>
-            <p className="text-center text-gray-600 mt-6">
+            <p className="text-center text-gray-400 mt-6">
               * Final pricing may vary based on condition and special requirements
             </p>
           </div>
@@ -358,9 +358,9 @@ const MoveInOutCleaningPage = () => {
                 <div className="bg-gradient-to-br from-green-100 to-purple-100 rounded-full w-20 h-20 mx-auto mb-4 flex items-center justify-center">
                   <item.icon className="w-10 h-10 text-purple-600" />
                 </div>
-                <div className="text-2xl font-bold text-gray-800 mb-2">{item.step}</div>
+                <div className="text-2xl font-bold text-gray-500 mb-2">{item.step}</div>
                 <h3 className="font-bold mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.desc}</p>
+                <p className="text-sm text-gray-400">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -379,7 +379,7 @@ const MoveInOutCleaningPage = () => {
             <h2 className="text-4xl font-bold mb-4">
               Deposit Success Stories
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Join hundreds of satisfied Austin movers
             </p>
           </motion.div>
@@ -399,10 +399,10 @@ const MoveInOutCleaningPage = () => {
                     <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <p className="text-gray-700 italic mb-4">"{testimonial.content}"</p>
+                <p className="text-gray-400 italic mb-4">"{testimonial.content}"</p>
                 <div className="border-t pt-4">
                   <div className="font-bold">{testimonial.name}</div>
-                  <div className="text-sm text-gray-600">{testimonial.role}</div>
+                  <div className="text-sm text-gray-400">{testimonial.role}</div>
                   <div className="text-xs text-green-600 mt-1">{testimonial.service}</div>
                 </div>
               </motion.div>
@@ -496,7 +496,7 @@ const MoveInOutCleaningPage = () => {
                 className="bg-gradient-to-br from-green-50 to-purple-50 rounded-lg p-3 text-center flex items-center justify-center gap-2"
               >
                 <MapPin className="w-4 h-4 text-green-600" />
-                <span className="font-semibold text-gray-700">{area}</span>
+                <span className="font-semibold text-gray-400">{area}</span>
               </motion.div>
             ))}
           </div>
@@ -514,7 +514,7 @@ const MoveInOutCleaningPage = () => {
           <h2 className="text-4xl font-bold mb-6">
             Ready for a Stress-Free Move?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-gray-400 mb-8">
             Let us handle the deep cleaning while you focus on your new beginning
           </p>
 
@@ -523,17 +523,17 @@ const MoveInOutCleaningPage = () => {
               <div>
                 <Clock className="w-12 h-12 mx-auto mb-3 text-blue-600" />
                 <h3 className="font-bold mb-2">Same-Day Service</h3>
-                <p className="text-sm text-gray-600">Emergency cleaning available</p>
+                <p className="text-sm text-gray-400">Emergency cleaning available</p>
               </div>
               <div>
                 <Users className="w-12 h-12 mx-auto mb-3 text-green-600" />
                 <h3 className="font-bold mb-2">Experienced Team</h3>
-                <p className="text-sm text-gray-600">Trained & background checked</p>
+                <p className="text-sm text-gray-400">Trained & background checked</p>
               </div>
               <div>
                 <Heart className="w-12 h-12 mx-auto mb-3 text-purple-600" />
                 <h3 className="font-bold mb-2">Satisfaction Guaranteed</h3>
-                <p className="text-sm text-gray-600">100% happiness promise</p>
+                <p className="text-sm text-gray-400">100% happiness promise</p>
               </div>
             </div>
 

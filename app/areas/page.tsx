@@ -161,12 +161,12 @@ const AreasPage = () => {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold mb-4">
-              <span className="text-gray-800">Choose Your </span>
+              <span className="text-gray-500">Choose Your </span>
               <span className="bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent">
                 Neighborhood
               </span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Location-based pricing • Priority scheduling • Specialized teams for each area
             </p>
           </motion.div>
@@ -206,14 +206,14 @@ const AreasPage = () => {
                   </div>
                   
                   <div className="p-6">
-                    <p className="text-gray-600 mb-4">{area.description}</p>
+                    <p className="text-gray-400 mb-4">{area.description}</p>
                     
                     {/* Highlights */}
                     <div className="mb-4">
-                      <p className="text-sm font-semibold text-gray-700 mb-2">Popular Buildings:</p>
+                      <p className="text-sm font-semibold text-gray-400 mb-2">Popular Buildings:</p>
                       <div className="flex flex-wrap gap-2">
                         {area.highlights.slice(0, 3).map(highlight => (
-                          <span key={highlight} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                          <span key={highlight} className="text-xs bg-gray-100 text-gray-400 px-2 py-1 rounded">
                             {highlight}
                           </span>
                         ))}
@@ -250,7 +250,7 @@ const AreasPage = () => {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold mb-4">
-              <span className="text-gray-800">Specialized Services </span>
+              <span className="text-gray-500">Specialized Services </span>
               <span className="text-green-600">by Location</span>
             </h2>
           </motion.div>
@@ -264,10 +264,10 @@ const AreasPage = () => {
             >
               <Building2 className="w-12 h-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-bold mb-3">High-Rise Specialists</h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-400 mb-4">
                 Downtown & Rainey Street towers require special expertise. Our teams are trained for:
               </p>
-              <ul className="space-y-2 text-sm text-gray-600">
+              <ul className="space-y-2 text-sm text-gray-400">
                 <li className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-green-500" />
                   Floor-to-ceiling window cleaning
@@ -291,10 +291,10 @@ const AreasPage = () => {
             >
               <Home className="w-12 h-12 text-green-600 mb-4" />
               <h3 className="text-xl font-bold mb-3">Estate Cleaning</h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-400 mb-4">
                 West Lake Hills & Barton Creek estates receive white-glove treatment:
               </p>
-              <ul className="space-y-2 text-sm text-gray-600">
+              <ul className="space-y-2 text-sm text-gray-400">
                 <li className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-green-500" />
                   Multi-room deep cleaning
@@ -318,10 +318,10 @@ const AreasPage = () => {
             >
               <Users className="w-12 h-12 text-purple-600 mb-4" />
               <h3 className="text-xl font-bold mb-3">Airbnb Turnovers</h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-400 mb-4">
                 SoCo & East Austin short-term rentals need quick, reliable service:
               </p>
-              <ul className="space-y-2 text-sm text-gray-600">
+              <ul className="space-y-2 text-sm text-gray-400">
                 <li className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-green-500" />
                   2-hour turnover service

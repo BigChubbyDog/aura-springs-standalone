@@ -220,12 +220,12 @@ const RegularCleaningPage = () => {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold mb-4">
-              <span className="text-gray-800">Transparent </span>
+              <span className="text-gray-500">Transparent </span>
               <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
                 Time-Saving Pricing
               </span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               The more you book, the more you save - both money and time
             </p>
           </motion.div>
@@ -242,7 +242,7 @@ const RegularCleaningPage = () => {
               
               {/* Frequency Selection */}
               <div className="mb-6">
-                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                <label className="block text-sm font-semibold text-gray-400 mb-3">
                   Cleaning Frequency
                 </label>
                 <div className="grid grid-cols-2 gap-3">
@@ -270,7 +270,7 @@ const RegularCleaningPage = () => {
 
               {/* Home Size Selection */}
               <div className="mb-6">
-                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                <label className="block text-sm font-semibold text-gray-400 mb-3">
                   Home Size
                 </label>
                 <div className="space-y-2">
@@ -288,7 +288,7 @@ const RegularCleaningPage = () => {
                         <div className="font-semibold">{home.name}</div>
                         <div className="text-sm text-gray-500">{home.time}</div>
                       </div>
-                      <div className="text-lg font-bold text-gray-700">
+                      <div className="text-lg font-bold text-gray-400">
                         ${home.basePrice}
                       </div>
                     </button>
@@ -332,45 +332,45 @@ const RegularCleaningPage = () => {
                   <div className="text-5xl font-bold text-green-600 mb-2">
                     {timeBackCalculator[frequency as keyof typeof timeBackCalculator]?.hours || 4}
                   </div>
-                  <div className="text-lg text-gray-700">Hours returned to you monthly</div>
-                  <div className="text-sm text-gray-600 mt-2">
+                  <div className="text-lg text-gray-400">Hours returned to you monthly</div>
+                  <div className="text-sm text-gray-400 mt-2">
                     That's {timeBackCalculator[frequency as keyof typeof timeBackCalculator]?.activities}
                   </div>
                 </div>
               )}
 
               <div className="space-y-4">
-                <h4 className="font-semibold text-gray-800">With your time back, you could:</h4>
+                <h4 className="font-semibold text-gray-500">With your time back, you could:</h4>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <Waves className="w-5 h-5 text-blue-500" />
-                    <span className="text-gray-700">Paddleboard Lady Bird Lake at sunset</span>
+                    <span className="text-gray-400">Paddleboard Lady Bird Lake at sunset</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <TreePine className="w-5 h-5 text-green-500" />
-                    <span className="text-gray-700">Explore all Greenbelt trails</span>
+                    <span className="text-gray-400">Explore all Greenbelt trails</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Dog className="w-5 h-5 text-purple-500" />
-                    <span className="text-gray-700">Take your pup to every dog park</span>
+                    <span className="text-gray-400">Take your pup to every dog park</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Coffee className="w-5 h-5 text-orange-500" />
-                    <span className="text-gray-700">Try every coffee shop on South Congress</span>
+                    <span className="text-gray-400">Try every coffee shop on South Congress</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Music className="w-5 h-5 text-pink-500" />
-                    <span className="text-gray-700">Never miss live music on Rainey Street</span>
+                    <span className="text-gray-400">Never miss live music on Rainey Street</span>
                   </div>
                 </div>
               </div>
 
               <div className="mt-6 p-4 bg-white rounded-lg border border-green-200">
                 <div className="text-sm font-semibold text-green-700 mb-1">Annual Impact:</div>
-                <div className="text-2xl font-bold text-gray-800">
+                <div className="text-2xl font-bold text-gray-500">
                   {frequency === 'weekly' ? '208' : frequency === 'biweekly' ? '104' : '48'} hours
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-gray-400">
                   That's {frequency === 'weekly' ? '26' : frequency === 'biweekly' ? '13' : '6'} full days of freedom!
                 </div>
               </div>
@@ -389,10 +389,10 @@ const RegularCleaningPage = () => {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold mb-4">
-              <span className="text-gray-800">Every Regular Clean </span>
+              <span className="text-gray-500">Every Regular Clean </span>
               <span className="text-green-600">Includes</span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Comprehensive cleaning that maintains your home's pristine condition
             </p>
           </motion.div>
@@ -407,13 +407,13 @@ const RegularCleaningPage = () => {
                 viewport={{ once: true }}
                 className="bg-gray-50 rounded-xl p-6"
               >
-                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <h3 className="text-xl font-bold text-gray-500 mb-4 flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-green-500" />
                   {service.category}
                 </h3>
                 <ul className="space-y-2">
                   {service.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-gray-600">
+                    <li key={i} className="flex items-start gap-2 text-gray-400">
                       <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                       <span className="text-sm">{item}</span>
                     </li>
@@ -435,7 +435,7 @@ const RegularCleaningPage = () => {
               {addOns.map((addon) => (
                 <div key={addon.name} className="bg-white rounded-lg p-4 flex justify-between items-center">
                   <div>
-                    <div className="font-semibold text-gray-800">{addon.name}</div>
+                    <div className="font-semibold text-gray-500">{addon.name}</div>
                     <div className="text-sm text-gray-500">{addon.time}</div>
                   </div>
                   <div className="text-lg font-bold text-green-600">+${addon.price}</div>
@@ -456,7 +456,7 @@ const RegularCleaningPage = () => {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold mb-4">
-              <span className="text-gray-800">Why Austin Trusts </span>
+              <span className="text-gray-500">Why Austin Trusts </span>
               <span className="text-green-600">Our Regular Service</span>
             </h2>
           </motion.div>
@@ -470,7 +470,7 @@ const RegularCleaningPage = () => {
             >
               <Users className="w-12 h-12 mx-auto mb-4 text-blue-600" />
               <h3 className="text-xl font-bold mb-2">Same Team</h3>
-              <p className="text-gray-600">Your dedicated team knows your home and preferences</p>
+              <p className="text-gray-400">Your dedicated team knows your home and preferences</p>
             </motion.div>
             
             <motion.div
@@ -482,7 +482,7 @@ const RegularCleaningPage = () => {
             >
               <Lock className="w-12 h-12 mx-auto mb-4 text-purple-600" />
               <h3 className="text-xl font-bold mb-2">Secure Entry</h3>
-              <p className="text-gray-600">Bonded, insured, and background-checked professionals</p>
+              <p className="text-gray-400">Bonded, insured, and background-checked professionals</p>
             </motion.div>
             
             <motion.div
@@ -494,7 +494,7 @@ const RegularCleaningPage = () => {
             >
               <Leaf className="w-12 h-12 mx-auto mb-4 text-green-600" />
               <h3 className="text-xl font-bold mb-2">Eco-Friendly</h3>
-              <p className="text-gray-600">Safe for kids, pets, and the environment</p>
+              <p className="text-gray-400">Safe for kids, pets, and the environment</p>
             </motion.div>
             
             <motion.div
@@ -506,7 +506,7 @@ const RegularCleaningPage = () => {
             >
               <Calendar className="w-12 h-12 mx-auto mb-4 text-orange-600" />
               <h3 className="text-xl font-bold mb-2">Flexible</h3>
-              <p className="text-gray-600">Easy rescheduling and vacation holds</p>
+              <p className="text-gray-400">Easy rescheduling and vacation holds</p>
             </motion.div>
           </div>
         </div>
@@ -522,10 +522,10 @@ const RegularCleaningPage = () => {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold mb-4">
-              <span className="text-gray-800">Life-Changing </span>
+              <span className="text-gray-500">Life-Changing </span>
               <span className="text-green-600">Regular Service</span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Hear from Austinites who got their weekends back
             </p>
           </motion.div>
@@ -549,8 +549,8 @@ const RegularCleaningPage = () => {
                     className="rounded-full"
                   />
                   <div>
-                    <div className="font-bold text-gray-800">{testimonial.name}</div>
-                    <div className="text-sm text-gray-600">{testimonial.location}</div>
+                    <div className="font-bold text-gray-500">{testimonial.name}</div>
+                    <div className="text-sm text-gray-400">{testimonial.location}</div>
                     <div className="flex gap-1 mt-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -558,7 +558,7 @@ const RegularCleaningPage = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-700 italic mb-2">"{testimonial.text}"</p>
+                <p className="text-gray-400 italic mb-2">"{testimonial.text}"</p>
                 <div className="text-sm text-green-600 font-semibold">{testimonial.service}</div>
               </motion.div>
             ))}

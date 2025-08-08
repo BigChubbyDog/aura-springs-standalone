@@ -101,28 +101,28 @@ export default function HomePage() {
               <Award className="w-8 h-8 text-aura-primary-600" />
               <div>
                 <p className="font-bold text-2xl">500+</p>
-                <p className="text-sm text-gray-600">Happy Customers</p>
+                <p className="text-sm text-gray-400">Happy Customers</p>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3">
               <Star className="w-8 h-8 text-yellow-500" />
               <div>
                 <p className="font-bold text-2xl">4.9/5</p>
-                <p className="text-sm text-gray-600">Average Rating</p>
+                <p className="text-sm text-gray-400">Average Rating</p>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3">
               <Shield className="w-8 h-8 text-green-600" />
               <div>
                 <p className="font-bold text-2xl">100%</p>
-                <p className="text-sm text-gray-600">Insured & Bonded</p>
+                <p className="text-sm text-gray-400">Insured & Bonded</p>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3">
               <Users className="w-8 h-8 text-blue-600" />
               <div>
                 <p className="font-bold text-2xl">15+</p>
-                <p className="text-sm text-gray-600">Expert Cleaners</p>
+                <p className="text-sm text-gray-400">Expert Cleaners</p>
               </div>
             </div>
           </div>
@@ -135,7 +135,7 @@ export default function HomePage() {
           <h2 className="text-4xl font-bold text-center text-aura-primary-700 mb-4">
             Our Premium Services
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
             Choose from our range of professional cleaning services, 
             each designed to meet your specific needs and exceed your expectations.
           </p>
@@ -147,12 +147,12 @@ export default function HomePage() {
                 className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all p-8 hover:-translate-y-2"
               >
                 <div className="mb-4">{service.icon}</div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
+                <h3 className="text-2xl font-bold text-gray-500 mb-2">{service.title}</h3>
+                <p className="text-gray-400 mb-4">{service.description}</p>
                 <p className="text-3xl font-bold text-aura-primary-600 mb-4">{service.price}</p>
                 <ul className="space-y-2 mb-6">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-gray-700">
+                    <li key={idx} className="flex items-center gap-2 text-gray-400">
                       <Star className="w-4 h-4 text-aura-primary-500" />
                       {feature}
                     </li>
@@ -173,7 +173,7 @@ export default function HomePage() {
           <h2 className="text-4xl font-bold text-center text-aura-primary-700 mb-4">
             See The Aura Difference
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
             Our professional team delivers exceptional results every time, 
             transforming spaces into pristine sanctuaries.
           </p>
@@ -192,7 +192,7 @@ export default function HomePage() {
             <h2 className="text-4xl font-bold text-center text-aura-primary-700 mb-4">
               Transparent Pricing, No Surprises
             </h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
               Use our instant calculator to get an accurate quote for your home. 
               Our competitive rates beat major competitors by up to 25%!
             </p>
@@ -221,8 +221,8 @@ export default function HomePage() {
                     className="w-16 h-16 rounded-full object-cover"
                   />
                   <div>
-                    <p className="font-bold text-gray-800">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600 flex items-center gap-1">
+                    <p className="font-bold text-gray-500">{testimonial.name}</p>
+                    <p className="text-sm text-gray-400 flex items-center gap-1">
                       <MapPin className="w-3 h-3" />
                       {testimonial.location}
                     </p>
@@ -233,7 +233,7 @@ export default function HomePage() {
                     <Star key={i} className="w-5 h-5 fill-yellow-500 text-yellow-500" />
                   ))}
                 </div>
-                <p className="text-gray-700 italic">"{testimonial.text}"</p>
+                <p className="text-gray-400 italic">"{testimonial.text}"</p>
               </div>
             ))}
           </div>
@@ -246,7 +246,7 @@ export default function HomePage() {
           <h2 className="text-4xl font-bold text-center text-aura-primary-700 mb-4">
             Proudly Serving Austin & Surrounding Areas
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
             We bring our premium cleaning services to the finest neighborhoods in Central Texas
           </p>
           
@@ -258,7 +258,7 @@ export default function HomePage() {
                 className="bg-gradient-to-r from-aura-primary-50 to-aura-primary-100 rounded-lg p-4 text-center hover:shadow-lg transition-all"
               >
                 <MapPin className="w-6 h-6 text-aura-primary-600 mx-auto mb-2" />
-                <p className="font-semibold text-gray-800">{area}</p>
+                <p className="font-semibold text-gray-500">{area}</p>
               </div>
             ))}
           </div>

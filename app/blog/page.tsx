@@ -163,7 +163,7 @@ const BlogPage = () => {
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-6 py-4 pl-12 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-green-400"
+                className="w-full px-6 py-4 pl-12 rounded-full text-gray-500 shadow-xl focus:outline-none focus:ring-4 focus:ring-green-400"
               />
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
             </div>
@@ -200,8 +200,8 @@ const BlogPage = () => {
             viewport={{ once: true }}
             className="mb-8"
           >
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">Featured Story</h2>
-            <p className="text-gray-600">Our latest insights on luxury living in Austin</p>
+            <h2 className="text-3xl font-bold text-gray-500 mb-2">Featured Story</h2>
+            <p className="text-gray-400">Our latest insights on luxury living in Austin</p>
           </motion.div>
 
           <motion.article
@@ -240,17 +240,17 @@ const BlogPage = () => {
                   </span>
                 </div>
                 
-                <h3 className="text-3xl font-bold text-gray-800 mb-4 group-hover:text-green-600 transition-colors">
+                <h3 className="text-3xl font-bold text-gray-500 mb-4 group-hover:text-green-600 transition-colors">
                   {featuredPost.title}
                 </h3>
                 
-                <p className="text-gray-600 mb-6 text-lg leading-relaxed">
+                <p className="text-gray-400 mb-6 text-lg leading-relaxed">
                   {featuredPost.excerpt}
                 </p>
                 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {featuredPost.tags.map(tag => (
-                    <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
+                    <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-400 rounded-full text-sm">
                       #{tag}
                     </span>
                   ))}
@@ -278,8 +278,8 @@ const BlogPage = () => {
             viewport={{ once: true }}
             className="mb-8 flex justify-between items-center"
           >
-            <h2 className="text-3xl font-bold text-gray-800">Recent Articles</h2>
-            <p className="text-gray-600">{filteredPosts.length} articles found</p>
+            <h2 className="text-3xl font-bold text-gray-500">Recent Articles</h2>
+            <p className="text-gray-400">{filteredPosts.length} articles found</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -301,7 +301,7 @@ const BlogPage = () => {
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    <span className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                    <span className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-gray-500">
                       {post.category}
                     </span>
                   </div>
@@ -319,11 +319,11 @@ const BlogPage = () => {
                       </span>
                     </div>
                     
-                    <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors line-clamp-2">
+                    <h3 className="text-xl font-bold text-gray-500 mb-3 group-hover:text-green-600 transition-colors line-clamp-2">
                       {post.title}
                     </h3>
                     
-                    <p className="text-gray-600 mb-4 line-clamp-3">
+                    <p className="text-gray-400 mb-4 line-clamp-3">
                       {post.excerpt}
                     </p>
                     
@@ -349,10 +349,10 @@ const BlogPage = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto px-4 text-center"
         >
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+          <h2 className="text-3xl font-bold text-gray-500 mb-4">
             Stay in the Loop
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-gray-400 mb-8">
             Get cleaning tips, Austin lifestyle content, and exclusive offers delivered weekly
           </p>
           
@@ -379,14 +379,14 @@ const BlogPage = () => {
       {/* Popular Tags */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <h3 className="text-xl font-bold text-gray-800 mb-4">Popular Topics</h3>
+          <h3 className="text-xl font-bold text-gray-500 mb-4">Popular Topics</h3>
           <div className="flex flex-wrap gap-3">
             {popularTags.map(tag => (
               <motion.button
                 key={tag}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-4 py-2 bg-gray-100 hover:bg-green-100 text-gray-700 hover:text-green-700 rounded-full transition-all duration-300"
+                className="px-4 py-2 bg-gray-100 hover:bg-green-100 text-gray-400 hover:text-green-700 rounded-full transition-all duration-300"
               >
                 <Tag className="inline w-3 h-3 mr-1" />
                 {tag}

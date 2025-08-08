@@ -125,17 +125,17 @@ export default function EnhancedBookingWidget() {
       <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-8 text-center max-w-2xl mx-auto">
         <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
         <h2 className="text-3xl font-bold text-green-800 mb-4">Booking Confirmed!</h2>
-        <p className="text-lg text-gray-700 mb-4">
+        <p className="text-lg text-gray-400 mb-4">
           Thank you, {formData.customerName}! Your cleaning service has been scheduled.
         </p>
         <div className="bg-white rounded-lg p-6 mb-6 text-left">
-          <h3 className="font-semibold text-gray-800 mb-3">Booking Details:</h3>
-          <p className="text-gray-600"><strong>Date:</strong> {formData.serviceDate}</p>
-          <p className="text-gray-600"><strong>Time:</strong> {formData.serviceTime}</p>
-          <p className="text-gray-600"><strong>Service:</strong> {formData.serviceType}</p>
-          <p className="text-gray-600"><strong>Total:</strong> ${pricing.total}</p>
+          <h3 className="font-semibold text-gray-500 mb-3">Booking Details:</h3>
+          <p className="text-gray-400"><strong>Date:</strong> {formData.serviceDate}</p>
+          <p className="text-gray-400"><strong>Time:</strong> {formData.serviceTime}</p>
+          <p className="text-gray-400"><strong>Service:</strong> {formData.serviceType}</p>
+          <p className="text-gray-400"><strong>Total:</strong> ${pricing.total}</p>
         </div>
-        <p className="text-gray-600 mb-6">
+        <p className="text-gray-400 mb-6">
           A confirmation email has been sent to {formData.customerEmail}
         </p>
         <button
@@ -175,11 +175,11 @@ export default function EnhancedBookingWidget() {
 
       {step === 1 && (
         <div className="space-y-6">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">Contact Information</h3>
+          <h3 className="text-xl font-semibold text-gray-500 mb-4">Contact Information</h3>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Full Name *
               </label>
               <input
@@ -193,7 +193,7 @@ export default function EnhancedBookingWidget() {
             </div>
             
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Email Address *
               </label>
               <input
@@ -207,7 +207,7 @@ export default function EnhancedBookingWidget() {
             </div>
             
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Phone Number *
               </label>
               <input
@@ -221,7 +221,7 @@ export default function EnhancedBookingWidget() {
             </div>
             
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Property Type
               </label>
               <select
@@ -238,11 +238,11 @@ export default function EnhancedBookingWidget() {
             </div>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-4">Property Address</h3>
+          <h3 className="text-xl font-semibold text-gray-500 mt-8 mb-4">Property Address</h3>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Street Address *
               </label>
               <input
@@ -257,7 +257,7 @@ export default function EnhancedBookingWidget() {
             
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-400 mb-2">
                   City
                 </label>
                 <input
@@ -269,7 +269,7 @@ export default function EnhancedBookingWidget() {
               </div>
               
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-400 mb-2">
                   ZIP Code *
                 </label>
                 <input
@@ -288,11 +288,11 @@ export default function EnhancedBookingWidget() {
 
       {step === 2 && (
         <div className="space-y-6">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">Service Details</h3>
+          <h3 className="text-xl font-semibold text-gray-500 mb-4">Service Details</h3>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Service Type *
               </label>
               <select
@@ -309,7 +309,7 @@ export default function EnhancedBookingWidget() {
             </div>
             
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Frequency
               </label>
               <select
@@ -325,7 +325,7 @@ export default function EnhancedBookingWidget() {
             </div>
             
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Preferred Date *
               </label>
               <input
@@ -339,7 +339,7 @@ export default function EnhancedBookingWidget() {
             </div>
             
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Preferred Time *
               </label>
               <select
@@ -360,11 +360,11 @@ export default function EnhancedBookingWidget() {
             </div>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-4">Property Size</h3>
+          <h3 className="text-xl font-semibold text-gray-500 mt-8 mb-4">Property Size</h3>
           
           <div className="grid md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Bedrooms
               </label>
               <input
@@ -378,7 +378,7 @@ export default function EnhancedBookingWidget() {
             </div>
             
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Bathrooms
               </label>
               <input
@@ -393,7 +393,7 @@ export default function EnhancedBookingWidget() {
             </div>
             
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-400 mb-2">
                 Square Feet
               </label>
               <input
@@ -409,7 +409,7 @@ export default function EnhancedBookingWidget() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-400 mb-2">
               Special Instructions (Optional)
             </label>
             <textarea
@@ -425,7 +425,7 @@ export default function EnhancedBookingWidget() {
 
       {step === 3 && (
         <div className="space-y-6">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">Add-On Services</h3>
+          <h3 className="text-xl font-semibold text-gray-500 mb-4">Add-On Services</h3>
           
           <div className="grid md:grid-cols-2 gap-3">
             {Object.entries(ADD_ONS).map(([key, addon]) => (
@@ -458,27 +458,27 @@ export default function EnhancedBookingWidget() {
           </div>
 
           <div className="mt-8 bg-gradient-to-r from-aura-primary-50 to-aura-primary-100 rounded-2xl p-6">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">Booking Summary</h3>
+            <h3 className="text-xl font-semibold text-gray-500 mb-4">Booking Summary</h3>
             
             <div className="space-y-2 mb-4">
-              <div className="flex justify-between text-gray-700">
+              <div className="flex justify-between text-gray-400">
                 <span>Service:</span>
                 <span className="font-medium">{formData.serviceType}</span>
               </div>
-              <div className="flex justify-between text-gray-700">
+              <div className="flex justify-between text-gray-400">
                 <span>Date & Time:</span>
                 <span className="font-medium">{formData.serviceDate} at {formData.serviceTime}</span>
               </div>
-              <div className="flex justify-between text-gray-700">
+              <div className="flex justify-between text-gray-400">
                 <span>Property:</span>
                 <span className="font-medium">{formData.bedrooms}BR/{formData.bathrooms}BA - {formData.squareFeet} sq ft</span>
               </div>
-              <div className="flex justify-between text-gray-700">
+              <div className="flex justify-between text-gray-400">
                 <span>Frequency:</span>
                 <span className="font-medium">{formData.frequency}</span>
               </div>
               {formData.addOns.length > 0 && (
-                <div className="flex justify-between text-gray-700">
+                <div className="flex justify-between text-gray-400">
                   <span>Add-ons:</span>
                   <span className="font-medium">{formData.addOns.length} selected</span>
                 </div>
@@ -486,7 +486,7 @@ export default function EnhancedBookingWidget() {
             </div>
             
             <div className="border-t-2 border-aura-primary-200 pt-4">
-              <div className="flex justify-between text-gray-700 mb-2">
+              <div className="flex justify-between text-gray-400 mb-2">
                 <span>Subtotal:</span>
                 <span className="font-medium">${pricing.subtotal}</span>
               </div>
@@ -497,7 +497,7 @@ export default function EnhancedBookingWidget() {
                 </div>
               )}
               {pricing.addOnsTotal > 0 && (
-                <div className="flex justify-between text-gray-700 mb-2">
+                <div className="flex justify-between text-gray-400 mb-2">
                   <span>Add-ons:</span>
                   <span className="font-medium">+${pricing.addOnsTotal}</span>
                 </div>
@@ -522,7 +522,7 @@ export default function EnhancedBookingWidget() {
         {step > 1 && (
           <button
             onClick={() => setStep(step - 1)}
-            className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+            className="px-6 py-3 border-2 border-gray-300 text-gray-400 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
           >
             Previous
           </button>

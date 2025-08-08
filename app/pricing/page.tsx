@@ -282,7 +282,7 @@ const PricingPage = () => {
                 Luxury Pricing
               </span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Choose your service level and see your investment instantly
             </p>
           </motion.div>
@@ -308,7 +308,7 @@ const PricingPage = () => {
                       Most Popular
                     </span>
                   )}
-                  <RefreshCw className="w-8 h-8 mx-auto mb-2 text-gray-600" />
+                  <RefreshCw className="w-8 h-8 mx-auto mb-2 text-gray-400" />
                   <div className="font-bold text-lg">{freq.name}</div>
                   <div className="text-green-600 font-semibold">Save {freq.discount}</div>
                 </motion.button>
@@ -332,9 +332,9 @@ const PricingPage = () => {
                       : 'border-gray-200 bg-white hover:border-gray-300'
                   }`}
                 >
-                  <Home className="w-8 h-8 mx-auto mb-2 text-gray-600" />
+                  <Home className="w-8 h-8 mx-auto mb-2 text-gray-400" />
                   <div className="font-bold">{size.label}</div>
-                  <div className="text-sm text-gray-600">{size.beds}</div>
+                  <div className="text-sm text-gray-400">{size.beds}</div>
                 </motion.button>
               ))}
             </div>
@@ -374,13 +374,13 @@ const PricingPage = () => {
                       'text-blue-600'
                     }`} />
                     <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
-                    <p className="text-gray-600 mb-4">{tier.description}</p>
+                    <p className="text-gray-400 mb-4">{tier.description}</p>
                     
                     <div className="mb-6">
-                      <div className="text-4xl font-bold text-gray-800">
+                      <div className="text-4xl font-bold text-gray-500">
                         ${tier.pricing[frequency as keyof typeof tier.pricing][homeSize as keyof typeof tier.pricing.onetime]}
                       </div>
-                      <div className="text-sm text-gray-600">per cleaning</div>
+                      <div className="text-sm text-gray-400">per cleaning</div>
                       {frequency !== 'onetime' && (
                         <div className="text-lg text-green-600 font-semibold mt-2">
                           ${Math.round(
@@ -395,11 +395,11 @@ const PricingPage = () => {
                       {tier.features.slice(0, 5).map((feature, i) => (
                         <div key={i} className="flex items-start gap-2">
                           <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{feature}</span>
+                          <span className="text-sm text-gray-400">{feature}</span>
                         </div>
                       ))}
                       {tier.features.length > 5 && (
-                        <div className="text-sm text-gray-600 font-semibold">
+                        <div className="text-sm text-gray-400 font-semibold">
                           +{tier.features.length - 5} more features
                         </div>
                       )}
@@ -412,7 +412,7 @@ const PricingPage = () => {
                       className={`w-full py-3 rounded-lg font-bold transition-all ${
                         selectedTier === key
                           ? 'bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-lg'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          : 'bg-gray-100 text-gray-400 hover:bg-gray-200'
                       }`}
                     >
                       {selectedTier === key ? 'Book This Service' : 'Select This Tier'}
@@ -436,8 +436,8 @@ const PricingPage = () => {
                 <div key={addon.name} className="bg-white rounded-lg p-4">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <div className="font-semibold text-gray-800">{addon.name}</div>
-                      <div className="text-sm text-gray-600">{addon.description}</div>
+                      <div className="font-semibold text-gray-500">{addon.name}</div>
+                      <div className="text-sm text-gray-400">{addon.description}</div>
                     </div>
                     <div className="text-lg font-bold text-green-600">+${addon.price}</div>
                   </div>
@@ -506,7 +506,7 @@ const PricingPage = () => {
           <div className="space-y-6">
             <div className="bg-gray-50 rounded-xl p-6">
               <h3 className="font-bold text-lg mb-2">Why is Aura Spring more expensive than other services?</h3>
-              <p className="text-gray-700">
+              <p className="text-gray-400">
                 We invest in the best: thoroughly vetted & trained professionals, premium eco-friendly products, 
                 comprehensive insurance, and consistent teams. Our clients value reliability, trust, and the 
                 luxury of never worrying about their home's cleanliness.
@@ -515,7 +515,7 @@ const PricingPage = () => {
             
             <div className="bg-gray-50 rounded-xl p-6">
               <h3 className="font-bold text-lg mb-2">Do prices include everything?</h3>
-              <p className="text-gray-700">
+              <p className="text-gray-400">
                 Yes! Our quoted prices are all-inclusive. No hidden fees, no surprises. 
                 Taxes, supplies, insurance, and our happiness guarantee are all included.
               </p>
@@ -523,7 +523,7 @@ const PricingPage = () => {
             
             <div className="bg-gray-50 rounded-xl p-6">
               <h3 className="font-bold text-lg mb-2">How do I lock in these rates?</h3>
-              <p className="text-gray-700">
+              <p className="text-gray-400">
                 Book recurring service to lock in today's rates for 12 months. 
                 We reward loyalty - the longer you're with us, the more benefits you receive.
               </p>

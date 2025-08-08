@@ -228,7 +228,7 @@ const AirbnbCleaningPage = () => {
                 Choose Aura Spring
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               We understand the unique demands of short-term rentals and deliver 
               the consistency your business needs
             </p>
@@ -246,7 +246,7 @@ const AirbnbCleaningPage = () => {
               >
                 <benefit.icon className={`w-12 h-12 mb-4 ${benefit.color}`} />
                 <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
+                <p className="text-gray-400">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
@@ -268,7 +268,7 @@ const AirbnbCleaningPage = () => {
                 Tailored for Success
               </span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Choose the perfect level of service for your property
             </p>
           </motion.div>
@@ -298,8 +298,8 @@ const AirbnbCleaningPage = () => {
                   <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
                   
                   <div className="mb-6">
-                    <span className="text-4xl font-bold text-gray-800">${pkg.price}</span>
-                    <span className="text-gray-600">/turnover</span>
+                    <span className="text-4xl font-bold text-gray-500">${pkg.price}</span>
+                    <span className="text-gray-400">/turnover</span>
                   </div>
 
                   <div className="text-sm text-purple-600 font-semibold mb-4">
@@ -310,7 +310,7 @@ const AirbnbCleaningPage = () => {
                     {pkg.features.map((feature, i) => (
                       <div key={i} className="flex items-start gap-2">
                         <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-gray-700">{feature}</span>
+                        <span className="text-sm text-gray-400">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -343,7 +343,7 @@ const AirbnbCleaningPage = () => {
                 Turnover Process
               </span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Systematic excellence, every single time
             </p>
           </motion.div>
@@ -372,7 +372,7 @@ const AirbnbCleaningPage = () => {
                   </div>
                   <item.icon className="w-10 h-10 mx-auto mb-3 text-purple-600" />
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.desc}</p>
+                  <p className="text-sm text-gray-400">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -392,7 +392,7 @@ const AirbnbCleaningPage = () => {
             <h2 className="text-4xl font-bold mb-4">
               Host Success Stories
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-400">
               Join hundreds of successful Austin Airbnb hosts
             </p>
           </motion.div>
@@ -411,7 +411,7 @@ const AirbnbCleaningPage = () => {
                   <div className="text-4xl">{testimonial.image}</div>
                   <div>
                     <div className="font-bold">{testimonial.name}</div>
-                    <div className="text-sm text-gray-600">{testimonial.role}</div>
+                    <div className="text-sm text-gray-400">{testimonial.role}</div>
                   </div>
                 </div>
                 <div className="flex gap-1 mb-3">
@@ -419,7 +419,7 @@ const AirbnbCleaningPage = () => {
                     <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <p className="text-gray-700 italic">"{testimonial.content}"</p>
+                <p className="text-gray-400 italic">"{testimonial.content}"</p>
               </motion.div>
             ))}
           </div>

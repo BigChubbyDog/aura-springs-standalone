@@ -3,7 +3,6 @@ import { processNewBooking, sendCustomerConfirmation } from '@/lib/microsoftInte
 
 // Stripe configuration for payment processing
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || '';
-const STRIPE_PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '';
 
 // Square configuration (alternative payment)
 const SQUARE_ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN || '';

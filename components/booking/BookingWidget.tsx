@@ -157,7 +157,7 @@ const BookingWidget = () => {
             exit={{ opacity: 0, x: -20 }}
             className="space-y-4"
           >
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Choose Your Service</h3>
+            <h3 className="text-2xl font-bold text-gray-500 mb-6">Choose Your Service</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {services.map((service) => (
                 <motion.div
@@ -168,7 +168,7 @@ const BookingWidget = () => {
                   className={`relative cursor-pointer rounded-xl p-6 transition-all duration-300 ${
                     bookingData.serviceType === service.id
                       ? 'bg-gradient-to-br from-[#7c9768] to-[#4c673d] text-white shadow-lg'
-                      : 'bg-gray-50 hover:bg-gray-100 text-gray-800'
+                      : 'bg-gray-50 hover:bg-gray-100 text-gray-500'
                   }`}
                 >
                   {service.popular && (
@@ -181,7 +181,7 @@ const BookingWidget = () => {
                       <span className="text-2xl mb-2 block">{service.icon}</span>
                       <h4 className="font-semibold text-lg">{service.name}</h4>
                       <p className={`text-sm mt-1 ${
-                        bookingData.serviceType === service.id ? 'text-white/90' : 'text-gray-600'
+                        bookingData.serviceType === service.id ? 'text-white/90' : 'text-gray-400'
                       }`}>
                         {service.description}
                       </p>
@@ -203,7 +203,7 @@ const BookingWidget = () => {
             exit={{ opacity: 0, x: -20 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-bold text-gray-800">Where in Austin?</h3>
+            <h3 className="text-2xl font-bold text-gray-500">Where in Austin?</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {austinAreas.map((area) => (
                 <motion.button
@@ -214,7 +214,7 @@ const BookingWidget = () => {
                   className={`p-4 rounded-lg text-left transition-all duration-300 ${
                     bookingData.location === area
                       ? 'bg-[#7c9768] text-white shadow-md'
-                      : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
+                      : 'bg-gray-50 hover:bg-gray-100 text-gray-400'
                   }`}
                 >
                   <MapPin className="w-4 h-4 inline mr-2" />
@@ -244,11 +244,11 @@ const BookingWidget = () => {
             exit={{ opacity: 0, x: -20 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-bold text-gray-800">When would you like us to visit?</h3>
+            <h3 className="text-2xl font-bold text-gray-500">When would you like us to visit?</h3>
             
             {/* Frequency Selection */}
             <div>
-              <label className="text-sm font-medium text-gray-700 mb-3 block">Cleaning Frequency</label>
+              <label className="text-sm font-medium text-gray-400 mb-3 block">Cleaning Frequency</label>
               <div className="grid grid-cols-4 gap-3">
                 {['one-time', 'weekly', 'biweekly', 'monthly'].map((freq) => (
                   <motion.button
@@ -259,7 +259,7 @@ const BookingWidget = () => {
                     className={`p-3 rounded-lg capitalize transition-all duration-300 ${
                       bookingData.frequency === freq
                         ? 'bg-[#7c9768] text-white'
-                        : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
+                        : 'bg-gray-50 hover:bg-gray-100 text-gray-400'
                     }`}
                   >
                     {freq.replace('-', ' ')}
@@ -276,7 +276,7 @@ const BookingWidget = () => {
             {/* Date & Time */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">Select Date</label>
+                <label className="text-sm font-medium text-gray-400 mb-2 block">Select Date</label>
                 <input
                   type="date"
                   className="w-full p-4 rounded-lg border border-gray-200 focus:border-[#7c9768] focus:ring-2 focus:ring-[#c3d3b3]"
@@ -284,7 +284,7 @@ const BookingWidget = () => {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">Preferred Time</label>
+                <label className="text-sm font-medium text-gray-400 mb-2 block">Preferred Time</label>
                 <select
                   className="w-full p-4 rounded-lg border border-gray-200 focus:border-[#7c9768] focus:ring-2 focus:ring-[#c3d3b3]"
                   onChange={(e) => setBookingData({ ...bookingData, time: e.target.value })}
@@ -310,11 +310,11 @@ const BookingWidget = () => {
             exit={{ opacity: 0, x: -20 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-bold text-gray-800">Final Details</h3>
+            <h3 className="text-2xl font-bold text-gray-500">Final Details</h3>
             
             {/* Home Size */}
             <div>
-              <label className="text-sm font-medium text-gray-700 mb-3 block">Home Size</label>
+              <label className="text-sm font-medium text-gray-400 mb-3 block">Home Size</label>
               <div className="grid grid-cols-3 gap-3">
                 {['1-2 BR', '3-4 BR', '5+ BR'].map((size) => (
                   <motion.button
@@ -325,7 +325,7 @@ const BookingWidget = () => {
                     className={`p-4 rounded-lg transition-all duration-300 ${
                       bookingData.homeSize === size
                         ? 'bg-[#7c9768] text-white'
-                        : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
+                        : 'bg-gray-50 hover:bg-gray-100 text-gray-400'
                     }`}
                   >
                     {size}
@@ -336,7 +336,7 @@ const BookingWidget = () => {
 
             {/* Add-on Services */}
             <div>
-              <label className="text-sm font-medium text-gray-700 mb-3 block">Add Extra Services</label>
+              <label className="text-sm font-medium text-gray-400 mb-3 block">Add Extra Services</label>
               <div className="grid grid-cols-2 gap-3">
                 {extras.map((extra) => (
                   <motion.button
@@ -352,7 +352,7 @@ const BookingWidget = () => {
                     className={`p-3 rounded-lg text-left transition-all duration-300 ${
                       bookingData.extras.includes(extra.id)
                         ? 'bg-[#e1e9d9] border-2 border-[#7c9768] text-[#4c673d]'
-                        : 'bg-gray-50 hover:bg-gray-100 text-gray-700 border-2 border-transparent'
+                        : 'bg-gray-50 hover:bg-gray-100 text-gray-400 border-2 border-transparent'
                     }`}
                   >
                     <div className="flex justify-between items-center">
@@ -371,7 +371,7 @@ const BookingWidget = () => {
               className="bg-gradient-to-br from-[#f0f4ec] to-[#f0f4ec] rounded-xl p-6"
             >
               <div className="flex justify-between items-center mb-4">
-                <span className="text-lg font-medium text-gray-700">Estimated Total</span>
+                <span className="text-lg font-medium text-gray-400">Estimated Total</span>
                 <span className="text-3xl font-bold text-[#4c673d]">${calculatePrice()}</span>
               </div>
               {bookingData.frequency !== 'one-time' && (
@@ -393,7 +393,7 @@ const BookingWidget = () => {
           className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
             currentStep === 1
               ? 'invisible'
-              : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+              : 'bg-gray-100 hover:bg-gray-200 text-gray-400'
           }`}
         >
           Back

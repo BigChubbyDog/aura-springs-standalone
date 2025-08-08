@@ -140,7 +140,7 @@ const TestimonialsCarousel = () => {
               Aura Springs
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Join hundreds of satisfied customers across Austin's most prestigious addresses
           </p>
         </motion.div>
@@ -174,7 +174,7 @@ const TestimonialsCarousel = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3 }}
-                    className="text-lg text-gray-700 leading-relaxed mb-8 italic"
+                    className="text-lg text-gray-400 leading-relaxed mb-8 italic"
                   >
                     "{testimonials[currentIndex].text}"
                   </motion.p>
@@ -194,10 +194,10 @@ const TestimonialsCarousel = () => {
                   {/* Customer Info */}
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="text-xl font-bold text-gray-800">
+                      <h4 className="text-xl font-bold text-gray-500">
                         {testimonials[currentIndex].name}
                       </h4>
-                      <p className="text-gray-600">{testimonials[currentIndex].role}</p>
+                      <p className="text-gray-400">{testimonials[currentIndex].role}</p>
                       <div className="flex items-center gap-2 mt-2 text-sm text-[#7c9768]">
                         {testimonials[currentIndex].icon}
                         <span>{testimonials[currentIndex].location}</span>
@@ -295,13 +295,13 @@ const TestimonialsCarousel = () => {
             onClick={handlePrevious}
             className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:shadow-xl transition-all duration-300 z-10"
           >
-            <ChevronLeft className="w-6 h-6 text-gray-700" />
+            <ChevronLeft className="w-6 h-6 text-gray-400" />
           </button>
           <button
             onClick={handleNext}
             className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:shadow-xl transition-all duration-300 z-10"
           >
-            <ChevronRight className="w-6 h-6 text-gray-700" />
+            <ChevronRight className="w-6 h-6 text-gray-400" />
           </button>
         </div>
 
@@ -319,7 +319,7 @@ const TestimonialsCarousel = () => {
               className={`p-3 rounded-lg transition-all duration-300 ${
                 index === currentIndex
                   ? 'bg-gradient-to-r from-[#7c9768] to-[#4c673d] text-white shadow-lg'
-                  : 'bg-white text-gray-700 shadow-md hover:shadow-lg'
+                  : 'bg-white text-gray-400 shadow-md hover:shadow-lg'
               }`}
             >
               <div className="flex items-center gap-2">
@@ -354,8 +354,8 @@ const TestimonialsCarousel = () => {
               ))}
             </div>
             <div className="text-left">
-              <div className="font-bold text-gray-800">500+ Reviews</div>
-              <div className="text-sm text-gray-600">4.9★ on Google</div>
+              <div className="font-bold text-gray-500">500+ Reviews</div>
+              <div className="text-sm text-gray-400">4.9★ on Google</div>
             </div>
           </div>
         </motion.div>

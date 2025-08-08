@@ -413,10 +413,10 @@ export default function GeoBookingForm() {
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Personal Information */}
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-gray-700">Personal Information</h3>
+          <h3 className="text-lg font-semibold text-gray-400">Personal Information</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-400">Full Name</label>
               <input
                 type="text"
                 id="name"
@@ -428,7 +428,7 @@ export default function GeoBookingForm() {
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email Address</label>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-400">Email Address</label>
               <input
                 type="email"
                 id="email"
@@ -441,7 +441,7 @@ export default function GeoBookingForm() {
             </div>
           </div>
           <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-400">Phone Number</label>
             <input
               type="tel"
               id="phone"
@@ -453,7 +453,7 @@ export default function GeoBookingForm() {
             />
           </div>
           <div>
-            <label htmlFor="address" className="block text-sm font-medium text-gray-700">Service Address</label>
+            <label htmlFor="address" className="block text-sm font-medium text-gray-400">Service Address</label>
             <input
               type="text"
               id="address"
@@ -469,7 +469,7 @@ export default function GeoBookingForm() {
 
         {/* Service Details */}
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-gray-700">Service Details</h3>
+          <h3 className="text-lg font-semibold text-gray-400">Service Details</h3>
 
           {/* Show note if service was pre-selected */}
           {searchParams.get('service') && (
@@ -483,7 +483,7 @@ export default function GeoBookingForm() {
           )}
 
           <div>
-            <label htmlFor="serviceType" className="block text-sm font-medium text-gray-700">Service Type</label>
+            <label htmlFor="serviceType" className="block text-sm font-medium text-gray-400">Service Type</label>
             <select
               id="serviceType"
               name="serviceType"
@@ -500,7 +500,7 @@ export default function GeoBookingForm() {
             </select>
           </div>
           <div>
-            <label htmlFor="date" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="date" className="block text-sm font-medium text-gray-400">
               Preferred Date
               {serviceZone.availability.sameDayBooking && (
                 <span className="text-green-600 text-sm ml-2">✓ Same-day booking available</span>
@@ -524,7 +524,7 @@ export default function GeoBookingForm() {
 
           {/* Time Selection */}
           <div>
-            <label htmlFor="time" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="time" className="block text-sm font-medium text-gray-400">
               Preferred Time
               {formData.date && (
                 <span className="text-blue-600 text-sm ml-2" suppressHydrationWarning>
@@ -558,7 +558,7 @@ export default function GeoBookingForm() {
             )}
           </div>
           <div>
-            <label htmlFor="notes" className="block text-sm font-medium text-gray-700">Special Instructions</label>
+            <label htmlFor="notes" className="block text-sm font-medium text-gray-400">Special Instructions</label>
             <textarea
               id="notes"
               name="notes"
