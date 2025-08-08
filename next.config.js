@@ -1,11 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  swcMinify: true,
   
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+    styledComponents: true,
   },
+  
+  // Output configuration for deployment
+  output: 'standalone',
+  
+  // Compression
+  compress: true,
+  
+  // Power pack optimizations
+  poweredByHeader: false,
   
   // Image optimization
   images: {
@@ -96,10 +107,16 @@ const nextConfig = {
     NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXX',
   },
   
-  // PWA support
+  // PWA support and experimental features
   experimental: {
     optimizeCss: true,
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
+    optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+    scrollRestoration: true,
+    legacyBrowsers: false,
+    browsersListForSwc: true,
+    cpus: Math.max(1, (require('os').cpus().length) - 1),
+    workerThreads: false,
+    esmExternals: true,
   },
 };
 
