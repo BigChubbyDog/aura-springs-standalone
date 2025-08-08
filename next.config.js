@@ -116,7 +116,8 @@ const nextConfig = {
   
   // PWA support and experimental features
   experimental: {
-    optimizeCss: true,
+    // Temporarily disabled optimizeCss due to missing 'critters' dependency
+    // optimizeCss: true,
     optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
     scrollRestoration: true,
     cpus: Math.max(1, (require('os').cpus().length) - 1),
