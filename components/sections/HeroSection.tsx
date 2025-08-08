@@ -8,24 +8,24 @@ const HeroSection = () => {
   
   const heroSlides = [
     {
-      title: "Austin's Premier",
+      title: "Rainey Street's Choice",
       subtitle: "Luxury High-Rise Cleaning",
-      description: "White-glove service for downtown condos, penthouses & Airbnb properties",
-      image: "/images/placeholder-austin-skyline.svg",
+      description: "Premium service for Austin's most prestigious high-rises and penthouses",
+      image: "https://images.unsplash.com/photo-1609918578226-e0ae5c3a5c43?q=80&w=2940&auto=format&fit=crop",
       gradient: "from-[#2e3d22]/90 via-[#4c673d]/70 to-transparent"
     },
     {
       title: "Time is Luxury",
       subtitle: "We Give You Yours Back",
-      description: "Spend time with family & friends while we create an aura that glows in your home",
-      image: "/images/placeholder-austin-skyline.svg",
+      description: "Enjoy the Austin skyline while we create an aura that glows in your home",
+      image: "https://images.unsplash.com/photo-1595478699041-96e1ca1dd9fa?q=80&w=2940&auto=format&fit=crop",
       gradient: "from-[#443474]/90 via-[#8d9199]/70 to-transparent"
     },
     {
       title: "Downtown Living",
       subtitle: "Elevated Cleaning Standards",
-      description: "Specialized service for The Domain, SoCo, East Austin & Rainey Street",
-      image: "/images/placeholder-austin-skyline.svg",
+      description: "Specialized service for Rainey Street, The Domain, SoCo & East Austin",
+      image: "https://images.unsplash.com/photo-1588993608283-7f0eda4438be?q=80&w=2940&auto=format&fit=crop",
       gradient: "from-[#637853]/90 via-[#7c9768]/70 to-transparent"
     }
   ];
@@ -50,8 +50,15 @@ const HeroSection = () => {
           className="absolute inset-0"
         >
           <div className="relative h-full w-full">
-            {/* Image placeholder - add actual images later */}
-            <div className="w-full h-full bg-gradient-to-br from-[#7c9768] to-[#4c673d]" />
+            {/* Rainey Street Highrise View */}
+            <div 
+              className="w-full h-full bg-cover bg-center"
+              style={{
+                backgroundImage: `url('${heroSlides[currentSlide].image}')`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover'
+              }}
+            />
             <div className={`absolute inset-0 bg-gradient-to-r ${heroSlides[currentSlide].gradient}`} />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           </div>

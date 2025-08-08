@@ -49,28 +49,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // Location-specific pages for local SEO
+  // Location-specific pages for local SEO with Rainey Street priority
   const locationPages = [
-    'downtown-austin',
-    'the-domain',
-    'south-congress',
-    'east-austin',
-    'rainey-street',
-    'west-lake-hills',
-    'zilker',
-    'mueller',
-    'barton-hills',
-    'travis-heights',
-    'bouldin-creek',
-    'hyde-park',
-    'tarrytown',
-    'clarksville',
-    'rosedale',
-  ].map(location => ({
+    { location: 'rainey-street', priority: 0.9 }, // Higher priority for Rainey
+    { location: 'downtown-austin', priority: 0.8 },
+    { location: 'the-domain', priority: 0.7 },
+    { location: 'south-congress', priority: 0.7 },
+    { location: 'east-austin', priority: 0.7 },
+    { location: 'west-lake-hills', priority: 0.7 },
+    { location: 'zilker', priority: 0.7 },
+    { location: 'mueller', priority: 0.6 },
+    { location: 'barton-hills', priority: 0.6 },
+    { location: 'travis-heights', priority: 0.6 },
+    { location: 'bouldin-creek', priority: 0.6 },
+    { location: 'hyde-park', priority: 0.6 },
+    { location: 'tarrytown', priority: 0.6 },
+    { location: 'clarksville', priority: 0.6 },
+    { location: 'rosedale', priority: 0.6 },
+  ].map(({ location, priority }) => ({
     url: `${baseUrl}/areas/${location}`,
     lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    changeFrequency: location === 'rainey-street' ? 'weekly' as const : 'monthly' as const,
+    priority,
   }));
 
   // Austin ZIP code pages for hyper-local SEO
@@ -96,6 +96,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.6,
+  }));
+
+  // Rainey Street Building-specific pages for hyper-local SEO
+  const raineyBuildingPages = [
+    'the-quincy',
+    '70-rainey',
+    '44-east-ave',
+    'millennium-rainey',
+    'northshore-austin',
+    'the-shore',
+    'waller-park-place',
+    'windsor-on-the-lake',
+  ].map(building => ({
+    url: `${baseUrl}/areas/rainey-street/${building}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
   }));
 
   // Additional pages
@@ -185,6 +202,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...mainPages,
     ...servicePages,
     ...locationPages,
+    ...raineyBuildingPages,
     ...zipCodePages,
     ...additionalPages,
     ...blogPosts,

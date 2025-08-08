@@ -1,11 +1,115 @@
-import { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Book Cleaning Service | Aura Springs Austin',
-  description: 'Book Austin\'s premier luxury cleaning service. Downtown high-rises, Airbnb turnovers, and residential cleaning. Get instant quote and 20% off first clean.',
-};
+import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 export default function BookingPage() {
+  const searchParams = useSearchParams();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    serviceType: searchParams.get('service') || 'standard',
+    neighborhood: 'downtown',
+    date: '',
+    time: '10am',
+    name: '',
+    phone: '',
+    email: '',
+    address: '',
+    specialInstructions: '',
+    referral: '',
+    homeSize: searchParams.get('size') || '2000',
+    frequency: searchParams.get('frequency') || 'onetime'
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/booking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          customerName: formData.name,
+          customerEmail: formData.email,
+          customerPhone: formData.phone,
+          serviceType: formData.serviceType,
+          serviceDate: formData.date,
+          serviceTime: formData.time,
+          address: formData.address,
+          squareFeet: parseInt(formData.homeSize),
+          bedrooms: 3, // Default
+          bathrooms: 2, // Default
+          addOns: [],
+          frequency: formData.frequency,
+          totalPrice: calculatePrice(),
+          specialInstructions: `${formData.specialInstructions}${formData.referral ? ` | Referral: ${formData.referral}` : ''}`,
+          neighborhood: formData.neighborhood
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Reset form after successful submission
+        setTimeout(() => {
+          setFormData({
+            serviceType: 'standard',
+            neighborhood: 'downtown',
+            date: '',
+            time: '10am',
+            name: '',
+            phone: '',
+            email: '',
+            address: '',
+            specialInstructions: '',
+            referral: '',
+            homeSize: '2000',
+            frequency: 'onetime'
+          });
+        }, 3000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Booking error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const calculatePrice = () => {
+    const basePrices: { [key: string]: number } = {
+      standard: 175,
+      deep: 350,
+      movein: 495,
+      airbnb: 150
+    };
+    
+    const neighborhoodMultiplier: { [key: string]: number } = {
+      downtown: 1.2,
+      domain: 1.1,
+      westlake: 1.3,
+      other: 1.0
+    };
+    
+    const base = basePrices[formData.serviceType] || 175;
+    const multiplier = neighborhoodMultiplier[formData.neighborhood] || 1.0;
+    
+    return Math.round(base * multiplier);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
       <div className="max-w-4xl mx-auto px-4 py-12">
@@ -20,15 +124,43 @@ export default function BookingPage() {
           Experience Austin's premier cleaning service. Get location-based pricing instantly.
         </p>
 
-        {/* Simple Booking Form */}
+        {/* Status Messages */}
+        {submitStatus === 'success' && (
+          <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+            <p className="font-bold">Booking Confirmed!</p>
+            <p>We'll contact you shortly at {formData.email || 'your email'} to confirm your appointment.</p>
+          </div>
+        )}
+        
+        {submitStatus === 'error' && (
+          <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+            <p className="font-bold">Booking Error</p>
+            <p>There was an issue with your booking. Please try again or call us at (512) 781-0527.</p>
+          </div>
+        )}
+
+        {/* Enhanced Booking Form */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            {/* Price Display */}
+            <div className="text-center p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg">
+              <div className="text-sm text-gray-600">Estimated Price</div>
+              <div className="text-3xl font-bold text-green-600">${calculatePrice()}</div>
+              <div className="text-xs text-gray-500">Final price confirmed after home assessment</div>
+            </div>
+
             {/* Service Type */}
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Service Type
               </label>
-              <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7c9768] focus:border-transparent">
+              <select 
+                name="serviceType"
+                value={formData.serviceType}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7c9768] focus:border-transparent"
+                required
+              >
                 <option value="standard">Regular Cleaning - From $175</option>
                 <option value="deep">Deep Cleaning - From $350</option>
                 <option value="movein">Move In/Out - From $495</option>
@@ -41,7 +173,13 @@ export default function BookingPage() {
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Your Neighborhood
               </label>
-              <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7c9768] focus:border-transparent">
+              <select 
+                name="neighborhood"
+                value={formData.neighborhood}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7c9768] focus:border-transparent"
+                required
+              >
                 <option value="downtown">Downtown Austin - 78701</option>
                 <option value="domain">The Domain - 78758</option>
                 <option value="soco">South Congress - 78704</option>
@@ -60,7 +198,12 @@ export default function BookingPage() {
               </label>
               <input
                 type="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                min={new Date().toISOString().split('T')[0]}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7c9768] focus:border-transparent"
+                required
               />
             </div>
 
@@ -69,7 +212,13 @@ export default function BookingPage() {
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Preferred Time
               </label>
-              <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7c9768] focus:border-transparent">
+              <select 
+                name="time"
+                value={formData.time}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7c9768] focus:border-transparent"
+                required
+              >
                 <option value="8am">8:00 AM</option>
                 <option value="10am">10:00 AM</option>
                 <option value="12pm">12:00 PM</option>
@@ -86,8 +235,12 @@ export default function BookingPage() {
                 </label>
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7c9768] focus:border-transparent"
                   placeholder="John Doe"
+                  required
                 />
               </div>
               <div>
@@ -96,8 +249,12 @@ export default function BookingPage() {
                 </label>
                 <input
                   type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7c9768] focus:border-transparent"
                   placeholder="(512) 555-0000"
+                  required
                 />
               </div>
             </div>
@@ -109,8 +266,12 @@ export default function BookingPage() {
               </label>
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7c9768] focus:border-transparent"
                 placeholder="john@example.com"
+                required
               />
             </div>
 
@@ -121,8 +282,12 @@ export default function BookingPage() {
               </label>
               <input
                 type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7c9768] focus:border-transparent"
                 placeholder="123 Congress Ave, Austin, TX 78701"
+                required
               />
             </div>
 
@@ -132,6 +297,9 @@ export default function BookingPage() {
                 Special Instructions (Optional)
               </label>
               <textarea
+                name="specialInstructions"
+                value={formData.specialInstructions}
+                onChange={handleChange}
                 rows={3}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7c9768] focus:border-transparent"
                 placeholder="Gate code, pets, specific areas to focus on..."
@@ -145,6 +313,9 @@ export default function BookingPage() {
               </label>
               <input
                 type="text"
+                name="referral"
+                value={formData.referral}
+                onChange={handleChange}
                 className="w-full p-3 border border-purple-300 rounded-lg focus:ring-2 focus:ring-[#443474] focus:border-transparent"
                 placeholder="Enter referral partner name for special rates"
               />
@@ -153,9 +324,14 @@ export default function BookingPage() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-4 bg-gradient-to-r from-[#7c9768] to-[#4c673d] text-white font-bold rounded-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+              disabled={isSubmitting}
+              className={`w-full py-4 bg-gradient-to-r from-[#7c9768] to-[#4c673d] text-white font-bold rounded-lg transition-all duration-300 ${
+                isSubmitting 
+                  ? 'opacity-50 cursor-not-allowed' 
+                  : 'hover:shadow-xl hover:scale-[1.02]'
+              }`}
             >
-              Book Now & Get 20% Off First Clean
+              {isSubmitting ? 'Processing...' : 'Book Now & Get 20% Off First Clean'}
             </button>
           </form>
 

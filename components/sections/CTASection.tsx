@@ -44,22 +44,22 @@ const CTASection = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       method: 'Call Now',
-      value: '(512) 555-AURA',
-      action: 'tel:5125552872',
+      value: '(512) 781-0527',
+      action: 'tel:5127810527',
       primary: true
     },
     {
       icon: <MessageCircle className="w-6 h-6" />,
       method: 'Text Us',
-      value: '(512) 555-2872',
-      action: 'sms:5125552872',
+      value: '(512) 781-0527',
+      action: 'sms:5127810527',
       primary: false
     },
     {
       icon: <Mail className="w-6 h-6" />,
       method: 'Email',
-      value: 'hello@aurasprings.com',
-      action: 'mailto:hello@aurasprings.com',
+      value: 'Schedule@AuraSpringCleaning.com',
+      action: 'mailto:Schedule@AuraSpringCleaning.com',
       primary: false
     }
   ];

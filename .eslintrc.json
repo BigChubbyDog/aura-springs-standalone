@@ -1,0 +1,29 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "@typescript-eslint/recommended",
+    "plugin:tailwindcss/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "tailwindcss"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/prefer-const": "error",
+    "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": "warn",
+    "react-hooks/exhaustive-deps": "error",
+    "prefer-const": "error",
+    "no-var": "error"
+  },
+  "settings": {
+    "tailwindcss": {
+      "config": "./tailwind.config.js"
+    }
+  }
+}
