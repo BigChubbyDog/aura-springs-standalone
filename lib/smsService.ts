@@ -1,15 +1,23 @@
 import twilio from 'twilio';
 
 // Twilio configuration
-const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || '';
-const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || '';
 const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER || '+15127810527';
 const BUSINESS_PHONE = '+15127810527';
 
-// Initialize Twilio client
-const twilioClient = TWILIO_ACCOUNT_SID && TWILIO_AUTH_TOKEN 
-  ? twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-  : null;
+// Lazy initialize Twilio client to avoid build-time errors
+let twilioClient: ReturnType<typeof twilio> | null = null;
+
+function getTwilioClient() {
+  if (!twilioClient) {
+    const accountSid = process.env.TWILIO_ACCOUNT_SID;
+    const authToken = process.env.TWILIO_AUTH_TOKEN;
+    
+    if (accountSid && authToken && accountSid.startsWith('AC')) {
+      twilioClient = twilio(accountSid, authToken);
+    }
+  }
+  return twilioClient;
+}
 
 export interface SMSMessage {
   to: string;
@@ -34,13 +42,15 @@ export function formatPhoneNumber(phone: string): string {
 
 // Send SMS notification
 export async function sendSMS(message: SMSMessage): Promise<{ success: boolean; messageId?: string; error?: string }> {
-  if (!twilioClient) {
+  const client = getTwilioClient();
+  
+  if (!client) {
     console.warn('Twilio not configured - SMS not sent');
     return { success: false, error: 'SMS service not configured' };
   }
 
   try {
-    const result = await twilioClient.messages.create({
+    const result = await client.messages.create({
       body: message.body,
       from: TWILIO_PHONE_NUMBER,
       to: formatPhoneNumber(message.to),

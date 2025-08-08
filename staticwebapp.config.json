@@ -5,19 +5,63 @@
       "allowedRoles": ["anonymous"]
     },
     {
-      "route": "/worker",
-      "allowedRoles": ["authenticated", "worker", "admin"]
+      "route": "/admin",
+      "allowedRoles": ["admin"]
     },
     {
       "route": "/admin/*",
       "allowedRoles": ["admin"]
+    },
+    {
+      "route": "/worker",
+      "allowedRoles": ["authenticated", "worker", "admin"]
+    },
+    {
+      "route": "/worker/*",
+      "allowedRoles": ["authenticated", "worker", "admin"]
+    },
+    {
+      "route": "/account",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/account/*",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/booking/history",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/booking/manage",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/.auth/login/aad",
+      "rewrite": "/.auth/login/aad"
+    },
+    {
+      "route": "/.auth/login/github",
+      "rewrite": "/.auth/login/github"
+    },
+    {
+      "route": "/login",
+      "rewrite": "/login.html"
     }
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/images/*.{png,jpg,gif}", "/css/*", "/_next/*", "/api/*"]
+    "exclude": ["/images/*.{png,jpg,gif}", "/css/*", "/_next/*", "/api/*", "/.auth/*"]
   },
   "responseOverrides": {
+    "401": {
+      "rewrite": "/login.html",
+      "statusCode": 200
+    },
+    "403": {
+      "rewrite": "/unauthorized.html",
+      "statusCode": 200
+    },
     "404": {
       "rewrite": "/404.html"
     }
@@ -33,5 +77,25 @@
     ".js": "application/javascript",
     ".css": "text/css",
     ".html": "text/html"
+  },
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/common/v2.0",
+          "clientIdSettingName": "AZURE_CLIENT_ID",
+          "clientSecretSettingName": "AZURE_CLIENT_SECRET"
+        }
+      },
+      "github": {
+        "registration": {
+          "clientIdSettingName": "GITHUB_CLIENT_ID",
+          "clientSecretSettingName": "GITHUB_CLIENT_SECRET"
+        }
+      }
+    }
+  },
+  "platform": {
+    "apiRuntime": "node:20"
   }
 }

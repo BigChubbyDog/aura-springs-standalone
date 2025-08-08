@@ -19,6 +19,8 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { MetaTags } from '../../components/SEO/MetaTags';
+import { StructuredData } from '../../components/SEO/StructuredData';
 
 const TeamPage = () => {
   const founders = [
@@ -68,6 +70,30 @@ const TeamPage = () => {
       ],
     },
   ];
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Aura Spring Cleaning',
+    url: 'https://auraspringcleaning.com/team',
+    logo: 'https://auraspringcleaning.com/images/logo.png',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: '+1-512-781-0527',
+        contactType: 'Customer Service',
+        areaServed: 'US',
+        availableLanguage: ['English', 'Spanish'],
+      },
+    ],
+    founders: founders.map(founder => ({
+      '@type': 'Person',
+      name: founder.name,
+      jobTitle: founder.role,
+      image: founder.image,
+      email: founder.email,
+    })),
+  };
 
   const teamMembers = [
     {
@@ -190,6 +216,14 @@ const TeamPage = () => {
 
   return (
     <>
+      <MetaTags
+        title="Meet Our Founders - Aura Spring Cleaning"
+        description="Get to know Dustin Allan and Valerie Boatman, the founders of Aura Spring Cleaning. Learn about their expertise, vision, and commitment to providing the best cleaning services in Austin."
+        url="https://auraspringcleaning.com/team"
+        image="https://auraspringcleaning.com/images/team-og-image.jpg"
+      />
+      <StructuredData data={structuredData} />
+
       {/* SEO Meta Tags */}
       <title>
         Our Team | Aura Spring Cleaning Austin TX - Meet Our Expert Cleaning

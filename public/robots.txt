@@ -1,18 +1,42 @@
 # Aura Spring Cleaning Robots.txt
-# https://www.AuraSpringCleaning.com
+# https://aurasprings.com
+# https://www.auraspringcleaning.com
 
-# Allow all search engines
+# Default rule - Allow all crawlers
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /_next/
+Disallow: /_next/static/
 Disallow: /admin/
 Disallow: /private/
+Disallow: *.json$
+Allow: /_next/static/css/
+Allow: /_next/static/js/
+Allow: /_next/image
+Allow: /images/
+Crawl-delay: 1
 
-# Specific bot rules for major search engines
+# Google - Priority access
 User-agent: Googlebot
 Allow: /
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.woff2$
 Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
 
 User-agent: Bingbot
 Allow: /
@@ -26,11 +50,51 @@ User-agent: DuckDuckBot
 Allow: /
 Crawl-delay: 1
 
-# Block bad bots
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# Social media crawlers - Allow for rich previews
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+# SEO Tools - Allow with rate limiting
 User-agent: AhrefsBot
-Disallow: /
+Allow: /
+Crawl-delay: 10
 
 User-agent: SemrushBot
+Allow: /
+Crawl-delay: 10
+
+User-agent: Screaming Frog SEO Spider
+Allow: /
+Crawl-delay: 5
+
+User-agent: Moz
+Allow: /
+Crawl-delay: 10
+
+# Block malicious bots
+User-agent: SemrushBot-SA
 Disallow: /
 
 User-agent: DotBot
@@ -39,6 +103,24 @@ Disallow: /
 User-agent: MJ12bot
 Disallow: /
 
-# Sitemap location
-Sitemap: https://www.AuraSpringCleaning.com/sitemap.xml
-Sitemap: https://www.AuraSpringCleaning.com/sitemap-0.xml
+User-agent: Bytespider
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 10
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 10
+
+# Sitemap locations
+Sitemap: https://aurasprings.com/sitemap.xml
+Sitemap: https://aurasprings.com/sitemap-index.xml
+Sitemap: https://www.auraspringcleaning.com/sitemap.xml
+
+# Host preference
+Host: https://aurasprings.com

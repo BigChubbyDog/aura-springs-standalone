@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     
     // Create Stripe payment intent if payment method is card
     let paymentIntent = null;
-    if (booking.totalPrice && booking.totalPrice > 0) {
+    if (stripe && booking.totalPrice && booking.totalPrice > 0) {
       try {
         paymentIntent = await stripe.paymentIntents.create({
           amount: Math.round(booking.totalPrice * 100), // Convert to cents
