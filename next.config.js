@@ -118,11 +118,11 @@ const nextConfig = {
   experimental: {
     // Temporarily disabled optimizeCss due to missing 'critters' dependency
     // optimizeCss: true,
-    optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+    // optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
     scrollRestoration: true,
-    cpus: Math.max(1, (require('os').cpus().length) - 1),
-    workerThreads: false,
-    esmExternals: true,
+    // cpus: Math.max(1, (require('os').cpus().length) - 1),
+    // workerThreads: false,
+    // esmExternals: true,
   },
 };
 

@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { processNewBooking, sendCustomerConfirmation } from '@/lib/microsoftIntegration';
 
-// Stripe configuration for payment processing
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || '';
-
 // Square configuration (alternative payment)
 const SQUARE_ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN || '';
 const SQUARE_LOCATION_ID = process.env.SQUARE_LOCATION_ID || '';
@@ -11,6 +8,21 @@ const SQUARE_LOCATION_ID = process.env.SQUARE_LOCATION_ID || '';
 // PayPal configuration
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || '';
 // const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET || ''; // Reserved for future use
+
+// Create Stripe instance at runtime to avoid build-time errors
+function getStripeInstance() {
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+  
+  if (!stripeSecretKey) {
+    console.warn('STRIPE_SECRET_KEY not configured - payment processing disabled');
+    return null;
+  }
+  
+  const Stripe = require('stripe');
+  return new Stripe(stripeSecretKey, {
+    apiVersion: '2025-07-30',
+  });
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -26,11 +38,11 @@ export async function POST(request: NextRequest) {
 
     // Create payment link using Stripe
     let paymentLink = '';
-    if (STRIPE_SECRET_KEY) {
-      const stripe = require('stripe')(STRIPE_SECRET_KEY);
-      
-      // Create a payment link for the booking
-      const session = await stripe.checkout.sessions.create({
+    const stripe = getStripeInstance();
+    if (stripe) {
+      try {
+        // Create a payment link for the booking
+        const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items: [
           {
@@ -68,10 +80,14 @@ export async function POST(request: NextRequest) {
         invoice_creation: {
           enabled: true,
         },
-      });
-      
-      paymentLink = session.url;
-      booking.paymentLink = paymentLink;
+        });
+        
+        paymentLink = session.url;
+        booking.paymentLink = paymentLink;
+      } catch (stripeError) {
+        console.error('Stripe payment link creation failed:', stripeError);
+        // Continue without payment link
+      }
       booking.paymentSessionId = session.id;
     }
 

@@ -8,12 +8,19 @@ import {
 import { syncBookingToDynamics } from '@/lib/dynamics365Integration';
 import { sendBookingToTeams } from '@/lib/teamsWebhook';
 
-// Initialize Stripe (only if key is provided)
-const stripe = process.env.STRIPE_SECRET_KEY 
-  ? new Stripe(process.env.STRIPE_SECRET_KEY, {
-      apiVersion: '2025-07-30.basil',
-    })
-  : null;
+// Create Stripe instance at runtime to avoid build-time errors
+function getStripeInstance(): Stripe | null {
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+  
+  if (!stripeSecretKey) {
+    console.warn('STRIPE_SECRET_KEY not configured - payment processing disabled');
+    return null;
+  }
+  
+  return new Stripe(stripeSecretKey, {
+    apiVersion: '2025-07-30.basil',
+  });
+}
 
 // Email transporter
 const transporter = nodemailer.createTransport({
@@ -50,6 +57,7 @@ export async function POST(request: NextRequest) {
     
     // Create Stripe payment intent if payment method is card
     let paymentIntent = null;
+    const stripe = getStripeInstance();
     if (stripe && booking.totalPrice && booking.totalPrice > 0) {
       try {
         paymentIntent = await stripe.paymentIntents.create({
