@@ -15,7 +15,7 @@ export default function LocalBusinessSchema() {
       "https://aurasprings.com/images/austin-skyline.jpg"
     ],
     "description": "Austin's premier luxury cleaning service specializing in high-rise condos, downtown apartments, and Airbnb properties. Professional, insured, and eco-friendly cleaning solutions.",
-    "telephone": "+1-512-555-0100",
+    "telephone": "+1-512-781-0527",
     "email": "hello@aurasprings.com",
     "address": {
       "@type": "PostalAddress",

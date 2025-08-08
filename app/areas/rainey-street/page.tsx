@@ -136,11 +136,11 @@ export default function RaineyStreetPage() {
                 Book Rainey Street Service
               </Link>
               <a
-                href="tel:512-555-0100"
+                href="tel:512-781-0527"
                 className="bg-white/95 hover:bg-white text-blue-900 px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 shadow-xl flex items-center gap-2"
               >
                 <Phone className="w-5 h-5" />
-                (512) 555-0100
+                (512) 781-0527
               </a>
             </div>
             <div className="flex flex-wrap gap-6 text-sm">
@@ -441,11 +441,11 @@ export default function RaineyStreetPage() {
               Book Rainey Street Service
             </Link>
             <a
-              href="tel:512-555-0100"
+              href="tel:512-781-0527"
               className="bg-aura-primary-800 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-aura-primary-900 transition-all shadow-xl flex items-center justify-center gap-2"
             >
               <Phone className="w-5 h-5" />
-              Call (512) 555-0100
+              Call (512) 781-0527
             </a>
           </div>
           <p className="text-sm mt-6 text-white/80">

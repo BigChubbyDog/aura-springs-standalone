@@ -60,7 +60,7 @@ const MoveInOutCleaningPage = () => {
       features: [
         'Construction dust removal',
         'Paint overspray cleaning',
-        'Window cleaning (inside & out)',
+        'Window cleaning (interior only)',
         'Deep floor cleaning and mopping',
         'Air vent and filter cleaning',
         'Light fixture detailing',

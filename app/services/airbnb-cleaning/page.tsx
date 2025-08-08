@@ -12,50 +12,69 @@ import {
 const AirbnbCleaningPage = () => {
   const [selectedPackage, setSelectedPackage] = useState('premium');
 
-  // Adjusted pricing for Airbnb services
+  // New pricing structure with setup fees and per-service pricing
   const packages = {
+    basic: {
+      name: 'Basic Turnover',
+      setupFee: 99,
+      servicePrice: 89,
+      features: [
+        'Complete property cleaning',
+        'Linen change & bed making',
+        'Bathroom sanitization',
+        'Kitchen cleaning & appliances',
+        'Trash removal & fresh bags',
+        'Basic supply check',
+        'Interior window cleaning'
+      ],
+      turnaround: '4-5 hours',
+      icon: Home
+    },
     standard: {
       name: 'Standard Turnover',
-      price: 150,
+      setupFee: 149,
+      servicePrice: 119,
       features: [
-        'Full property cleaning',
-        'Linen change',
-        'Bathroom sanitization',
-        'Kitchen cleaning',
-        'Trash removal',
-        'Basic restocking check'
+        'Everything in Basic',
+        'Amenity restocking',
+        'Damage inspection report',
+        'Guest supply management',
+        'Photo-ready staging',
+        'Quality assurance checklist'
       ],
       turnaround: '3-4 hours',
-      icon: Home
+      icon: CheckCircle
     },
     premium: {
       name: 'Premium Hosting',
-      price: 200,
+      setupFee: 199,
+      servicePrice: 149,
       popular: true,
       features: [
         'Everything in Standard',
-        'Amenity restocking',
-        'Photo-ready staging',
-        'Damage inspection report',
-        'Guest supply management',
         'Priority scheduling',
-        'Same-day availability'
+        'Same-day availability',
+        'Professional staging',
+        'Detailed reporting',
+        'Guest welcome setup',
+        'Maintenance coordination'
       ],
       turnaround: '2-3 hours',
       icon: Star
     },
     superhost: {
       name: 'Superhost Elite',
-      price: 275,
+      setupFee: 299,
+      servicePrice: 199,
       features: [
         'Everything in Premium',
         'Luxury amenity service',
-        'Professional photography',
         'Concierge coordination',
-        'Maintenance reporting',
-        'Guest welcome setup',
+        'Professional photography',
         '24/7 emergency service',
-        'Monthly deep cleaning'
+        'Monthly deep cleaning',
+        'Dedicated account manager',
+        'Revenue optimization consulting'
       ],
       turnaround: '2 hours guaranteed',
       icon: Award
@@ -273,7 +292,7 @@ const AirbnbCleaningPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-4 gap-8">
             {Object.entries(packages).map(([key, pkg]) => (
               <motion.div
                 key={key}
@@ -298,8 +317,12 @@ const AirbnbCleaningPage = () => {
                   <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
                   
                   <div className="mb-6">
-                    <span className="text-4xl font-bold text-gray-500">${pkg.price}</span>
-                    <span className="text-gray-400">/turnover</span>
+                    <div className="text-sm text-gray-600 mb-2">One-time setup fee:</div>
+                    <div className="text-2xl font-bold text-red-600 mb-3">${pkg.setupFee}</div>
+                    
+                    <div className="text-sm text-gray-600 mb-1">Per turnover:</div>
+                    <div className="text-4xl font-bold text-green-600">${pkg.servicePrice}</div>
+                    <span className="text-gray-500">/service</span>
                   </div>
 
                   <div className="text-sm text-purple-600 font-semibold mb-4">
@@ -462,6 +485,114 @@ const AirbnbCleaningPage = () => {
         </div>
       </section>
 
+      {/* Multi-Unit Custom Quotes */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-green-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold mb-4">
+              Property Managers
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 ml-2">
+                & Multi-Unit Owners
+              </span>
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Managing multiple Airbnb properties? We offer custom pricing packages 
+              with volume discounts and dedicated account management.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold mb-6">Multi-Unit Benefits</h3>
+              <div className="space-y-4">
+                {[
+                  { icon: BarChart3, title: 'Volume Discounts', desc: 'Save more with multiple properties' },
+                  { icon: Users, title: 'Dedicated Account Manager', desc: 'Single point of contact for all properties' },
+                  { icon: Calendar, title: 'Coordinated Scheduling', desc: 'Optimize routes and timing across portfolio' },
+                  { icon: Shield, title: 'Master Service Agreement', desc: 'Simplified contracts and billing' }
+                ].map((benefit, index) => (
+                  <div key={benefit.title} className="flex items-start gap-4">
+                    <benefit.icon className="w-6 h-6 text-purple-600 mt-1" />
+                    <div>
+                      <h4 className="font-bold text-gray-900">{benefit.title}</h4>
+                      <p className="text-gray-600">{benefit.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-xl shadow-lg p-8"
+            >
+              <h3 className="text-2xl font-bold mb-6">Request Custom Quote</h3>
+              <form className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Number of Properties
+                  </label>
+                  <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                    <option>2-5 properties</option>
+                    <option>6-10 properties</option>
+                    <option>11-20 properties</option>
+                    <option>20+ properties</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Monthly Turnovers (Estimate)
+                  </label>
+                  <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                    <option>20-50 turnovers</option>
+                    <option>51-100 turnovers</option>
+                    <option>101-200 turnovers</option>
+                    <option>200+ turnovers</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Contact Information
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="Name"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 mb-2"
+                  />
+                  <input 
+                    type="email" 
+                    placeholder="Email"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 mb-2"
+                  />
+                  <input 
+                    type="tel" 
+                    placeholder="Phone"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                  />
+                </div>
+                <button 
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all"
+                >
+                  Get Custom Quote
+                </button>
+              </form>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-green-800 via-purple-700 to-blue-600">
         <motion.div
@@ -480,7 +611,7 @@ const AirbnbCleaningPage = () => {
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold mb-4">Special Offer for New Hosts</h3>
             <div className="text-3xl font-bold text-yellow-400 mb-2">
-              First Month 20% OFF
+              50% OFF Setup Fee
             </div>
             <p className="mb-6 opacity-90">
               Plus free amenity starter pack ($100 value)
@@ -488,7 +619,7 @@ const AirbnbCleaningPage = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/booking?service=airbnb&offer=newhost20"
+                href="/booking?service=airbnb&offer=setupdiscount"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-green-600 font-bold rounded-lg hover:shadow-2xl transition-all hover:scale-105"
               >
                 <Zap className="w-5 h-5" />

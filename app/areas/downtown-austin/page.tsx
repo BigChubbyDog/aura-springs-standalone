@@ -17,11 +17,8 @@ import {
   Users,
   Shield,
   Award,
-  DollarSign,
-  ChevronRight,
   Target,
   Eye,
-  Zap,
   Heart
 } from 'lucide-react';
 

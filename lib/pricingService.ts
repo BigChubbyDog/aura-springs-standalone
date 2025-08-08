@@ -55,7 +55,7 @@ const LOCATION_MULTIPLIERS: { [key: string]: number } = {
 export const ADD_ONS = {
   insideOven: { name: 'Inside Oven', price: 35 },
   insideFridge: { name: 'Inside Fridge', price: 30 },
-  insideWindows: { name: 'Interior Windows', price: 45 },
+  insideWindows: { name: 'Window Cleaning (Interior Only)', price: 45 },
   laundry: { name: 'Laundry Service', price: 40 },
   dishes: { name: 'Dish Washing', price: 25 },
   garage: { name: 'Garage Cleaning', price: 50 },

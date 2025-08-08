@@ -10,7 +10,7 @@ const SQUARE_LOCATION_ID = process.env.SQUARE_LOCATION_ID || '';
 
 // PayPal configuration
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || '';
-const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET || '';
+// const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET || ''; // Reserved for future use
 
 export async function POST(request: NextRequest) {
   try {
@@ -154,8 +154,9 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Booking API error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     return NextResponse.json(
-      { error: 'Failed to process booking', details: error.message },
+      { error: 'Failed to process booking', details: errorMessage },
       { status: 500 }
     );
   }

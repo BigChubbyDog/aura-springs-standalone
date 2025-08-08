@@ -43,7 +43,7 @@ const CommercialCleaningPage = () => {
         'Everything in Starter',
         'Multi-weekly service',
         'Conference room detailing',
-        'Window cleaning (monthly)',
+        'Window cleaning - interior only (monthly)',
         'Carpet spot treatment',
         'Disinfection protocols',
         'Supply management',

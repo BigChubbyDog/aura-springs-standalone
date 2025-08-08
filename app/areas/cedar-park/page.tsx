@@ -13,22 +13,15 @@ import {
   Calendar,
   CheckCircle,
   Sparkles,
-  Home,
   Users,
-  Shield,
   Award,
-  DollarSign,
   School,
   Car,
   Heart,
   Trees,
   Building2,
-  Coffee,
-  Eye,
-  Target,
   Baby,
-  Dog,
-  Sun
+  Dog
 } from 'lucide-react';
 
 const CedarParkPage = () => {

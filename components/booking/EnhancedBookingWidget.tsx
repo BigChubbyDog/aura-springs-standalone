@@ -38,6 +38,13 @@ export default function EnhancedBookingWidget() {
     addOns: [] as string[],
     specialInstructions: '',
     
+    // Airbnb Specific
+    isAirbnb: false,
+    airbnbPackage: 'standard', // basic, standard, premium, superhost
+    numberOfUnits: 1,
+    needsSetupFee: true,
+    turnaroundTime: '3-4 hours',
+    
     // Marketing
     howHeard: '',
     referralSource: ''
@@ -114,7 +121,7 @@ export default function EnhancedBookingWidget() {
       }
     } catch (err) {
       console.error('Booking error:', err);
-      setError('There was an error processing your booking. Please try again or call us at (512) 555-0100.');
+      setError('There was an error processing your booking. Please try again or call us at (512) 781-0527.');
     } finally {
       setIsSubmitting(false);
     }
@@ -216,7 +223,7 @@ export default function EnhancedBookingWidget() {
                 value={formData.customerPhone}
                 onChange={(e) => setFormData({...formData, customerPhone: e.target.value})}
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-aura-primary-500 focus:outline-none"
-                placeholder="(512) 555-0100"
+                placeholder="(512) 781-0527"
               />
             </div>
             
@@ -297,7 +304,9 @@ export default function EnhancedBookingWidget() {
               </label>
               <select
                 value={formData.serviceType}
-                onChange={(e) => setFormData({...formData, serviceType: e.target.value})}
+                onChange={(e) => {
+                  setFormData({...formData, serviceType: e.target.value, isAirbnb: e.target.value === 'airbnb'});
+                }}
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-aura-primary-500 focus:outline-none"
               >
                 <option value="standard">Standard Cleaning</option>
@@ -407,6 +416,75 @@ export default function EnhancedBookingWidget() {
               />
             </div>
           </div>
+
+          {formData.isAirbnb && (
+            <>
+              <h3 className="text-xl font-semibold text-gray-500 mt-8 mb-4">Airbnb Service Options</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-400 mb-2">
+                    Service Package *
+                  </label>
+                  <select
+                    value={formData.airbnbPackage}
+                    onChange={(e) => setFormData({...formData, airbnbPackage: e.target.value})}
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-aura-primary-500 focus:outline-none"
+                  >
+                    <option value="basic">Basic Turnover ($89/service + $99 setup)</option>
+                    <option value="standard">Standard Turnover ($119/service + $149 setup)</option>
+                    <option value="premium">Premium Hosting ($149/service + $199 setup)</option>
+                    <option value="superhost">Superhost Elite ($199/service + $299 setup)</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-semibold text-gray-400 mb-2">
+                    Number of Units
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    max="50"
+                    value={formData.numberOfUnits}
+                    onChange={(e) => setFormData({...formData, numberOfUnits: parseInt(e.target.value) || 1})}
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-aura-primary-500 focus:outline-none"
+                  />
+                  {formData.numberOfUnits > 3 && (
+                    <p className="text-sm text-green-600 mt-1">✓ Eligible for custom multi-unit pricing</p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-400 mb-2">
+                    Turnaround Time Needed
+                  </label>
+                  <select
+                    value={formData.turnaroundTime}
+                    onChange={(e) => setFormData({...formData, turnaroundTime: e.target.value})}
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-aura-primary-500 focus:outline-none"
+                  >
+                    <option value="2 hours">2 Hours (Rush)</option>
+                    <option value="3-4 hours">3-4 Hours (Standard)</option>
+                    <option value="same-day">Same Day</option>
+                    <option value="flexible">Flexible</option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    id="setupFee"
+                    checked={formData.needsSetupFee}
+                    onChange={(e) => setFormData({...formData, needsSetupFee: e.target.checked})}
+                    className="w-5 h-5 text-aura-primary-600"
+                  />
+                  <label htmlFor="setupFee" className="text-sm text-gray-400">
+                    This is my first time (one-time setup fee applies)
+                  </label>
+                </div>
+              </div>
+            </>
+          )}
 
           <div>
             <label className="block text-sm font-semibold text-gray-400 mb-2">

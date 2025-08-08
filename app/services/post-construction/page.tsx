@@ -47,7 +47,7 @@ const PostConstructionPage = () => {
       category: 'Deep Surface Cleaning',
       icon: Sparkles,
       services: [
-        'Window cleaning (inside and outside)',
+        'Window cleaning (interior only)',
         'Light fixture and ceiling fan cleaning',
         'Baseboards and trim detailing',
         'Door frame and hardware polishing',
@@ -477,7 +477,7 @@ const PostConstructionPage = () => {
                   {[
                     'Complete debris removal',
                     'Dust elimination all surfaces', 
-                    'Window cleaning inside/out',
+                    'Window cleaning interior only',
                     'Floor cleaning & protection',
                     'Fixture & hardware cleaning',
                     'Final quality inspection'

@@ -89,7 +89,7 @@ export default function RaineyStreetGeoTarget() {
     "availableChannel": {
       "@type": "ServiceChannel",
       "serviceUrl": "https://aurasprings.com/booking?location=rainey-street",
-      "servicePhone": "+1-512-555-0100",
+      "servicePhone": "+1-512-781-0527",
       "availableLanguage": ["en"],
       "serviceLocation": {
         "@type": "Place",
@@ -129,7 +129,7 @@ export default function RaineyStreetGeoTarget() {
     "name": "Aura Spring Cleaning - Rainey Street",
     "image": "https://aurasprings.com/images/rainey-street-office.jpg",
     "url": "https://aurasprings.com/areas/rainey-street",
-    "telephone": "+15125550100",
+    "telephone": "+15127810527",
     "priceRange": "$$$",
     "address": {
       "@type": "PostalAddress",

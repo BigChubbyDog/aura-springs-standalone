@@ -78,7 +78,7 @@ const BookingWidget = () => {
   const extras = [
     { id: 'fridge', name: 'Inside Fridge', price: '+$35' },
     { id: 'oven', name: 'Inside Oven', price: '+$45' },
-    { id: 'windows', name: 'Interior Windows', price: '+$60' },
+    { id: 'windows', name: 'Window Cleaning (Interior Only)', price: '+$45' },
     { id: 'laundry', name: 'Laundry Service', price: '+$40' },
     { id: 'garage', name: 'Garage Cleaning', price: '+$75' },
     { id: 'balcony', name: 'Balcony/Patio', price: '+$50' }

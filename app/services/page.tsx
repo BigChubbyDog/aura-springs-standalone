@@ -66,7 +66,7 @@ const services = [
     title: 'Post-Construction',
     slug: 'post-construction',
     description: 'Specialized cleaning to remove construction dust and debris from renovations.',
-    features: ['Dust removal', 'Surface sanitization', 'Floor care', 'Window cleaning'],
+    features: ['Dust removal', 'Surface sanitization', 'Floor care', 'Window cleaning (Interior Only)'],
     price: 'From $299',
   },
 ];

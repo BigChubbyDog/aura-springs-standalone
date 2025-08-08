@@ -72,14 +72,15 @@ export async function POST(request: NextRequest) {
     total *= (1 - discount);
 
     // Austin zone multiplier (if location provided)
-    const zoneMultipliers: { [key: string]: number } = {
-      downtown: 1.2,     // Downtown premium
-      westlake: 1.25,    // Westlake Hills premium
-      domain: 1.15,      // Domain area
-      eastaustin: 1.05,  // East Austin
-      southcongress: 1.1, // South Congress
-      default: 1.0,
-    };
+    // Reserved for future zone-based pricing
+    // const zoneMultipliers: { [key: string]: number } = {
+    //   downtown: 1.2,     // Downtown premium
+    //   westlake: 1.25,    // Westlake Hills premium
+    //   domain: 1.15,      // Domain area
+    //   eastaustin: 1.05,  // East Austin
+    //   southcongress: 1.1, // South Congress
+    //   default: 1.0,
+    // };
 
     return NextResponse.json({
       basePrice: Math.round(basePrice),
