@@ -134,12 +134,12 @@ export default function HomePage() {
             images={cleaningImages.hero}
             title="Austin's Premier Luxury Cleaning Service"
           />
-          <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 via-transparent to-transparent">
+          <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/40 to-transparent">
             <div className="mx-auto w-full max-w-7xl px-4 pb-12">
-              <h1 className="mb-4 text-5xl font-bold text-white md:text-7xl">
+              <h1 className="mb-4 text-4xl font-bold text-white drop-shadow-2xl md:text-7xl" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                 Aura Spring Cleaning
               </h1>
-              <p className="mb-8 max-w-2xl text-xl text-white/90 md:text-2xl">
+              <p className="mb-8 max-w-2xl text-lg font-medium text-white drop-shadow-lg md:text-2xl" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.8)' }}>
                 Transform your space into a sanctuary of cleanliness. Serving
                 Austin's finest homes since 2018.
               </p>
@@ -170,28 +170,28 @@ export default function HomePage() {
                 <Award className="h-8 w-8 text-aura-primary-600" />
                 <div>
                   <p className="text-2xl font-bold">500+</p>
-                  <p className="text-sm text-gray-400">Happy Customers</p>
+                  <p className="text-sm text-gray-600">Happy Customers</p>
                 </div>
               </div>
               <div className="flex items-center justify-center gap-3">
                 <Star className="h-8 w-8 text-yellow-500" />
                 <div>
                   <p className="text-2xl font-bold">4.9/5</p>
-                  <p className="text-sm text-gray-400">Average Rating</p>
+                  <p className="text-sm text-gray-600">Average Rating</p>
                 </div>
               </div>
               <div className="flex items-center justify-center gap-3">
                 <Shield className="h-8 w-8 text-green-600" />
                 <div>
                   <p className="text-2xl font-bold">100%</p>
-                  <p className="text-sm text-gray-400">Insured & Bonded</p>
+                  <p className="text-sm text-gray-600">Insured & Bonded</p>
                 </div>
               </div>
               <div className="flex items-center justify-center gap-3">
                 <Users className="h-8 w-8 text-blue-600" />
                 <div>
                   <p className="text-2xl font-bold">15+</p>
-                  <p className="text-sm text-gray-400">Expert Cleaners</p>
+                  <p className="text-sm text-gray-600">Expert Cleaners</p>
                 </div>
               </div>
             </div>
