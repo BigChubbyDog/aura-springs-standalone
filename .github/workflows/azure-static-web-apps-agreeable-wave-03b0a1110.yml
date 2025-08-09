@@ -22,34 +22,43 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Fix permissions for git config
+        run: |
+          sudo chown -R $USER:$USER . || true
+          sudo chmod -R 755 .git || true
+          sudo chmod 644 .git/config || true
+          git config --global --add safe.directory $GITHUB_WORKSPACE || true
+          git config --global --add safe.directory /github/workspace || true
+      
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
-      - name: Install OIDC Client from Core Package
-        run: npm install @actions/core@1.6.0 @actions/http-client
-      - name: Get Id Token
-        uses: actions/github-script@v6
-        id: idtoken
-        with:
-           script: |
-               const coredemo = require('@actions/core');
-               return await coredemo.getIDToken();
-           result-encoding: string
+          node-version: '20.x'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build Next.js app
+        run: NODE_ENV=production npm run build
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}
+          NEXT_PUBLIC_FB_PIXEL_ID: ${{ secrets.NEXT_PUBLIC_FB_PIXEL_ID }}
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_WAVE_03B0A1110 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
           api_location: "" # Api source code path - optional
-          output_location: ".next/standalone" # Built app content directory - optional
-          app_build_command: "npm run build:swa"
-          skip_app_build: false
-          github_id_token: ${{ steps.idtoken.outputs.result }}
+          output_location: ".next" # Built app content directory - optional
+          app_build_command: "NODE_ENV=production npm run build"
+          skip_app_build: true # We already built it in the previous step
           ###### End of Repository/Build Configurations ######
         env:
           NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}
