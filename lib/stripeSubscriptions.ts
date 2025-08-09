@@ -1,7 +1,8 @@
 import Stripe from 'stripe';
 
 // Initialize Stripe with secret key from environment
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const stripeKey = process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder';
+const stripe = new Stripe(stripeKey, {
   apiVersion: '2024-11-20.acacia',
 });
 
