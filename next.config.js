@@ -8,7 +8,7 @@ const nextConfig = {
     styledComponents: true,
   },
   
-  // Output configuration for deployment
+  // Output configuration for Azure Static Web Apps
   output: 'standalone',
   
   // Compression
