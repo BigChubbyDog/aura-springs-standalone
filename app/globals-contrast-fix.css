@@ -1,0 +1,53 @@
+/* Global contrast improvements for better mobile readability */
+
+/* Replace all gray-400 text with gray-600 for better contrast */
+.text-gray-400 {
+  @apply !text-gray-600;
+}
+
+/* Replace all gray-500 text with gray-700 for better contrast */
+.text-gray-500 {
+  @apply !text-gray-700;
+}
+
+/* Improve contrast for light text on colored backgrounds */
+.text-green-100 {
+  @apply !text-green-50;
+}
+
+.text-green-200 {
+  @apply !text-green-100;
+}
+
+/* Ensure all paragraph text has good contrast */
+p {
+  @apply text-gray-700;
+}
+
+/* Improve contrast for specific sections */
+.text-gray-400:where(p, span, div) {
+  color: #4b5563 !important; /* gray-600 */
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  /* Increase font size slightly for better readability */
+  p, span {
+    font-size: max(1rem, 16px);
+  }
+  
+  /* Ensure minimum contrast for all text */
+  .text-gray-300, .text-gray-400 {
+    @apply !text-gray-600;
+  }
+  
+  /* Improve button text contrast */
+  button, a {
+    font-weight: 600;
+  }
+  
+  /* Ensure good contrast for headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-gray-800;
+  }
+}

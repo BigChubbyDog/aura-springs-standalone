@@ -26,7 +26,7 @@ const TeamPage = () => {
       name: 'Dustin Allan',
       role: 'Co-Founder & CEO',
       image:
-        '/public/Headshots/Headshot_dustin (Instagram Profile Picture) (1).png',
+        '/Headshots/Headshot_dustin (Instagram Profile Picture) (1).png',
       bio: 'With 12+ years in Austin real estate and business development, Dustin brings deep local market knowledge and operational expertise to Aura Spring Cleaning.',
       expertise: [
         'Business Strategy',
@@ -48,7 +48,7 @@ const TeamPage = () => {
     {
       name: 'Valerie Boatman',
       role: 'Co-Founder & COO',
-      image: '/public/Headshots/ValerieBoatmanHeadshot.JPG',
+      image: '/Headshots/ValerieBoatmanHeadshot.JPG',
       bio: 'Valerie brings precision, care, and attention to detail that ensures every home becomes a true sanctuary. Her operational excellence drives our quality standards.',
       expertise: [
         'Quality Assurance',

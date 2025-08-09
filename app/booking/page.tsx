@@ -1,3 +1,5 @@
+'use client';
+
 import { Suspense } from 'react';
 import BookingForm from '@/components/booking/BookingForm';
 import MicrosoftBookingsWidget from '@/components/booking/MicrosoftBookingsWidget';

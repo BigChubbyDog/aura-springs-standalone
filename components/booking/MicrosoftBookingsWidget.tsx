@@ -105,7 +105,7 @@ export default function MicrosoftBookingsWidget({
             src={bookingsUrl}
             width="100%"
             height="600"
-            frameBorder="0"
+            style={{ border: '0' }}
             scrolling="yes"
             onLoad={() => setIsLoading(false)}
             className={`transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}

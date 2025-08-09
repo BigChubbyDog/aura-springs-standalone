@@ -15,10 +15,18 @@ import {
   Star,
   Users,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 export default function HomePage() {
   const [showPricing, setShowPricing] = useState(false);
+  const pricingRef = useRef<HTMLDivElement>(null);
+  
+  const handleShowPricing = () => {
+    setShowPricing(true);
+    setTimeout(() => {
+      pricingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
 
   const services = [
     {
@@ -137,7 +145,7 @@ export default function HomePage() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <button
-                  onClick={() => setShowPricing(true)}
+                  onClick={handleShowPricing}
                   className="rounded-xl bg-aura-primary-600 px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:scale-105 hover:bg-aura-primary-700"
                 >
                   Get Instant Quote
@@ -255,7 +263,7 @@ export default function HomePage() {
 
         {/* Pricing Calculator Section */}
         {showPricing && (
-          <section className="bg-white py-20">
+          <section ref={pricingRef} className="bg-white py-20">
             <div className="mx-auto max-w-7xl px-4">
               <h2 className="mb-4 text-center text-4xl font-bold text-aura-primary-700">
                 Transparent Pricing, No Surprises
