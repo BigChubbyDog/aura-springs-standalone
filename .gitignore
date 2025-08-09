@@ -44,3 +44,9 @@ nul
 
 # Azure
 staticwebapp.config.development.json
+
+# Deployment files with secrets
+.env.deployment
+deploy-azure-final.ps1
+deploy-with-secrets.ps1
+*.env

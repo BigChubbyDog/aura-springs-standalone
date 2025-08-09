@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:azure": "cp next.config.azure.js next.config.js && next build",
+    "build:azure": "next build && next export -o out",
+    "build:swa": "next build",
     "start": "next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true next build",
