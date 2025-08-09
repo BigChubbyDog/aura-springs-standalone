@@ -62,6 +62,10 @@ const nextConfig = {
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=(self)'
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self' https://*.azurestaticapps.net https://*.stripe.com https://*.office365.com https://*.microsoft.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.stripe.com https://js.stripe.com https://*.googletagmanager.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://*.stripe.com https://*.microsoft.com https://*.office365.com; frame-src 'self' https://*.stripe.com https://*.office365.com https://outlook.office365.com;"
           }
         ],
       },
