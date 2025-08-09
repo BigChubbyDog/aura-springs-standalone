@@ -1,10 +1,20 @@
 import Stripe from 'stripe';
 
-// Initialize Stripe with secret key from environment
-const stripeKey = process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder';
-const stripe = new Stripe(stripeKey, {
-  apiVersion: '2024-11-20.acacia',
-});
+// Initialize Stripe lazily to avoid build-time errors
+let stripe: Stripe | null = null;
+
+function getStripe(): Stripe {
+  if (!stripe) {
+    const key = process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder';
+    if (!key) {
+      throw new Error('STRIPE_SECRET_KEY is not configured');
+    }
+    stripe = new Stripe(key, {
+      apiVersion: '2024-11-20.acacia',
+    });
+  }
+  return stripe;
+}
 
 // Subscription plans for Aura Spring Cleaning
 export const SUBSCRIPTION_PLANS = {
@@ -117,14 +127,14 @@ export async function createOrRetrieveCustomer(
 ): Promise<Stripe.Customer> {
   try {
     // Check if customer exists
-    const existingCustomers = await stripe.customers.list({
+    const existingCustomers = await getStripe().customers.list({
       email,
       limit: 1
     });
 
     if (existingCustomers.data.length > 0) {
       // Update existing customer
-      return await stripe.customers.update(existingCustomers.data[0].id, {
+      return await getStripe().customers.update(existingCustomers.data[0].id, {
         name,
         phone,
         metadata: {
@@ -136,7 +146,7 @@ export async function createOrRetrieveCustomer(
     }
 
     // Create new customer
-    return await stripe.customers.create({
+    return await getStripe().customers.create({
       email,
       name,
       phone,
@@ -186,10 +196,10 @@ export async function createSubscription(
     }
 
     // Add discount for first-time customers
-    const customer = await stripe.customers.retrieve(customerId) as Stripe.Customer;
+    const customer = await getStripe().customers.retrieve(customerId) as Stripe.Customer;
     if (!customer.metadata?.has_subscription) {
       // Apply 20% off first month coupon
-      const coupon = await stripe.coupons.create({
+      const coupon = await getStripe().coupons.create({
         percent_off: 20,
         duration: 'once',
         name: 'First Time Customer - 20% Off'
@@ -197,10 +207,10 @@ export async function createSubscription(
       subscriptionData.discounts = [{ coupon: coupon.id }];
     }
 
-    const subscription = await stripe.subscriptions.create(subscriptionData);
+    const subscription = await getStripe().subscriptions.create(subscriptionData);
 
     // Update customer metadata
-    await stripe.customers.update(customerId, {
+    await getStripe().customers.update(customerId, {
       metadata: {
         has_subscription: 'true',
         subscription_id: subscription.id,
@@ -232,7 +242,7 @@ export async function createCheckoutSession(
     // Create price in Stripe if it doesn't exist
     let price: Stripe.Price;
     try {
-      const prices = await stripe.prices.list({
+      const prices = await getStripe().prices.list({
         lookup_keys: [planId],
         limit: 1
       });
@@ -241,13 +251,13 @@ export async function createCheckoutSession(
         price = prices.data[0];
       } else {
         // Create product first
-        const product = await stripe.products.create({
+        const product = await getStripe().products.create({
           name: plan.name,
           metadata: plan.metadata
         });
 
         // Create recurring price
-        price = await stripe.prices.create({
+        price = await getStripe().prices.create({
           product: product.id,
           unit_amount: plan.price,
           currency: 'usd',
@@ -265,7 +275,7 @@ export async function createCheckoutSession(
     }
 
     // Create checkout session
-    const session = await stripe.checkout.sessions.create({
+    const session = await getStripe().checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [{
         price: price.id,
@@ -307,10 +317,10 @@ export async function updateSubscription(
   prorationBehavior: 'create_prorations' | 'none' | 'always_invoice' = 'create_prorations'
 ): Promise<Stripe.Subscription> {
   try {
-    const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+    const subscription = await getStripe().subscriptions.retrieve(subscriptionId);
     
     // Update the subscription item with new price
-    const updatedSubscription = await stripe.subscriptions.update(subscriptionId, {
+    const updatedSubscription = await getStripe().subscriptions.update(subscriptionId, {
       items: [{
         id: subscription.items.data[0].id,
         price: newPriceId
@@ -334,14 +344,14 @@ export async function cancelSubscription(
   try {
     if (immediately) {
       // Cancel immediately
-      return await stripe.subscriptions.cancel(subscriptionId, {
+      return await getStripe().subscriptions.cancel(subscriptionId, {
         cancellation_details: {
           comment: reason
         }
       });
     } else {
       // Cancel at end of billing period
-      return await stripe.subscriptions.update(subscriptionId, {
+      return await getStripe().subscriptions.update(subscriptionId, {
         cancel_at_period_end: true,
         cancellation_details: {
           comment: reason
@@ -370,7 +380,7 @@ export async function pauseSubscription(
       pauseData.pause_collection!.resumes_at = Math.floor(resumeAt.getTime() / 1000);
     }
 
-    return await stripe.subscriptions.update(subscriptionId, pauseData);
+    return await getStripe().subscriptions.update(subscriptionId, pauseData);
   } catch (error) {
     console.error('Error pausing subscription:', error);
     throw error;
@@ -382,7 +392,7 @@ export async function resumeSubscription(
   subscriptionId: string
 ): Promise<Stripe.Subscription> {
   try {
-    return await stripe.subscriptions.update(subscriptionId, {
+    return await getStripe().subscriptions.update(subscriptionId, {
       pause_collection: null
     });
   } catch (error) {
@@ -398,7 +408,7 @@ export async function createPaymentRecoverySession(
 ): Promise<string> {
   try {
     // Get customer's subscriptions
-    const subscriptions = await stripe.subscriptions.list({
+    const subscriptions = await getStripe().subscriptions.list({
       customer: customerId,
       status: 'past_due',
       limit: 1
@@ -409,10 +419,10 @@ export async function createPaymentRecoverySession(
     }
 
     const subscription = subscriptions.data[0];
-    const invoice = await stripe.invoices.retrieve(subscription.latest_invoice as string);
+    const invoice = await getStripe().invoices.retrieve(subscription.latest_invoice as string);
 
     // Create a payment recovery link
-    const session = await stripe.checkout.sessions.create({
+    const session = await getStripe().checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
       customer: customerId,
@@ -442,7 +452,7 @@ export async function createCustomerPortalSession(
   returnUrl: string
 ): Promise<string> {
   try {
-    const session = await stripe.billingPortal.sessions.create({
+    const session = await getStripe().billingPortal.sessions.create({
       customer: customerId,
       return_url: returnUrl
     });
