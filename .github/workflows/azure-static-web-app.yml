@@ -19,6 +19,12 @@ jobs:
         with:
           submodules: true
           lfs: false
+          persist-credentials: false
+          
+      - name: Fix permissions for git config
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          sudo chown -R $USER:$USER $GITHUB_WORKSPACE || true
           
       - name: Setup Node.js
         uses: actions/setup-node@v3
