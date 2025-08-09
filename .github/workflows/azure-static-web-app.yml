@@ -23,8 +23,11 @@ jobs:
           
       - name: Fix permissions for git config
         run: |
-          git config --global --add safe.directory $GITHUB_WORKSPACE
-          sudo chown -R $USER:$USER $GITHUB_WORKSPACE || true
+          sudo chown -R $USER:$USER . || true
+          sudo chmod -R 755 .git || true
+          sudo chmod 644 .git/config || true
+          git config --global --add safe.directory $GITHUB_WORKSPACE || true
+          git config --global --add safe.directory /github/workspace || true
           
       - name: Setup Node.js
         uses: actions/setup-node@v3
