@@ -1,0 +1,126 @@
+{
+  "name": "Aura Spring Cleaning - Premium Home Cleaning Services",
+  "short_name": "Aura Spring",
+  "description": "Austin's premier luxury cleaning service specializing in downtown high-rises and premium homes",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["lifestyle", "productivity", "business"],
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "icons": [
+    {
+      "src": "/images/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshot-home.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "label": "Homepage - Book your cleaning service"
+    },
+    {
+      "src": "/images/screenshot-booking.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "label": "Easy online booking"
+    },
+    {
+      "src": "/images/screenshot-services.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "label": "Our premium services"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book Now",
+      "short_name": "Book",
+      "description": "Book your cleaning service",
+      "url": "/booking",
+      "icons": [{ "src": "/images/icon-book.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Get Quote",
+      "short_name": "Quote",
+      "description": "Get instant pricing",
+      "url": "/pricing",
+      "icons": [{ "src": "/images/icon-quote.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Contact us",
+      "url": "/contact",
+      "icons": [{ "src": "/images/icon-contact.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "features": [
+    "Cross Platform",
+    "Fast",
+    "Offline Capable",
+    "Installable"
+  ]
+}

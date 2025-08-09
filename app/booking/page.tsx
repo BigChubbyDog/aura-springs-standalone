@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import BookingForm from '@/components/booking/BookingForm';
+import MicrosoftBookingsWidget from '@/components/booking/MicrosoftBookingsWidget';
 
 function BookingFormFallback() {
   return (
@@ -24,10 +25,12 @@ function BookingFormFallback() {
 }
 
 export default function BookingPage() {
+  // Use Microsoft Bookings widget for integrated booking experience
+  const useMicrosoftBookings = true;
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
-      <div className="max-w-4xl mx-auto px-4 py-12">
+      <div className="max-w-6xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-center mb-8">
           <span className="text-[#4c673d]">Book Your</span>{' '}
           <span className="bg-gradient-to-r from-[#7c9768] to-[#4c673d] bg-clip-text text-transparent">
@@ -36,12 +39,16 @@ export default function BookingPage() {
         </h1>
         
         <p className="text-center text-gray-400 mb-12">
-          Experience Austin's premier cleaning service. Get location-based pricing instantly.
+          Experience Austin's premier cleaning service. Book instantly with Microsoft Bookings.
         </p>
 
-        <Suspense fallback={<BookingFormFallback />}>
-          <BookingForm />
-        </Suspense>
+        {useMicrosoftBookings ? (
+          <MicrosoftBookingsWidget embedded={true} />
+        ) : (
+          <Suspense fallback={<BookingFormFallback />}>
+            <BookingForm />
+          </Suspense>
+        )}
 
         {/* Benefits */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
