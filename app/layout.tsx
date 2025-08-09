@@ -89,8 +89,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  // Disable GTM/GA until we have real IDs (not placeholder values)
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID === 'GTM-XXXX' ? null : process.env.NEXT_PUBLIC_GTM_ID;
+  const gaId = process.env.NEXT_PUBLIC_GA_ID === 'G-XXXXXXXXXX' ? null : process.env.NEXT_PUBLIC_GA_ID;
   const fbPixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID;
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
 
