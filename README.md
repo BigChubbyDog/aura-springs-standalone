@@ -3,6 +3,7 @@
 ## 🌟 Overview
 
 Aura Springs is Austin's #1 luxury cleaning service specializing in:
+
 - Downtown high-rise condos and penthouses
 - Airbnb and short-term rental turnovers
 - Commercial and residential properties
@@ -11,6 +12,7 @@ Aura Springs is Austin's #1 luxury cleaning service specializing in:
 ## 🚀 Features
 
 ### SEO Optimized
+
 - **Geo-targeted booking system** for Austin neighborhoods
 - **Local SEO** optimized for "cleaning service Austin TX"
 - **Structured data** for Google Rich Results
@@ -18,12 +20,14 @@ Aura Springs is Austin's #1 luxury cleaning service specializing in:
 - **Mobile-first responsive design**
 
 ### Smart Booking System
+
 - Location-aware pricing (Downtown, Domain, Westlake, etc.)
 - Real-time availability checking
 - Zone-based service assignment
 - Instant quote calculator
 
 ### Real Estate Partnership Integration
+
 - Special rates for realtors and mortgage brokers
 - Move-in/move-out cleaning packages
 - Property staging cleaning services
@@ -84,6 +88,7 @@ NEXT_PUBLIC_MAPS_API_KEY=your_google_maps_api_key
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
+
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -93,6 +98,7 @@ vercel --prod
 ```
 
 ### Manual Build
+
 ```bash
 # Build for production
 npm run build
@@ -111,12 +117,14 @@ npm start
 ## 🤝 Partnership Features
 
 ### For Realtors
+
 - Volume discounts on multiple properties
 - Priority scheduling for showings
 - Move-in/out specialty services
 - Commission-based referral program
 
 ### For Property Managers
+
 - Direct billing options
 - Dedicated account management
 - Custom cleaning protocols
