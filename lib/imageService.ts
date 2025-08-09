@@ -13,9 +13,9 @@ export interface ImageResult {
 // Predefined high-quality cleaning service images
 export const cleaningImages = {
   hero: [
-    'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&q=90', // Modern Austin skyline
     'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=90', // Luxury condo interior
     'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&q=90', // Clean modern kitchen
+    'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?w=1920&q=90', // Spotless kitchen
   ],
   services: {
     houseCleaning: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=85',
