@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { calculatePrice, getCompetitorComparison, getRevenueOptimization, ADD_ONS, PricingFactors } from '@/lib/pricingService';
 import { Home, Bed, Bath, CheckCircle } from 'lucide-react';
+import { metaPixel } from '@/lib/metaPixel';
 
 export default function PricingCalculator() {
   const [factors, setFactors] = useState<PricingFactors>({
@@ -18,6 +19,20 @@ export default function PricingCalculator() {
   const pricing = calculatePrice(factors);
   const competitors = getCompetitorComparison(pricing.total);
   const suggestions = getRevenueOptimization(factors);
+
+  // Track when users interact with pricing calculator
+  useEffect(() => {
+    // Track InitiateCheckout when pricing changes
+    if (pricing.total > 0) {
+      metaPixel.initiateCheckout({
+        content_category: 'Cleaning Service',
+        value: pricing.total,
+        currency: 'USD',
+        content_ids: [factors.serviceType],
+        num_items: 1,
+      });
+    }
+  }, [pricing.total, factors.serviceType]);
 
   const toggleAddOn = (addon: string) => {
     setFactors(prev => ({

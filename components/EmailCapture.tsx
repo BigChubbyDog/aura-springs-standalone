@@ -87,11 +87,13 @@ export default function EmailCapture({ variant = 'popup', delay = 5000, onClose 
           });
         }
 
-        // Facebook Pixel
+        // Meta Pixel - Track Lead event
         if (window.fbq) {
           window.fbq('track', 'Lead', {
             content_name: 'Cleaning Checklist Download',
             content_category: 'Lead Magnet',
+            value: 150.00, // Average customer value
+            currency: 'USD',
           });
         }
 

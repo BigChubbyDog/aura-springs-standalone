@@ -112,7 +112,7 @@ export default function RootLayout({
   // Analytics configuration
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-NCMQXRKL'; // Using provided GTM ID
   const gaId = process.env.NEXT_PUBLIC_GA_ID || 'G-JB55XBQ8Y3'; // Using provided GA ID
-  const fbPixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID;
+  const fbPixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID || '753683467224168'; // Using provided Meta Pixel ID
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
 
   return (
@@ -174,27 +174,23 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Facebook Pixel */}
-        {fbPixelId && (
-          <Script
-            id="fb-pixel"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                !function(f,b,e,v,n,t,s)
-                {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-                n.queue=[];t=b.createElement(e);t.async=!0;
-                t.src=v;s=b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t,s)}(window, document,'script',
-                'https://connect.facebook.net/en_US/fbevents.js');
-                fbq('init', '${fbPixelId}');
-                fbq('track', 'PageView');
-              `,
-            }}
-          />
-        )}
+        {/* Meta Pixel Code */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '753683467224168');
+              fbq('track', 'PageView');
+            `,
+          }}
+        />
 
         {/* Microsoft Clarity */}
         {clarityId && (
@@ -235,17 +231,15 @@ export default function RootLayout({
         {/* Scroll to top on page navigation */}
         <ScrollToTop />
         
-        {/* Facebook Pixel (noscript) */}
-        {fbPixelId && (
-          <noscript>
-            <img
-              height="1"
-              width="1"
-              style={{ display: 'none' }}
-              src={`https://www.facebook.com/tr?id=${fbPixelId}&ev=PageView&noscript=1`}
-            />
-          </noscript>
-        )}
+        {/* Meta Pixel (noscript) */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=753683467224168&ev=PageView&noscript=1"
+          />
+        </noscript>
 
         <Header />
         <Breadcrumbs />
