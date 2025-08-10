@@ -360,20 +360,6 @@ export default function CleaningChecklistPage() {
         </div>
       </div>
 
-      {/* Print Styles */}
-      <style jsx>{`
-        @media print {
-          .no-print {
-            display: none;
-          }
-          body {
-            font-size: 12pt;
-          }
-          .print\\:break-inside-avoid {
-            break-inside: avoid;
-          }
-        }
-      `}</style>
     </main>
   );
 }
