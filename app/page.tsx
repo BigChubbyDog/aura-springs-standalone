@@ -1,7 +1,15 @@
 'use client';
 
-import PhotoCarousel from '@/components/PhotoCarousel';
-import PricingCalculator from '@/components/PricingCalculator';
+import dynamic from 'next/dynamic';
+
+const PhotoCarousel = dynamic(() => import('@/components/PhotoCarousel'), {
+  loading: () => <div className="h-[500px] bg-gray-100 animate-pulse rounded-2xl" />,
+});
+
+const PricingCalculator = dynamic(() => import('@/components/PricingCalculator'), {
+  loading: () => <div className="h-96 bg-gray-100 animate-pulse rounded-xl" />,
+  ssr: false, // Client-side only for calculator
+});
 import { MetaTags } from '@/components/SEO/MetaTags';
 import { StructuredData } from '@/components/SEO/StructuredData';
 import { cleaningImages } from '@/lib/imageService';

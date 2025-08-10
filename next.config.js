@@ -27,15 +27,20 @@ const nextConfig = {
   
   // Image optimization
   images: {
-    domains: ['aurasprings.com', 'images.unsplash.com', 'auraspringcleaning.com'],
+    domains: ['aurasprings.com', 'images.unsplash.com', 'auraspringcleaning.com', 'images.pexels.com'],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   
-  // Headers for SEO and security
+  // Headers for SEO, security, and caching
   async headers() {
     return [
+      // Security headers for all routes
       {
         source: '/:path*',
         headers: [
@@ -66,6 +71,65 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value: "default-src 'self' https://*.azurestaticapps.net https://*.stripe.com https://*.office365.com https://*.microsoft.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.stripe.com https://js.stripe.com https://*.googletagmanager.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://*.stripe.com https://*.microsoft.com https://*.office365.com https://*.google-analytics.com https://www.google-analytics.com; frame-src 'self' https://*.stripe.com https://*.office365.com https://outlook.office365.com;"
+          }
+        ],
+      },
+      // Cache static assets for 1 year
+      {
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ],
+      },
+      {
+        source: '/Headshots/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ],
+      },
+      // Cache fonts for 1 year
+      {
+        source: '/fonts/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ],
+      },
+      // Cache CSS and JS for 1 year (with versioning)
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ],
+      },
+      // Cache HTML pages for 1 hour
+      {
+        source: '/:path*((?!api).*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, s-maxage=3600, stale-while-revalidate=86400'
+          }
+        ],
+      },
+      // Don't cache API routes
+      {
+        source: '/api/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, no-cache, must-revalidate'
           }
         ],
       },

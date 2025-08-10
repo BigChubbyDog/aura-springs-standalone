@@ -4,8 +4,19 @@ import Script from 'next/script';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import EnhancedLocalBusinessSchema from '@/components/SEO/EnhancedLocalBusinessSchema';
-import StickyBookButton from '@/components/StickyBookButton';
-import Breadcrumbs from '@/components/Breadcrumbs';
+import dynamic from 'next/dynamic';
+
+const StickyBookButton = dynamic(() => import('@/components/StickyBookButton'), {
+  ssr: false, // Client-side only
+});
+
+const Breadcrumbs = dynamic(() => import('@/components/Breadcrumbs'), {
+  ssr: false, // Client-side only for path detection
+});
+
+const ServiceWorkerRegistration = dynamic(() => import('@/components/ServiceWorkerRegistration'), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   title: 'Aura Spring Cleaning | #1 House Cleaning Service Austin TX | Same Day Booking',
@@ -240,6 +251,9 @@ export default function RootLayout({
         
         {/* Sticky Book Button for Mobile */}
         <StickyBookButton />
+        
+        {/* Service Worker Registration */}
+        <ServiceWorkerRegistration />
         
         {/* Structured Data */}
         <EnhancedLocalBusinessSchema />
