@@ -172,6 +172,231 @@
     - [ ] Brand guidelines (exact colors, fonts)
     - [ ] Approved marketing copy/taglines
 
+## 💬 Live Chat & Support Systems
+
+23. **Live Chat Platform** (Choose One)
+    - [ ] **Option A: Intercom**
+      - Sign up at intercom.com
+      - Get App ID and API Key
+      - Add to `.env.local`:
+        ```
+        NEXT_PUBLIC_INTERCOM_APP_ID=your-app-id
+        INTERCOM_ACCESS_TOKEN=your-token
+        ```
+    - [ ] **Option B: Crisp Chat**
+      - Sign up at crisp.chat
+      - Get Website ID
+      - Add to `.env.local`:
+        ```
+        NEXT_PUBLIC_CRISP_WEBSITE_ID=your-id
+        ```
+    - [ ] **Option C: Tawk.to** (Free)
+      - Sign up at tawk.to
+      - Get Property ID and Widget ID
+      - Add to `.env.local`:
+        ```
+        NEXT_PUBLIC_TAWK_PROPERTY_ID=your-property-id
+        NEXT_PUBLIC_TAWK_WIDGET_ID=your-widget-id
+        ```
+
+24. **Chat Bot / AI Assistant**
+    - [ ] **Option A: Dialogflow (Google)**
+      - Create agent at dialogflow.cloud.google.com
+      - Get Service Account Key
+      - Add to `.env.local`:
+        ```
+        DIALOGFLOW_PROJECT_ID=your-project-id
+        DIALOGFLOW_PRIVATE_KEY=your-key
+        ```
+    - [ ] **Option B: OpenAI GPT**
+      - Get API key from platform.openai.com
+      - Add to `.env.local`:
+        ```
+        OPENAI_API_KEY=your-api-key
+        ```
+
+## 📅 Booking & Scheduling
+
+25. **Calendar Integration**
+    - [ ] **Google Calendar API**
+      - Enable API at console.cloud.google.com
+      - Create service account
+      - Share calendar with service account email
+      - Add to `.env.local`:
+        ```
+        GOOGLE_CALENDAR_ID=your-calendar-id
+        GOOGLE_SERVICE_ACCOUNT_EMAIL=your-service-account@project.iam.gserviceaccount.com
+        GOOGLE_PRIVATE_KEY=your-private-key
+        ```
+    - [ ] **Microsoft Graph API** (for Outlook)
+      - Register app in Azure AD
+      - Get Client ID and Secret
+      - Add to `.env.local`:
+        ```
+        MICROSOFT_CLIENT_ID=your-client-id
+        MICROSOFT_CLIENT_SECRET=your-secret
+        MICROSOFT_TENANT_ID=your-tenant-id
+        ```
+
+26. **Scheduling Platform Integration**
+    - [ ] **Calendly API**
+      - Get API key from calendly.com/integrations
+      - Add to `.env.local`:
+        ```
+        CALENDLY_API_KEY=your-api-key
+        CALENDLY_USER_URI=your-user-uri
+        ```
+    - [ ] **Acuity Scheduling**
+      - Get User ID and API Key
+      - Add to `.env.local`:
+        ```
+        ACUITY_USER_ID=your-user-id
+        ACUITY_API_KEY=your-api-key
+        ```
+
+## 👥 Customer Portal
+
+27. **Authentication Provider**
+    - [ ] **Auth0**
+      - Create application at auth0.com
+      - Add to `.env.local`:
+        ```
+        AUTH0_DOMAIN=your-domain.auth0.com
+        AUTH0_CLIENT_ID=your-client-id
+        AUTH0_CLIENT_SECRET=your-secret
+        ```
+    - [ ] **Firebase Auth**
+      - Set up project at firebase.google.com
+      - Add to `.env.local`:
+        ```
+        FIREBASE_API_KEY=your-api-key
+        FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+        FIREBASE_PROJECT_ID=your-project-id
+        ```
+    - [ ] **Clerk**
+      - Sign up at clerk.dev
+      - Add to `.env.local`:
+        ```
+        NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your-key
+        CLERK_SECRET_KEY=your-secret
+        ```
+
+## 🎁 Referral Program
+
+28. **Referral Tracking Platform**
+    - [ ] **ReferralCandy**
+      - Sign up and get API credentials
+      - Add to `.env.local`:
+        ```
+        REFERRALCANDY_API_KEY=your-key
+        REFERRALCANDY_SECRET_KEY=your-secret
+        ```
+    - [ ] **Post Affiliate Pro**
+      - Get API credentials
+      - Add to `.env.local`:
+        ```
+        PAP_API_URL=your-url
+        PAP_USERNAME=your-username
+        PAP_API_KEY=your-key
+        ```
+    - [ ] **Rewardful**
+      - Get API key from rewardful.com
+      - Add to `.env.local`:
+        ```
+        REWARDFUL_API_KEY=your-key
+        ```
+
+## ⭐ Review Management
+
+29. **Review Platforms API**
+    - [ ] **Google Places API**
+      - Enable in Google Cloud Console
+      - Get API Key and Place ID
+      - Add to `.env.local`:
+        ```
+        GOOGLE_PLACES_API_KEY=your-key
+        GOOGLE_PLACE_ID=your-place-id
+        ```
+    - [ ] **Yelp Fusion API**
+      - Get API key from yelp.com/developers
+      - Find your business ID
+      - Add to `.env.local`:
+        ```
+        YELP_API_KEY=your-key
+        YELP_BUSINESS_ID=your-business-id
+        ```
+    - [ ] **Trustpilot API**
+      - Get API credentials
+      - Add to `.env.local`:
+        ```
+        TRUSTPILOT_API_KEY=your-key
+        TRUSTPILOT_API_SECRET=your-secret
+        TRUSTPILOT_BUSINESS_UNIT_ID=your-id
+        ```
+
+30. **Review Request Automation**
+    - [ ] **BirdEye**
+      - Get API credentials
+      - Add to `.env.local`:
+        ```
+        BIRDEYE_API_KEY=your-key
+        BIRDEYE_BUSINESS_ID=your-id
+        ```
+    - [ ] **Grade.us**
+      - Get API access
+      - Add to `.env.local`:
+        ```
+        GRADEUS_API_KEY=your-key
+        ```
+
+## 🏠 Property Management Integration
+
+31. **Building Management Systems**
+    - [ ] For each tower, get:
+      - Property manager contact email
+      - Preferred communication method
+      - Bulk discount agreements
+      - Concierge desk phone numbers
+      - Parking validation process
+      - Service elevator access times
+      - Insurance requirements
+      - Background check requirements
+
+32. **Access Management**
+    - [ ] **BuildingLink Integration** (if applicable)
+      - Get API access from property managers
+      - Add credentials to `.env.local`
+    - [ ] **Butterfly MX** (for buildings with this system)
+      - Get integration credentials
+      - Add to `.env.local`
+
+## 📊 Business Intelligence
+
+33. **Analytics Dashboard**
+    - [ ] **Looker Studio** (formerly Google Data Studio)
+      - Connect GA4, Google Ads, and other data sources
+      - Create dashboard for tracking KPIs
+    - [ ] **Segment**
+      - Get Write Key from segment.com
+      - Add to `.env.local`:
+        ```
+        NEXT_PUBLIC_SEGMENT_WRITE_KEY=your-key
+        ```
+
+34. **Customer Data Platform**
+    - [ ] **Mixpanel**
+      - Get Project Token
+      - Add to `.env.local`:
+        ```
+        NEXT_PUBLIC_MIXPANEL_TOKEN=your-token
+        ```
+    - [ ] **Amplitude**
+      - Get API Key
+      - Add to `.env.local`:
+        ```
+        NEXT_PUBLIC_AMPLITUDE_API_KEY=your-key
+        ```
+
 ---
 
 ## Priority Order (Recommended)
