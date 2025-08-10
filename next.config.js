@@ -1,3 +1,5 @@
+const { withSentryConfig } = require('@sentry/nextjs');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -199,6 +201,29 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
-module.exports = process.env.ANALYZE === 'true' 
-  ? withBundleAnalyzer(nextConfig) 
-  : nextConfig;
+// Wrap with bundle analyzer if needed
+let config = nextConfig;
+if (process.env.ANALYZE === 'true') {
+  config = withBundleAnalyzer(config);
+}
+
+// Wrap with Sentry
+module.exports = withSentryConfig(
+  config,
+  {
+    // For all available options, see:
+    // https://github.com/getsentry/sentry-webpack-plugin#options
+    silent: true,
+    org: 'aura-spring-cleaning',
+    project: 'javascript-nextjs',
+  },
+  {
+    // Upload source maps only in production
+    widenClientFileUpload: true,
+    transpileClientSDK: true,
+    tunnelRoute: '/monitoring',
+    hideSourceMaps: true,
+    disableLogger: true,
+    automaticVercelMonitors: true,
+  }
+);
