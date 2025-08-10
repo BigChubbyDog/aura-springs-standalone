@@ -140,14 +140,16 @@ export default function HomePage() {
         <section className="relative">
           <PhotoCarousel
             images={cleaningImages.hero}
-            title="Austin's Premier Luxury Cleaning Service"
           />
           <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/40 to-transparent">
             <div className="mx-auto w-full max-w-7xl px-4 pb-12">
-              <h1 className="mb-4 text-4xl font-bold text-white drop-shadow-2xl md:text-7xl" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+              <h1 className="mb-2 text-4xl font-bold text-white drop-shadow-2xl md:text-7xl" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                 Aura Spring Cleaning
               </h1>
-              <p className="mb-8 max-w-2xl text-lg font-medium text-white drop-shadow-lg md:text-2xl" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.8)' }}>
+              <p className="mb-4 text-xl font-semibold text-white drop-shadow-lg md:text-3xl" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.8)' }}>
+                Austin's Premier Luxury Cleaning Service
+              </p>
+              <p className="mb-8 max-w-2xl text-lg font-medium text-gray-100 drop-shadow-lg md:text-xl" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.8)' }}>
                 Transform your space into a sanctuary of cleanliness. Serving
                 Austin's finest homes since 2018.
               </p>
