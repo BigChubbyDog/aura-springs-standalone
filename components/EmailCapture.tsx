@@ -22,11 +22,21 @@ export default function EmailCapture({ variant = 'popup', delay = 5000, onClose 
   useState(() => {
     if (variant === 'popup' && !hasInteracted) {
       const timer = setTimeout(() => {
-        // Check if user hasn't already signed up
+        // Check if user hasn't already signed up or recently dismissed
         const hasSignedUp = localStorage.getItem('email_capture_completed');
-        if (!hasSignedUp) {
-          setIsVisible(true);
+        const lastDismissed = localStorage.getItem('email_capture_dismissed');
+        
+        // Don't show if signed up
+        if (hasSignedUp) return;
+        
+        // Don't show if dismissed in the last 7 days
+        if (lastDismissed) {
+          const dismissedDate = new Date(lastDismissed);
+          const daysSinceDismissed = (new Date().getTime() - dismissedDate.getTime()) / (1000 * 60 * 60 * 24);
+          if (daysSinceDismissed < 7) return;
         }
+        
+        setIsVisible(true);
       }, delay);
 
       return () => clearTimeout(timer);
@@ -39,10 +49,20 @@ export default function EmailCapture({ variant = 'popup', delay = 5000, onClose 
       const handleMouseLeave = (e: MouseEvent) => {
         if (e.clientY <= 0 && !hasInteracted) {
           const hasSignedUp = localStorage.getItem('email_capture_completed');
-          if (!hasSignedUp) {
-            setIsVisible(true);
-            setHasInteracted(true);
+          const lastDismissed = localStorage.getItem('email_capture_dismissed');
+          
+          // Don't show if signed up
+          if (hasSignedUp) return;
+          
+          // Don't show if dismissed in the last 7 days
+          if (lastDismissed) {
+            const dismissedDate = new Date(lastDismissed);
+            const daysSinceDismissed = (new Date().getTime() - dismissedDate.getTime()) / (1000 * 60 * 60 * 24);
+            if (daysSinceDismissed < 7) return;
           }
+          
+          setIsVisible(true);
+          setHasInteracted(true);
         }
       };
 
@@ -110,18 +130,10 @@ export default function EmailCapture({ variant = 'popup', delay = 5000, onClose 
       // Show success state
       setIsSuccess(true);
 
-      // Trigger download after short delay
+      // Redirect to the checklist page after a short delay
       setTimeout(() => {
-        const link = document.createElement('a');
-        link.href = '/downloads/ultimate-cleaning-checklist.pdf';
-        link.download = 'AuraSpring-Ultimate-Cleaning-Checklist.pdf';
-        link.click();
-      }, 1000);
-
-      // Close after download
-      setTimeout(() => {
-        handleClose();
-      }, 3000);
+        window.location.href = '/resources/cleaning-checklist';
+      }, 2000);
 
     } catch (err) {
       setError('Something went wrong. Please try again.');
@@ -134,6 +146,8 @@ export default function EmailCapture({ variant = 'popup', delay = 5000, onClose 
   const handleClose = () => {
     setIsVisible(false);
     setHasInteracted(true);
+    // Store dismissal in localStorage to prevent showing again too soon
+    localStorage.setItem('email_capture_dismissed', new Date().toISOString());
     if (onClose) onClose();
   };
 
@@ -214,20 +228,30 @@ export default function EmailCapture({ variant = 'popup', delay = 5000, onClose 
               <p className="text-red-600 text-sm">{error}</p>
             )}
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-sage-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-sage-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-            >
-              {isSubmitting ? (
-                <span>Sending...</span>
-              ) : (
-                <>
-                  <Download className="w-5 h-5 mr-2" />
-                  Get Free Checklist + 20% Off
-                </>
-              )}
-            </button>
+            <div className="flex gap-3">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="flex-1 bg-sage-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-sage-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              >
+                {isSubmitting ? (
+                  <span>Sending...</span>
+                ) : (
+                  <>
+                    <Download className="w-5 h-5 mr-2" />
+                    Get Free Checklist
+                  </>
+                )}
+              </button>
+              
+              <button
+                type="button"
+                onClick={handleClose}
+                className="flex-1 bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-lg hover:bg-gray-300 transition-colors"
+              >
+                No Thanks
+              </button>
+            </div>
 
             <p className="text-xs text-gray-500 text-center">
               We respect your privacy. Unsubscribe at any time.
@@ -241,13 +265,13 @@ export default function EmailCapture({ variant = 'popup', delay = 5000, onClose 
             <CheckCircle className="w-8 h-8 text-green-600" />
           </div>
           <h3 className="text-2xl font-bold text-gray-900 mb-2">
-            Success! Check Your Email
+            Success! Here's Your Checklist
           </h3>
           <p className="text-gray-600 mb-4">
-            Your cleaning checklist is on its way! We've also sent you a 20% off coupon for your first cleaning.
+            We're taking you to your free cleaning checklist now. We've also sent a copy to your email along with your 20% off coupon!
           </p>
           <p className="text-sm text-gray-500">
-            Download starting automatically...
+            Redirecting to your checklist...
           </p>
         </div>
       )}

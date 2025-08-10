@@ -10,6 +10,12 @@ const PricingCalculator = dynamic(() => import('@/components/PricingCalculator')
   loading: () => <div className="h-96 bg-gray-100 animate-pulse rounded-xl" />,
   ssr: false, // Client-side only for calculator
 });
+
+const EmailCapture = dynamic(() => import('@/components/EmailCapture'), {
+  loading: () => null,
+  ssr: false, // Client-side only for popup
+});
+
 import { MetaTags } from '@/components/SEO/MetaTags';
 import { StructuredData } from '@/components/SEO/StructuredData';
 import { cleaningImages } from '@/lib/imageService';
@@ -135,6 +141,10 @@ export default function HomePage() {
         image="https://auraspringcleaning.com/images/og-image.jpg"
       />
       <StructuredData data={structuredData} />
+      
+      {/* Email Capture Popup - Shows after 5 seconds */}
+      <EmailCapture variant="popup" delay={5000} />
+      
       <main className="min-h-screen bg-gradient-to-b from-white via-aura-primary-50/20 to-white">
         {/* Hero Section with Carousel */}
         <section className="relative">
