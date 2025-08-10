@@ -4,6 +4,7 @@ import Script from 'next/script';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import EnhancedLocalBusinessSchema from '@/components/SEO/EnhancedLocalBusinessSchema';
+import SkipToContent from '@/components/SkipToContent';
 import dynamic from 'next/dynamic';
 
 const StickyBookButton = dynamic(() => import('@/components/StickyBookButton'), {
@@ -15,6 +16,10 @@ const Breadcrumbs = dynamic(() => import('@/components/Breadcrumbs'), {
 });
 
 const ServiceWorkerRegistration = dynamic(() => import('@/components/ServiceWorkerRegistration'), {
+  ssr: false,
+});
+
+const CookieConsent = dynamic(() => import('@/components/CookieConsent'), {
   ssr: false,
 });
 
@@ -220,6 +225,9 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
       </head>
       <body className="bg-white">
+        {/* Skip to main content for screen readers */}
+        <SkipToContent />
+        
         {/* Google Tag Manager (noscript) */}
         {gtmId && (
           <noscript>
@@ -254,6 +262,9 @@ export default function RootLayout({
         
         {/* Service Worker Registration */}
         <ServiceWorkerRegistration />
+        
+        {/* Cookie Consent for GDPR/CCPA */}
+        <CookieConsent />
         
         {/* Structured Data */}
         <EnhancedLocalBusinessSchema />

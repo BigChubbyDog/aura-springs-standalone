@@ -2,6 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
+/* WCAG AAA Compliance Styles */
+
+/* Screen reader only - but visible on focus */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.not-sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  a, button {
+    text-decoration: underline;
+  }
+  
+  .text-gray-400, .text-gray-500, .text-gray-600 {
+    color: #000 !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visible styles for better keyboard navigation */
+:focus-visible {
+  outline: 3px solid #7c9768;
+  outline-offset: 2px;
+}
+
+/* Ensure minimum touch target sizes (48x48px) */
+button, a, input, select, textarea {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+/* Improved link underlines for better visibility */
+a:not(.no-underline) {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+/* Better form field focus */
+input:focus, textarea:focus, select:focus {
+  outline: 3px solid #7c9768;
+  outline-offset: 2px;
+  border-color: #7c9768;
+}
+
 /* Mobile-specific text improvements */
 @media (max-width: 768px) {
   /* Ensure better contrast on mobile */

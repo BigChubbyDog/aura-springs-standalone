@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, Calendar, MapPin, Star, ChevronDown } from 'lucide-react';
+import LanguageSelector from '@/components/LanguageSelector';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -144,6 +145,7 @@ const Header = () => {
 
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-4">
+              <LanguageSelector />
               <Link
                 href="/booking"
                 className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-aura-primary-500 to-aura-primary-700 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
