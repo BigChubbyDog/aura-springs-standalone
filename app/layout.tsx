@@ -1,6 +1,7 @@
 import './globals-simple.css';
 import { Metadata } from 'next';
 import Script from 'next/script';
+import { Suspense } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import EnhancedLocalBusinessSchema from '@/components/SEO/EnhancedLocalBusinessSchema';
@@ -263,7 +264,9 @@ export default function RootLayout({
         <CookieConsent />
         
         {/* Analytics and Tracking */}
-        <Analytics />
+        <Suspense fallback={null}>
+          <Analytics />
+        </Suspense>
         
         {/* Email Capture Lead Magnet */}
         <EmailCapture variant="popup" delay={15000} />
