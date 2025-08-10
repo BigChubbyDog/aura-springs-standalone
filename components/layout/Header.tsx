@@ -54,9 +54,9 @@ const Header = () => {
       <div className="bg-gradient-to-r from-aura-primary-500 to-aura-primary-700 text-white py-2 px-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:5125552872" className="flex items-center gap-1 hover:text-aura-primary-100 transition-colors">
+            <a href="tel:5127810527" className="flex items-center gap-1 hover:text-aura-primary-100 transition-colors">
               <Phone className="w-3 h-3" />
-              (512) 555-2872
+              (512) 781-0527
             </a>
             <div className="hidden md:flex items-center gap-1">
               <MapPin className="w-3 h-3" />
