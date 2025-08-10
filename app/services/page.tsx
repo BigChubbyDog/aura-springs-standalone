@@ -14,9 +14,7 @@ import {
   Star
 } from 'lucide-react';
 
-const EmailCapture = dynamic(() => import('@/components/EmailCapture'), {
-  ssr: false,
-});
+const EmailCapture = dynamic(() => import('@/components/EmailCapture'));
 
 export const metadata: Metadata = {
   title: 'Professional Cleaning Services | Aura Spring Cleaning Austin',

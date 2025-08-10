@@ -33,6 +33,18 @@ const Header = () => {
       ]
     },
     {
+      name: 'Luxury Towers',
+      href: '/towers',
+      dropdown: [
+        { name: 'The Quincy', href: '/towers/the-quincy' },
+        { name: '70 Rainey', href: '/towers/70-rainey' },
+        { name: 'The Independent', href: '/towers/the-independent' },
+        { name: '44 East Ave', href: '/towers/44-east' },
+        { name: 'The Shore', href: '/towers/the-shore' },
+        { name: 'View All Towers', href: '/towers' },
+      ]
+    },
+    {
       name: 'Areas',
       href: '/areas',
       dropdown: [
