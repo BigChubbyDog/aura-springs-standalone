@@ -4,6 +4,8 @@ import Script from 'next/script';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import EnhancedLocalBusinessSchema from '@/components/SEO/EnhancedLocalBusinessSchema';
+import StickyBookButton from '@/components/StickyBookButton';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Aura Spring Cleaning | #1 House Cleaning Service Austin TX | Same Day Booking',
@@ -232,8 +234,12 @@ export default function RootLayout({
         )}
 
         <Header />
+        <Breadcrumbs />
         {children}
         <Footer />
+        
+        {/* Sticky Book Button for Mobile */}
+        <StickyBookButton />
         
         {/* Structured Data */}
         <EnhancedLocalBusinessSchema />
