@@ -7,37 +7,21 @@ import EnhancedLocalBusinessSchema from '@/components/SEO/EnhancedLocalBusinessS
 import SkipToContent from '@/components/SkipToContent';
 import dynamic from 'next/dynamic';
 
-const StickyBookButton = dynamic(() => import('@/components/StickyBookButton'), {
-  ssr: false, // Client-side only
-});
+const StickyBookButton = dynamic(() => import('@/components/StickyBookButton'));
 
-const Breadcrumbs = dynamic(() => import('@/components/Breadcrumbs'), {
-  ssr: false, // Client-side only for path detection
-});
+const Breadcrumbs = dynamic(() => import('@/components/Breadcrumbs'));
 
-const ServiceWorkerRegistration = dynamic(() => import('@/components/ServiceWorkerRegistration'), {
-  ssr: false,
-});
+const ServiceWorkerRegistration = dynamic(() => import('@/components/ServiceWorkerRegistration'));
 
-const CookieConsent = dynamic(() => import('@/components/CookieConsent'), {
-  ssr: false,
-});
+const CookieConsent = dynamic(() => import('@/components/CookieConsent'));
 
-const Analytics = dynamic(() => import('@/components/Analytics'), {
-  ssr: false,
-});
+const Analytics = dynamic(() => import('@/components/Analytics'));
 
-const EmailCapture = dynamic(() => import('@/components/EmailCapture'), {
-  ssr: false,
-});
+const EmailCapture = dynamic(() => import('@/components/EmailCapture'));
 
-const LiveChat = dynamic(() => import('@/components/LiveChat'), {
-  ssr: false,
-});
+const LiveChat = dynamic(() => import('@/components/LiveChat'));
 
-const AbandonedCartRecovery = dynamic(() => import('@/components/booking/AbandonedCartRecovery'), {
-  ssr: false,
-});
+const AbandonedCartRecovery = dynamic(() => import('@/components/booking/AbandonedCartRecovery'));
 
 export const metadata: Metadata = {
   title: 'Aura Spring Cleaning | #1 House Cleaning Service Austin TX | Same Day Booking',

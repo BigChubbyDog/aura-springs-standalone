@@ -1,135 +1,45 @@
-name: Deploy to Azure App Service
+name: Deploy to Azure
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: auraspringcleaning
-  AZURE_WEBAPP_PACKAGE_PATH: '.'
   NODE_VERSION: '20.x'
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: 'production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
+    
     steps:
-      - name: 'Checkout GitHub Action'
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Setup Node ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
 
-      - name: 'Install dependencies'
-        run: |
-          npm ci
-          npm run build --if-present
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js app
+        run: npm run build
         env:
-          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
-          STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
-          NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}
+          NEXT_PUBLIC_GA_ID: G-JB55XBQ8Y3
+          NEXT_PUBLIC_SITE_URL: https://aurasprings.com
+          UNSPLASH_ACCESS_KEY: wjEgF3Q1KnH_BnMRJ1GO4s2ZULbOnHdBArClj66HR8g
+          PEXELS_API_KEY: 3wtvEl6J6LD0Bx43Gcf6MSrYW4xJIpUgtMQ48rvLNdtFrIitGAB2SKr0
 
-      - name: 'Run tests'
-        run: npm test --if-present
-
-      - name: 'Create deployment package'
-        run: |
-          zip -r deploy.zip . -x "*.git*" -x "node_modules/*" -x ".github/*"
-
-      - name: 'Login to Azure'
-        uses: azure/login@v1
-        with:
-          creds: |
-            {
-              "clientId": "33a34c59-1641-47f5-8227-6bfcb11bdf42",
-              "clientSecret": "${{ secrets.AZURE_CLIENT_SECRET }}",
-              "subscriptionId": "${{ secrets.AZURE_SUBSCRIPTION_ID }}",
-              "tenantId": "753965c2-2a85-437e-a9c9-9f824df99584"
-            }
-
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          package: deploy.zip
-
-      - name: 'Configure App Settings'
-        uses: azure/appservice-settings@v1
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          app-settings-json: |
-            [
-              {
-                "name": "WEBSITE_NODE_DEFAULT_VERSION",
-                "value": "~20"
-              },
-              {
-                "name": "NEXT_PUBLIC_SITE_URL",
-                "value": "https://auraspringcleaning.com"
-              },
-              {
-                "name": "NODE_ENV",
-                "value": "production"
-              },
-              {
-                "name": "NEXT_PUBLIC_AZURE_TENANT_ID",
-                "value": "753965c2-2a85-437e-a9c9-9f824df99584"
-              },
-              {
-                "name": "NEXT_PUBLIC_AZURE_CLIENT_ID",
-                "value": "33a34c59-1641-47f5-8227-6bfcb11bdf42"
-              },
-              {
-                "name": "DYNAMICS_365_URL",
-                "value": "https://org829637ae.crm.dynamics.com"
-              },
-              {
-                "name": "STRIPE_SECRET_KEY",
-                "value": "${{ secrets.STRIPE_SECRET_KEY }}"
-              },
-              {
-                "name": "STRIPE_WEBHOOK_SECRET",
-                "value": "${{ secrets.STRIPE_WEBHOOK_SECRET }}"
-              },
-              {
-                "name": "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
-                "value": "${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}"
-              }
-            ]
-
-      - name: 'Purge CDN endpoint'
-        run: |
-          az cdn endpoint purge \
-            --resource-group rg-auraspringcleaning-prod \
-            --profile-name cdn-auraspringcleaning \
-            --name auraspringcleaning \
-            --content-paths "/*"
-
-      - name: 'Warm up site'
-        run: |
-          curl -s https://auraspringcleaning.com > /dev/null
-          curl -s https://auraspringcleaning.com/areas/rainey-street > /dev/null
-
-      - name: 'Notify Teams Channel'
+      - name: Deploy to Azure Static Web Apps
         if: success()
-        run: |
-          curl -H "Content-Type: application/json" \
-               -d '{"text": "✅ Aura Spring Cleaning deployed successfully to Azure!"}' \
-               ${{ secrets.TEAMS_WEBHOOK_URL }}
-
-      - name: 'Update Dynamics 365'
-        if: success()
-        run: |
-          echo "Deployment record created in Dynamics 365"
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "/"
+          output_location: ".next"
+          skip_app_build: true
