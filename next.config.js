@@ -11,8 +11,7 @@ const nextConfig = {
   },
   
   // Output configuration for Azure Static Web Apps
-  // Use 'export' for static export, 'standalone' for server-side rendering
-  output: process.env.STATIC_EXPORT === 'true' ? 'export' : 'standalone',
+  output: 'standalone',
   
   // Compression
   compress: true,

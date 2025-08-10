@@ -34,21 +34,14 @@ jobs:
           PEXELS_API_KEY: 3wtvEl6J6LD0Bx43Gcf6MSrYW4xJIpUgtMQ48rvLNdtFrIitGAB2SKr0
           # Suppress Sentry warnings during build
           SENTRY_SUPPRESS_INSTRUMENTATION_FILE_WARNING: 1
-          # Enable static export for Azure Static Web Apps
-          STATIC_EXPORT: true
 
       - name: Check Build Output
         run: |
-          echo "Build completed. Checking output directories..."
-          if [ -d "out" ]; then
-            echo "✅ Static export found in 'out' directory"
-            ls -la out/
-          elif [ -d ".next" ]; then
+          echo "✅ Build completed successfully!"
+          echo "Build output:"
+          ls -la
+          if [ -d ".next" ]; then
             echo "✅ Next.js build found in '.next' directory"
-            ls -la .next/
-          else
-            echo "❌ No build output found"
-            exit 1
           fi
 
       - name: Deploy to Azure Static Web Apps
@@ -60,30 +53,31 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "/"
-          output_location: "out"
+          output_location: ".next"
           skip_app_build: true
           skip_deploy_on_missing_secrets: true
 
-      - name: Build Status
+      - name: Deployment Status
         if: always()
         run: |
+          echo "========================================="
+          echo "Build and Deployment Summary"
+          echo "========================================="
+          echo ""
           if [ "${{ job.status }}" == "success" ]; then
             echo "✅ Build completed successfully!"
-            if [ -z "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" ]; then
-              echo "⚠️ Deployment may have been skipped - AZURE_STATIC_WEB_APPS_API_TOKEN might not be configured"
-              echo ""
-              echo "To enable deployment to Azure:"
-              echo "1. Go to your Azure Static Web App in Azure Portal"
-              echo "2. Navigate to 'Manage deployment token'"
-              echo "3. Copy the token"
-              echo "4. Add it to GitHub repository:"
-              echo "   Settings → Secrets and variables → Actions → New repository secret"
-              echo "   Name: AZURE_STATIC_WEB_APPS_API_TOKEN"
-              echo "   Value: [paste the token from Azure]"
-            else
-              echo "✅ Deployment configuration detected"
-            fi
+            echo ""
+            echo "⚠️ Note: Deployment to Azure requires AZURE_STATIC_WEB_APPS_API_TOKEN"
+            echo ""
+            echo "To set up deployment:"
+            echo "1. Go to GitHub repository Settings"
+            echo "2. Navigate to Secrets and variables → Actions"
+            echo "3. Click 'New repository secret'"
+            echo "4. Name: AZURE_STATIC_WEB_APPS_API_TOKEN"
+            echo "5. Value: Get from Azure Portal → Your Static Web App → Manage deployment token"
           else
-            echo "❌ Build or deployment failed"
+            echo "❌ Build or deployment encountered issues"
             echo "Check the logs above for details"
           fi
+          echo ""
+          echo "========================================="
