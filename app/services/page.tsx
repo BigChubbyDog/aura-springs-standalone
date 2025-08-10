@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { 
   Home, 
   Sparkles, 
@@ -12,6 +13,10 @@ import {
   Shield,
   Star
 } from 'lucide-react';
+
+const EmailCapture = dynamic(() => import('@/components/EmailCapture'), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   title: 'Professional Cleaning Services | Aura Spring Cleaning Austin',
@@ -164,6 +169,21 @@ export default function ServicesPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Email Capture Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Get Your Free Cleaning Checklist
+            </h2>
+            <p className="text-lg text-gray-600">
+              Professional tips and room-by-room guide to keep your home spotless
+            </p>
+          </div>
+          <EmailCapture variant="inline" />
         </div>
       </section>
 

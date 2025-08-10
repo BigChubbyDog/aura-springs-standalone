@@ -27,6 +27,10 @@ const Analytics = dynamic(() => import('@/components/Analytics'), {
   ssr: false,
 });
 
+const EmailCapture = dynamic(() => import('@/components/EmailCapture'), {
+  ssr: false,
+});
+
 export const metadata: Metadata = {
   title: 'Aura Spring Cleaning | #1 House Cleaning Service Austin TX | Same Day Booking',
   description: '⭐ 5-Star Rated Austin House Cleaning Service. Save 2+ hours weekly! Professional cleaners for homes, condos & Airbnbs. Book online in 60 seconds. Same-day service available. 100% satisfaction guaranteed. Eco-friendly products. Licensed & insured. Call (512) 781-0527 for instant quote!',
@@ -272,6 +276,9 @@ export default function RootLayout({
         
         {/* Analytics and Tracking */}
         <Analytics />
+        
+        {/* Email Capture Lead Magnet */}
+        <EmailCapture variant="popup" delay={15000} />
         
         {/* Structured Data */}
         <EnhancedLocalBusinessSchema />

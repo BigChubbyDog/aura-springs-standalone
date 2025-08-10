@@ -1,0 +1,18 @@
+This would normally be a binary PDF file. 
+For development, you can generate a PDF from the checklist page using:
+1. Visit /downloads/ultimate-cleaning-checklist
+2. Print to PDF
+3. Save as ultimate-cleaning-checklist.pdf in this folder
+
+Or use a PDF generation library like:
+- jsPDF
+- PDFKit
+- Puppeteer (for server-side generation)
+- react-pdf
+
+The checklist should include:
+- Professional cleaning tips
+- Room-by-room task lists
+- Time-saving techniques
+- Eco-friendly product recommendations
+- 20% off coupon code for first-time customers

@@ -4,6 +4,11 @@ import { ArrowLeft, Calendar, Clock, Share2, User } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import dynamic from 'next/dynamic';
+
+const EmailCapture = dynamic(() => import('@/components/EmailCapture'), {
+  ssr: false,
+});
 
 const blogPosts = [
   {
@@ -214,6 +219,9 @@ export default function BlogPost({ params }: { params: { id: string } }) {
           </div>
         </div>
       </section>
+
+      {/* Exit Intent Email Capture */}
+      <EmailCapture variant="exit-intent" />
 
       {/* Related Articles */}
       <section className="py-12 bg-gray-50">
