@@ -6,6 +6,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import EnhancedLocalBusinessSchema from '@/components/SEO/EnhancedLocalBusinessSchema';
 import SkipToContent from '@/components/SkipToContent';
+import ScrollToTop from '@/components/ScrollToTop';
 import dynamic from 'next/dynamic';
 
 const StickyBookButton = dynamic(() => import('@/components/StickyBookButton'));
@@ -230,6 +231,9 @@ export default function RootLayout({
         
         {/* Skip to main content for screen readers */}
         <SkipToContent />
+        
+        {/* Scroll to top on page navigation */}
+        <ScrollToTop />
         
         {/* Facebook Pixel (noscript) */}
         {fbPixelId && (

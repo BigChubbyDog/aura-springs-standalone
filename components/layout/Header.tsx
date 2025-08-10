@@ -181,15 +181,16 @@ const Header = () => {
           </div>
         </nav>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Optimized for performance */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden bg-white border-t border-gray-100 overflow-hidden"
+              transition={{ duration: 0.2, ease: 'easeInOut' }}
+              className="lg:hidden bg-white border-t border-gray-100 overflow-hidden will-change-[height,opacity]"
+              style={{ contain: 'layout' }}
             >
               <div className="px-4 py-6 space-y-4">
                 {navigation.map((item) => (
