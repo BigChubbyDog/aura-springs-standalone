@@ -60,7 +60,7 @@ export default function Analytics() {
     
     // Track with Google Analytics
     if (window.gtag) {
-      window.gtag('config', process.env.NEXT_PUBLIC_GA_ID || '', {
+      window.gtag('config', process.env.NEXT_PUBLIC_GA_ID || 'G-JB55XBQ8Y3', {
         page_path: url,
       });
     }

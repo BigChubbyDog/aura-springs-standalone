@@ -125,7 +125,7 @@ export default function RootLayout({
 }) {
   // Disable GTM/GA until we have real IDs (not placeholder values)
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID === 'GTM-XXXX' ? null : process.env.NEXT_PUBLIC_GTM_ID;
-  const gaId = process.env.NEXT_PUBLIC_GA_ID === 'G-XXXXXXXXXX' ? null : process.env.NEXT_PUBLIC_GA_ID;
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || 'G-JB55XBQ8Y3'; // Using provided GA ID
   const fbPixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID;
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
 
@@ -177,24 +177,20 @@ export default function RootLayout({
         )}
 
         {/* Google Analytics */}
-        {gaId && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga-script" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}', {
-                  page_path: window.location.pathname,
-                });
-              `}
-            </Script>
-          </>
-        )}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-JB55XBQ8Y3"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-script" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-JB55XBQ8Y3', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
 
         {/* Facebook Pixel */}
         {fbPixelId && (
