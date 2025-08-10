@@ -3,6 +3,7 @@ import crypto from 'crypto';
 
 const ACCESS_TOKEN = process.env.META_CONVERSION_ACCESS_TOKEN;
 const PIXEL_ID = process.env.META_DATASET_ID || '753683467224168';
+const TEST_EVENT_CODE = process.env.META_TEST_EVENT_CODE; // For testing
 
 // Hash user data for privacy (required by Meta)
 function hashData(data: string): string {
@@ -69,7 +70,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Prepare the event data for Conversion API
-    const conversionData = {
+    const conversionData: any = {
       data: [
         {
           event_name: eventName,
@@ -81,6 +82,11 @@ export async function POST(request: NextRequest) {
         },
       ],
     };
+
+    // Add test event code if in test mode
+    if (TEST_EVENT_CODE) {
+      conversionData.test_event_code = TEST_EVENT_CODE;
+    }
 
     // Send to Meta Conversion API
     const metaResponse = await fetch(
