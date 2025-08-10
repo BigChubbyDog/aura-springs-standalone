@@ -25,6 +25,8 @@ const LiveChat = dynamic(() => import('@/components/LiveChat'));
 
 const AbandonedCartRecovery = dynamic(() => import('@/components/booking/AbandonedCartRecovery'));
 
+const MetaPixelAdvancedMatching = dynamic(() => import('@/components/MetaPixelAdvancedMatching'));
+
 export const metadata: Metadata = {
   title: 'Aura Spring Cleaning | #1 House Cleaning Service Austin TX | Same Day Booking',
   description: '⭐ 5-Star Rated Austin House Cleaning Service. Save 2+ hours weekly! Professional cleaners for homes, condos & Airbnbs. Book online in 60 seconds. Same-day service available. 100% satisfaction guaranteed. Eco-friendly products. Licensed & insured. Call (512) 781-0527 for instant quote!',
@@ -268,6 +270,9 @@ export default function RootLayout({
         
         {/* Abandoned Cart Recovery */}
         <AbandonedCartRecovery />
+        
+        {/* Meta Pixel Advanced Matching */}
+        <MetaPixelAdvancedMatching />
         
         {/* Structured Data */}
         <EnhancedLocalBusinessSchema />
