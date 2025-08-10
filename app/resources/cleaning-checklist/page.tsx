@@ -1,4 +1,5 @@
-import { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
 import { 
   Download, 
@@ -10,12 +11,6 @@ import {
   Clock,
   Star
 } from 'lucide-react';
-
-export const metadata: Metadata = {
-  title: 'Ultimate Room-by-Room Cleaning Checklist | Aura Spring Cleaning',
-  description: 'Free downloadable cleaning checklist used by Austin\'s top cleaning professionals. Organize your cleaning routine room by room.',
-  noindex: false, // Allow indexing for SEO value
-};
 
 export default function CleaningChecklistPage() {
   const rooms = [
