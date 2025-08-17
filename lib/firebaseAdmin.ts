@@ -4,35 +4,42 @@ import * as admin from 'firebase-admin';
 // Initialize Firebase Admin only once
 if (!admin.apps.length) {
   try {
-    // First, try to load the service account key file (development)
-    const serviceAccount = require('../serviceAccountKey.json');
-    
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-      projectId: 'aura-spring-cleaning-ce122'
-    });
-    
-    console.log('✅ Firebase Admin initialized with service account');
-  } catch (error) {
-    // If no service account file, try environment variables
-    if (process.env.FIREBASE_PROJECT_ID) {
-      try {
-        admin.initializeApp({
-          credential: admin.credential.applicationDefault(),
-          projectId: process.env.FIREBASE_PROJECT_ID
-        });
-        
-        console.log('✅ Firebase Admin initialized with default credentials');
-      } catch (envError) {
-        console.warn('⚠️ Firebase Admin not fully configured. Chat history will not be saved.');
-        
-        // Initialize without credentials (limited functionality)
-        admin.initializeApp({
-          projectId: process.env.FIREBASE_PROJECT_ID || 'aura-spring-cleaning-ce122'
-        });
-      }
+    // First, try environment variables (production/Azure)
+    if (process.env.FIREBASE_PRIVATE_KEY && process.env.FIREBASE_CLIENT_EMAIL) {
+      const serviceAccount = {
+        type: 'service_account',
+        project_id: process.env.FIREBASE_PROJECT_ID || 'aura-spring-cleaning-ce122',
+        private_key: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+        client_email: process.env.FIREBASE_CLIENT_EMAIL,
+      };
+      
+      admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
+        projectId: 'aura-spring-cleaning-ce122'
+      });
+      
+      console.log('✅ Firebase Admin initialized with environment variables');
     } else {
-      console.warn('⚠️ Firebase not configured. Add serviceAccountKey.json or set FIREBASE_PROJECT_ID');
+      // Try to load the service account key file (development)
+      const serviceAccount = require('../serviceAccountKey.json');
+      
+      admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        projectId: 'aura-spring-cleaning-ce122'
+      });
+      
+      console.log('✅ Firebase Admin initialized with service account file');
+    }
+  } catch (error) {
+    // Fallback: Initialize with limited functionality
+    console.warn('⚠️ Firebase Admin not fully configured. Some features may be limited.');
+    
+    try {
+      admin.initializeApp({
+        projectId: 'aura-spring-cleaning-ce122'
+      });
+    } catch (initError) {
+      console.error('Failed to initialize Firebase Admin:', initError);
     }
   }
 }

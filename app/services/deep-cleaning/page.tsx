@@ -82,13 +82,14 @@ const DeepCleaningPage = () => {
     }
   };
 
+  // Deep cleaning = Base price * 1.5 (from pricingService.ts)
   const pricingTiers = [
-    { size: '1000', label: '< 1,500 sq ft', beds: '1-2 Bed', price: 385, hours: '4-5' },
-    { size: '1500', label: '1,500-2,000 sq ft', beds: '2-3 Bed', price: 485, hours: '5-6' },
-    { size: '2000', label: '2,000-2,500 sq ft', beds: '3 Bed', price: 585, hours: '6-7' },
-    { size: '2500', label: '2,500-3,000 sq ft', beds: '3-4 Bed', price: 685, hours: '7-8' },
-    { size: '3000', label: '3,000-3,500 sq ft', beds: '4+ Bed', price: 785, hours: '8-9' },
-    { size: '3500', label: '3,500+ sq ft', beds: '5+ Bed', price: 885, hours: '9-10' }
+    { size: '1000', label: '< 1,500 sq ft', beds: '1-2 Bed', price: 188, hours: '4-5' }, // ($125 base) * 1.5
+    { size: '1500', label: '1,500-2,000 sq ft', beds: '2-3 Bed', price: 188, hours: '5-6' }, // ($125 base) * 1.5
+    { size: '2000', label: '2,000-2,500 sq ft', beds: '3 Bed', price: 225, hours: '6-7' }, // ($150 base) * 1.5
+    { size: '2500', label: '2,500-3,000 sq ft', beds: '3-4 Bed', price: 263, hours: '7-8' }, // ($175 base) * 1.5
+    { size: '3000', label: '3,000-3,500 sq ft', beds: '4+ Bed', price: 300, hours: '8-9' }, // ($200 base) * 1.5
+    { size: '3500', label: '3,500+ sq ft', beds: '5+ Bed', price: 338, hours: '9-10' } // ($225 base) * 1.5
   ];
 
   const situations = [

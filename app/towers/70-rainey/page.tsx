@@ -3,7 +3,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { Building2, Clock, Shield, Star, Phone, MapPin, CheckCircle, Calendar, DollarSign, Users } from 'lucide-react';
 
-const BookingWidget = dynamic(() => import('@/components/booking/BookingWidget'), { ssr: false });
+const BookingWidget = dynamic(() => import('@/components/booking/BookingWidget'));
 const EmailCapture = dynamic(() => import('@/components/EmailCapture'));
 
 export const metadata: Metadata = {

@@ -1,8 +1,17 @@
 'use client';
 
 import { Suspense } from 'react';
-import BookingForm from '@/components/booking/BookingForm';
+import dynamic from 'next/dynamic';
 import MicrosoftBookingsWidget from '@/components/booking/MicrosoftBookingsWidget';
+
+// Dynamically import the Firebase booking form to avoid SSR issues
+const FirebaseBookingForm = dynamic(
+  () => import('@/components/booking/FirebaseBookingForm'),
+  { 
+    ssr: false,
+    loading: () => <BookingFormFallback />
+  }
+);
 
 function BookingFormFallback() {
   return (
@@ -27,8 +36,8 @@ function BookingFormFallback() {
 }
 
 export default function BookingPage() {
-  // Use Microsoft Bookings widget for integrated booking experience
-  const useMicrosoftBookings = true;
+  // Use Firebase booking with Vertex AI instead of Microsoft Bookings
+  const useFirebaseBooking = true;
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
@@ -41,15 +50,13 @@ export default function BookingPage() {
         </h1>
         
         <p className="text-center text-gray-400 mb-12">
-          Experience Austin's premier cleaning service. Book instantly with Microsoft Bookings.
+          Experience Austin's premier cleaning service with AI-powered booking assistance.
         </p>
 
-        {useMicrosoftBookings ? (
-          <MicrosoftBookingsWidget embedded={true} />
+        {useFirebaseBooking ? (
+          <FirebaseBookingForm />
         ) : (
-          <Suspense fallback={<BookingFormFallback />}>
-            <BookingForm />
-          </Suspense>
+          <MicrosoftBookingsWidget embedded={true} />
         )}
 
         {/* Benefits */}

@@ -10,7 +10,7 @@ export default function PricingCalculator() {
     bedrooms: 3,
     bathrooms: 2,
     offices: 0,
-    squareFeet: 1500,
+    squareFeet: 1300,
     serviceType: 'standard',
     frequency: 'onetime',
     addOns: [],

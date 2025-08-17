@@ -22,14 +22,15 @@ export const metadata: Metadata = {
   keywords: 'cleaning services Austin, house cleaning, deep cleaning, commercial cleaning, Airbnb cleaning, move out cleaning',
 };
 
+// Pricing based on pricingService.ts - Base: $150 for 3BR/2BA up to 1300sqft
 const services = [
   {
     icon: Home,
     title: 'Regular House Cleaning',
     slug: 'house-cleaning',
     description: 'Maintain a consistently clean and healthy home with our regular cleaning service.',
-    features: ['Weekly/Bi-weekly/Monthly', 'Customizable checklist', 'Same cleaner requests', 'Eco-friendly products'],
-    price: 'From $150',
+    features: ['Weekly (20% off)', 'Bi-weekly (15% off)', 'Monthly (10% off)', 'Eco-friendly products'],
+    price: 'From $120', // With weekly discount: $150 * 0.8
     popular: true,
   },
   {
@@ -38,7 +39,7 @@ const services = [
     slug: 'deep-cleaning',
     description: 'Comprehensive top-to-bottom cleaning that reaches every corner of your home.',
     features: ['Baseboards & trim', 'Inside appliances', 'Light fixtures', 'Window sills & blinds'],
-    price: 'From $225',
+    price: 'From $225', // Base * 1.5
   },
   {
     icon: Truck,
@@ -46,7 +47,7 @@ const services = [
     slug: 'move-in-out-cleaning',
     description: 'Ensure your deposit return or prepare your new home with our thorough moving clean.',
     features: ['Empty home cleaning', 'Inside cabinets/drawers', 'Appliance deep clean', 'Garage cleaning'],
-    price: 'From $250',
+    price: 'From $251', // Base * 1.67
   },
   {
     icon: Key,
@@ -54,7 +55,7 @@ const services = [
     slug: 'airbnb-cleaning',
     description: 'Quick turnaround cleaning for vacation rentals with 5-star standards.',
     features: ['Same-day service', 'Linen service available', 'Restocking supplies', 'Photo documentation'],
-    price: 'From $135',
+    price: 'From $135', // Base * 0.9
   },
   {
     icon: Building2,
@@ -70,7 +71,7 @@ const services = [
     slug: 'post-construction',
     description: 'Specialized cleaning to remove construction dust and debris from renovations.',
     features: ['Dust removal', 'Surface sanitization', 'Floor care', 'Window cleaning (Interior Only)'],
-    price: 'From $375',
+    price: 'From $375', // Base * 2.5
   },
 ];
 

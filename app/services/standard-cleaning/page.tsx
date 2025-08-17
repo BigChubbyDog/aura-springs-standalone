@@ -20,19 +20,40 @@ import { cleaningServiceEvents } from '@/lib/metaPixelEvents';
 
 export default function StandardCleaningPage() {
   const [frequency, setFrequency] = useState<'weekly' | 'biweekly' | 'monthly' | 'onetime'>('biweekly');
-  const [bedrooms, setBedrooms] = useState(2);
+  const [bedrooms, setBedrooms] = useState(3);
   const [bathrooms, setBathrooms] = useState(2);
+  const [sqft, setSqft] = useState(1300);
 
   const calculatePrice = () => {
-    const basePrice = 100 + (bedrooms * 25) + (bathrooms * 20);
+    // Base price: $150 for 3BR/2BA up to 1300 sqft
+    let price = 150;
+    
+    // Add $25 for each extra bedroom beyond 3
+    if (bedrooms > 3) {
+      price += (bedrooms - 3) * 25;
+    }
+    
+    // Add $25 for each extra bathroom beyond 2
+    if (bathrooms > 2) {
+      price += (bathrooms - 2) * 25;
+    }
+    
+    // Add $25 for every 250 sqft above 1300
+    if (sqft > 1300) {
+      const extraSqft = sqft - 1300;
+      const increments = Math.ceil(extraSqft / 250);
+      price += increments * 25;
+    }
+    
+    // Apply frequency discount
     const frequencyDiscount = {
       weekly: 0.20,
       biweekly: 0.15,
       monthly: 0.10,
       onetime: 0
     };
-    const discount = basePrice * frequencyDiscount[frequency];
-    return Math.round(basePrice - discount);
+    const discount = price * frequencyDiscount[frequency];
+    return Math.round(price - discount);
   };
 
   const handleBookNow = () => {
@@ -139,7 +160,7 @@ export default function StandardCleaningPage() {
               </ul>
             </div>
             <div className="bg-gradient-to-br from-aura-primary-50 to-aura-primary-100 rounded-lg p-8">
-              <h3 className="text-xl font-bold mb-6 text-aura-primary-700">Pricing Calculator</h3>
+              <h3 className="text-xl font-bold mb-6 text-aura-primary-700">Instant Quote Calculator</h3>
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">Bedrooms</label>
@@ -163,6 +184,26 @@ export default function StandardCleaningPage() {
                     {[1,2,3,4,5].map(num => (
                       <option key={num} value={num}>{num} Bathroom{num > 1 ? 's' : ''}</option>
                     ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Square Feet</label>
+                  <select 
+                    value={sqft} 
+                    onChange={(e) => setSqft(Number(e.target.value))}
+                    className="w-full p-2 border rounded-lg"
+                  >
+                    <option value={800}>Up to 800 sq ft</option>
+                    <option value={1000}>800-1000 sq ft</option>
+                    <option value={1300}>1000-1300 sq ft</option>
+                    <option value={1500}>1300-1500 sq ft</option>
+                    <option value={1750}>1500-1750 sq ft</option>
+                    <option value={2000}>1750-2000 sq ft</option>
+                    <option value={2250}>2000-2250 sq ft</option>
+                    <option value={2500}>2250-2500 sq ft</option>
+                    <option value={3000}>2500-3000 sq ft</option>
+                    <option value={3500}>3000-3500 sq ft</option>
+                    <option value={4000}>3500-4000 sq ft</option>
                   </select>
                 </div>
                 <div>

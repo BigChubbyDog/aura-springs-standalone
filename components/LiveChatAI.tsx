@@ -26,10 +26,10 @@ export default function LiveChatAI({
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hi! 👋 I\'m Aura, your AI cleaning assistant. How can I help you today?',
+      text: 'Hi! 🧹 I\'m your Aura Cleaning assistant. How can I help make your home sparkle today?',
       sender: 'bot',
       timestamp: new Date(),
-      name: 'Aura AI'
+      name: 'Aura Cleaning'
     }
   ]);
   const [inputText, setInputText] = useState('');
@@ -152,7 +152,7 @@ export default function LiveChatAI({
         text: data.response,
         sender: 'bot',
         timestamp: new Date(),
-        name: 'Aura AI'
+        name: 'Aura Cleaning'
       };
       
       setMessages(prev => [...prev, aiMessage]);
@@ -247,18 +247,30 @@ export default function LiveChatAI({
       {!isOpen && (
         <button
           onClick={handleOpen}
-          className={`fixed ${positionClasses} z-50 bg-sage-600 text-white rounded-full p-4 shadow-2xl hover:bg-sage-700 transition-all duration-300 hover:scale-110 animate-pulse`}
+          className={`fixed ${positionClasses} z-50 bg-gradient-to-br from-[#7c9768] to-[#5a7048] text-white rounded-full shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 group`}
           aria-label="Open AI chat"
         >
-          <div className="relative">
-            <MessageCircle className="w-6 h-6" />
-            <Bot className="w-3 h-3 absolute -bottom-1 -right-1 bg-white text-sage-600 rounded-full" />
+          <div className="flex items-center gap-2 px-4 py-3">
+            {/* Avatar with maid emoji */}
+            <div className="w-10 h-10 bg-gradient-to-br from-white to-gray-100 rounded-full flex items-center justify-center shadow-inner">
+              <span className="text-2xl">🧹</span>
+            </div>
+            <div className="flex flex-col items-start pr-2">
+              <span className="text-xs font-bold">Aura Cleaning</span>
+              <span className="text-[10px] opacity-90">Chat with AI</span>
+            </div>
+            <MessageCircle className="w-5 h-5 group-hover:rotate-12 transition-transform" />
           </div>
           {unreadCount > 0 && (
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
               {unreadCount}
             </span>
           )}
+          {/* Online indicator */}
+          <span className="absolute top-0 left-10 flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500 border-2 border-white"></span>
+          </span>
         </button>
       )}
 
@@ -266,13 +278,13 @@ export default function LiveChatAI({
       {isOpen && (
         <div className={`fixed ${positionClasses} z-50 ${isMinimized ? 'h-14' : 'h-[600px]'} w-96 max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-2xl flex flex-col transition-all duration-300`}>
           {/* Header */}
-          <div className="bg-gradient-to-r from-sage-600 to-sage-700 text-white p-4 rounded-t-2xl flex items-center justify-between">
+          <div className="bg-gradient-to-r from-[#7c9768] to-[#6a8258] text-white p-4 rounded-t-2xl flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className={`w-3 h-3 ${isConnected ? 'bg-green-400' : 'bg-yellow-400'} rounded-full animate-pulse`}></div>
               <div>
                 <h3 className="font-semibold flex items-center gap-2">
-                  Aura AI Assistant
-                  <Bot className="w-4 h-4" />
+                  <span className="text-lg">🧹</span>
+                  Aura Cleaning Assistant
                 </h3>
                 <p className="text-xs opacity-90">
                   {isEscalated ? 'Connecting to Valerie...' : 'AI-Powered Instant Help'}
@@ -402,13 +414,13 @@ export default function LiveChatAI({
                       onChange={(e) => setInputText(e.target.value)}
                       onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                       placeholder={isEscalated ? "Valerie will respond soon..." : "Ask me anything..."}
-                      className="flex-1 px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sage-500"
+                      className="flex-1 px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#7c9768]"
                       disabled={!isConnected}
                     />
                     <button
                       onClick={sendMessage}
                       disabled={!inputText.trim() || !isConnected}
-                      className="bg-sage-600 text-white p-2 rounded-lg hover:bg-sage-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="bg-[#7c9768] text-white p-2 rounded-lg hover:bg-[#6a8258] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       aria-label="Send message"
                     >
                       <Send className="w-5 h-5" />
@@ -419,13 +431,13 @@ export default function LiveChatAI({
                   <div className="flex gap-2 mt-3">
                     <button
                       onClick={() => setInputText('I need a quote for my home')}
-                      className="text-xs px-2 py-1 bg-sage-50 text-sage-700 rounded-lg hover:bg-sage-100"
+                      className="text-xs px-2 py-1 bg-[#7c9768]/10 text-[#7c9768] rounded-lg hover:bg-[#7c9768]/20"
                     >
                       Get Quote
                     </button>
                     <button
                       onClick={() => setInputText('Book cleaning for today')}
-                      className="text-xs px-2 py-1 bg-sage-50 text-sage-700 rounded-lg hover:bg-sage-100"
+                      className="text-xs px-2 py-1 bg-[#7c9768]/10 text-[#7c9768] rounded-lg hover:bg-[#7c9768]/20"
                     >
                       Book Today
                     </button>
@@ -441,14 +453,14 @@ export default function LiveChatAI({
                   <div className="flex gap-2 mt-2 pt-2 border-t">
                     <a
                       href="tel:512-781-0527"
-                      className="flex-1 flex items-center justify-center gap-1 text-xs text-sage-600 hover:text-sage-700 py-2 border rounded-lg hover:bg-gray-50 transition-colors"
+                      className="flex-1 flex items-center justify-center gap-1 text-xs text-[#7c9768] hover:text-[#6a8258] py-2 border rounded-lg hover:bg-gray-50 transition-colors"
                     >
                       <Phone className="w-3 h-3" />
                       Call Valerie
                     </a>
                     <a
                       href="mailto:valerie@auraspringcleaning.com"
-                      className="flex-1 flex items-center justify-center gap-1 text-xs text-sage-600 hover:text-sage-700 py-2 border rounded-lg hover:bg-gray-50 transition-colors"
+                      className="flex-1 flex items-center justify-center gap-1 text-xs text-[#7c9768] hover:text-[#6a8258] py-2 border rounded-lg hover:bg-gray-50 transition-colors"
                     >
                       <Mail className="w-3 h-3" />
                       Email Us

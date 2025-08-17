@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@azure/identity": "^4.11.1",
+    "@firebase/vertexai-preview": "^0.0.4",
     "@google/generative-ai": "^0.24.1",
     "@microsoft/microsoft-graph-client": "^3.0.7",
     "@paypal/checkout-server-sdk": "^1.0.3",

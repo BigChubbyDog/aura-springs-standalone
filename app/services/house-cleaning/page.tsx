@@ -30,46 +30,48 @@ const HouseCleaningPage = () => {
   const [homeSize, setHomeSize] = useState('3bed');
   const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
 
+  // Correct discounts from pricingService.ts
   const frequencies = [
-    { id: 'weekly', name: 'Weekly', discount: '25%', popular: false },
-    { id: 'biweekly', name: 'Bi-Weekly', discount: '20%', popular: true },
-    { id: 'monthly', name: 'Monthly', discount: '15%', popular: false },
+    { id: 'weekly', name: 'Weekly', discount: '20%', popular: true },
+    { id: 'biweekly', name: 'Bi-Weekly', discount: '15%', popular: false },
+    { id: 'monthly', name: 'Monthly', discount: '10%', popular: false },
     { id: 'onetime', name: 'One-Time', discount: '0%', popular: false },
   ];
 
+  // Pricing based on pricingService.ts - Base: $150 for 3BR/2BA up to 1300sqft
   const homeSizes = [
     {
       id: 'studio',
       name: 'Studio',
-      basePrice: 100,
+      basePrice: 100, // Smaller than base
       time: '1-1.5 hours',
       sqft: '<600',
     },
     {
       id: '1bed',
       name: '1 Bed/1 Bath',
-      basePrice: 130,
+      basePrice: 125, // Smaller than base
       time: '1.5-2 hours',
       sqft: '600-900',
     },
     {
       id: '2bed',
       name: '2 Bed/2 Bath',
-      basePrice: 160,
+      basePrice: 125, // 2BR/2BA < base bedrooms
       time: '2-2.5 hours',
       sqft: '900-1200',
     },
     {
       id: '3bed',
       name: '3 Bed/2 Bath',
-      basePrice: 190,
+      basePrice: 150, // Base price
       time: '2.5-3 hours',
       sqft: '1200-1800',
     },
     {
       id: '4bed',
       name: '4+ Bed/3+ Bath',
-      basePrice: 240,
+      basePrice: 200, // Base + $25/bedroom + $25/bathroom
       time: '3-4 hours',
       sqft: '1800+',
     },

@@ -84,10 +84,11 @@ export default function FloatingCTABar() {
             
             <a
               href="sms:5127810527?body=Hi%20Valerie%2C%20I%27d%20like%20to%20book%20a%20cleaning%20service"
-              className="bg-green-500 text-white p-1.5 rounded-full hover:bg-green-600 transition-all"
+              className="bg-green-500 text-white px-3 py-1.5 rounded-full hover:bg-green-600 transition-all flex items-center gap-1 font-bold"
               aria-label="Text us"
             >
-              <MessageSquare className="w-4 h-4" />
+              <span className="text-base">💬</span>
+              <span className="hidden sm:inline text-sm">Text</span>
             </a>
           </div>
         </div>

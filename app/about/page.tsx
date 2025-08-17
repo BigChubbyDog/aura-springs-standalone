@@ -2,13 +2,13 @@
 
 import React from 'react';
 import Link from 'next/link';
-// import Image from 'next/image'; // Temporarily disabled for external images
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
   Clock, Heart, TreePine, Waves, Dog, Coffee,
   CheckCircle, Calendar, Phone, Mail, Timer,
   Bike, Music,
-  Sparkles, Shield
+  Sparkles, Shield, User
 } from 'lucide-react';
 
 const AboutPage = () => {
@@ -76,7 +76,7 @@ const AboutPage = () => {
     {
       name: 'Dustin Allan',
       role: 'Co-Founder & CEO',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=500',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&h=800&fit=crop', // Professional male headshot placeholder
       bio: 'With 12+ years in Austin real estate and a passion for the city\'s outdoor lifestyle, Dustin founded Aura to give Austinites more time to enjoy what makes our city special.',
       favorites: 'Paddleboarding at sunrise, Greenbelt hiking with the dogs',
       email: 'Dustin@AuraSpringCleaning.com'
@@ -84,7 +84,7 @@ const AboutPage = () => {
     {
       name: 'Valerie Boatman',
       role: 'Co-Founder & COO',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=500',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&h=800&fit=crop', // Professional female headshot placeholder
       bio: 'Valerie believes everyone deserves a sanctuary to return to after exploring Austin. Her mission: create peaceful, pristine spaces that restore your energy.',
       favorites: 'Yoga at Zilker, Sunday farmers markets, live music on Rainey',
       email: 'Valerie@AuraSpringCleaning.com'
@@ -147,6 +147,24 @@ const AboutPage = () => {
           transition={{ duration: 1 }}
           className="relative z-10 max-w-6xl mx-auto px-4 text-center text-white"
         >
+          {/* Large Prominent Logo */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-8 flex justify-center"
+          >
+            <div className="relative w-48 h-48 md:w-64 md:h-64">
+              <Image
+                src="/images/AuraClean.svg"
+                alt="Aura Spring Cleaning"
+                fill
+                sizes="(max-width: 768px) 192px, 256px"
+                className="object-contain drop-shadow-2xl"
+                priority
+              />
+            </div>
+          </motion.div>
           <motion.h1 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}

@@ -11,7 +11,7 @@ const PricingCalculator = dynamic(() => import('@/components/PricingCalculator')
   ssr: false, // Client-side only for calculator
 });
 
-const EmailCapture = dynamic(() => import('@/components/EmailCapture'), {
+const SubtleEmailCapture = dynamic(() => import('@/components/SubtleEmailCapture'), {
   loading: () => null,
   ssr: false, // Client-side only for popup
 });
@@ -95,6 +95,13 @@ export default function HomePage() {
       text: 'Professional, punctual, and pristine results every time. Worth every penny!',
       image: cleaningImages.testimonials[1],
     },
+    {
+      name: 'Jennifer Rodriguez',
+      location: 'Rainey Street',
+      rating: 5,
+      text: 'Best cleaning service in Austin! They handle my Airbnb turnovers flawlessly.',
+      image: cleaningImages.testimonials[2],
+    },
   ];
 
   const structuredData = {
@@ -147,7 +154,7 @@ export default function HomePage() {
       <StructuredData data={structuredData} />
       
       {/* Email Capture Popup - Shows after 5 seconds */}
-      <EmailCapture variant="popup" delay={5000} />
+      <SubtleEmailCapture delay={8000} />
       
       <main className="min-h-screen bg-gradient-to-b from-white via-aura-primary-50/20 to-white">
         {/* Hero Section with Carousel */}
@@ -304,26 +311,33 @@ export default function HomePage() {
         )}
 
         {/* Testimonials */}
-        <section className="bg-gray-50 py-12">
+        <section className="bg-gray-50 py-16">
           <div className="mx-auto max-w-7xl px-4">
-            <h2 className="mb-8 text-center text-3xl font-bold">
+            <h2 className="mb-12 text-center text-4xl font-bold text-aura-primary-700">
               What Our Clients Say
             </h2>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="rounded-lg bg-white p-6 shadow-md">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="mx-auto mb-4 h-16 w-16 rounded-full"
-                  />
-                  <h3 className="text-center text-lg font-bold">
-                    {testimonial.name}
-                  </h3>
-                  <p className="text-center text-sm text-gray-500">
-                    {testimonial.location}
-                  </p>
-                  <p className="mt-4 text-center">{testimonial.text}</p>
+                <div key={index} className="rounded-xl bg-white p-8 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="flex flex-col items-center text-center">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="h-32 w-32 rounded-full object-cover mb-6 border-4 border-[#7c9768]/20 shadow-lg"
+                    />
+                    <div className="flex items-center gap-1 mb-3">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-sm font-medium text-aura-primary-600 mb-4">
+                      {testimonial.location}
+                    </p>
+                    <p className="text-gray-700 italic leading-relaxed text-base">"{testimonial.text}"</p>
+                  </div>
                 </div>
               ))}
             </div>

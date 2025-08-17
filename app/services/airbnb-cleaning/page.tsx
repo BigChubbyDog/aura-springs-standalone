@@ -12,12 +12,12 @@ import {
 const AirbnbCleaningPage = () => {
   const [selectedPackage, setSelectedPackage] = useState('premium');
 
-  // New pricing structure with setup fees and per-service pricing
+  // Pricing based on pricingService.ts - Airbnb = Base * 0.9 ($135 for 3BR/2BA)
   const packages = {
     basic: {
       name: 'Basic Turnover',
       setupFee: 99,
-      servicePrice: 89,
+      servicePrice: 108, // Studio/1BR rate
       features: [
         'Complete property cleaning',
         'Linen change & bed making',
@@ -33,7 +33,7 @@ const AirbnbCleaningPage = () => {
     standard: {
       name: 'Standard Turnover',
       setupFee: 149,
-      servicePrice: 119,
+      servicePrice: 122, // 2BR rate ($135 * 0.9)
       features: [
         'Everything in Basic',
         'Amenity restocking',
@@ -48,7 +48,7 @@ const AirbnbCleaningPage = () => {
     premium: {
       name: 'Premium Hosting',
       setupFee: 199,
-      servicePrice: 149,
+      servicePrice: 135, // 3BR/2BA rate (Base $150 * 0.9)
       popular: true,
       features: [
         'Everything in Standard',
@@ -65,7 +65,7 @@ const AirbnbCleaningPage = () => {
     superhost: {
       name: 'Superhost Elite',
       setupFee: 299,
-      servicePrice: 199,
+      servicePrice: 180, // 4BR+ rate ($200 * 0.9)
       features: [
         'Everything in Premium',
         'Luxury amenity service',

@@ -96,20 +96,20 @@ const Header = () => {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="relative w-12 h-12">
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className="relative w-16 h-16 md:w-20 md:h-20 transition-transform group-hover:scale-105">
                 <Image
                   src="/images/AuraClean.svg"
                   alt="Aura Spring Cleaning Logo"
                   fill
-                  sizes="48px"
-                  className="object-contain"
+                  sizes="(max-width: 768px) 64px, 80px"
+                  className="object-contain drop-shadow-lg"
                   priority
                 />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-aura-primary-500">Aura Spring Cleaning</h1>
-                <p className="text-xs text-aura-secondary-500">Premium Cleaning Service</p>
+                <h1 className="text-2xl md:text-3xl font-bold text-aura-primary-600 transition-colors group-hover:text-aura-primary-700">Aura Spring</h1>
+                <p className="text-sm md:text-base text-aura-secondary-600 font-medium">Premium Cleaning Service</p>
               </div>
             </Link>
 
