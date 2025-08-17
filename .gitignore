@@ -48,6 +48,10 @@ staticwebapp.config.development.json
 # Deployment files with secrets
 .env.deployment
 deploy-azure-final.ps1
+
+# Firebase CLI
+.firebase/
+serviceAccountKey.json
 deploy-with-secrets.ps1
 *.env
 
