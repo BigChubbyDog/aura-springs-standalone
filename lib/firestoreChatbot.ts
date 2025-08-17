@@ -55,18 +55,18 @@ IMPORTANT INFORMATION:
 - Service Areas: Downtown Austin, Rainey Street towers, The Domain, West Lake Hills
 
 PRICING (MUST BE ACCURATE):
-- Base: $150 (includes 3BR/2BA up to 1500 sq ft)
-- Add $25 for each 250 sq ft above 1500
+- Base: $150 (includes 3BR/2BA up to 1300 sq ft)
+- Add $25 for each 250 sq ft above 1300
 - Add $25 for each bedroom above 3
 - Add $25 for each bathroom above 2
 - Add $25 for each office
 
 SERVICE MULTIPLIERS:
-- Standard: 1.0x
-- Deep Clean: 1.5x
-- Move In/Out: 1.8x
-- Airbnb: 0.9x
-- Post-Construction: 2.5x
+- Standard: 1.0x ($150 base)
+- Deep Clean: 1.5x ($225 base)
+- Move In/Out: 1.67x ($250 base)
+- Airbnb: 0.9x ($135 base)
+- Post-Construction: 2.5x ($375 base)
 
 DISCOUNTS:
 - Monthly: 10% off

@@ -17,14 +17,14 @@ export interface PricingFactors {
 
 // Base pricing structure (competitive with Austin market)
 const BASE_PRICES = {
-  // Base charge for up to 3BR/2BA and 1500 sq ft
+  // Base charge for up to 3BR/2BA and 1300 sq ft
   minimum: 150,
   baseBedrooms: 3,    // Included in base price
   baseBathrooms: 2,   // Included in base price
-  baseSqFt: 1500,     // Included in base price
+  baseSqFt: 1300,     // Included in base price (lowered from 1500)
   
   // Incremental pricing
-  per250SqFt: 25,     // $25 for each 250 sq ft above 1500
+  per250SqFt: 25,     // $25 for each 250 sq ft above 1300
   perBedroom: 25,     // $25 for each bedroom above 3
   perBathroom: 25,    // $25 for each bathroom above 2
   perOffice: 25,      // $25 for each office
@@ -85,12 +85,12 @@ export function calculatePrice(factors: PricingFactors): {
     timing: number;
   };
 } {
-  // Base calculation - starts at $150 for up to 3BR/2BA and 1500 sq ft
+  // Base calculation - starts at $150 for up to 3BR/2BA and 1300 sq ft
   let basePrice = BASE_PRICES.minimum;
   
-  // Square footage pricing - $25 per 250 sq ft above 1500
-  const sqftOver1500 = Math.max(0, factors.squareFeet - BASE_PRICES.baseSqFt);
-  const sqftIncrements = Math.ceil(sqftOver1500 / 250);  // Round up to nearest 250 sq ft
+  // Square footage pricing - $25 per 250 sq ft above 1300 (or portion thereof)
+  const sqftOverBase = Math.max(0, factors.squareFeet - BASE_PRICES.baseSqFt);
+  const sqftIncrements = Math.ceil(sqftOverBase / 250);  // Charge for any portion of 250 sq ft
   const sqftPrice = sqftIncrements * BASE_PRICES.per250SqFt;
   
   // Room-based pricing - $25 per bedroom above 3, $25 per bathroom above 2
@@ -102,10 +102,10 @@ export function calculatePrice(factors: PricingFactors): {
   
   // Service type multiplier
   const serviceMultiplier = {
-    standard: 1.0,
-    deep: 1.5,
-    moveInOut: 1.8,
-    airbnb: 0.9,  // Lower for quick turnovers to encourage volume
+    standard: 1.0,      // $150 base
+    deep: 1.5,          // $225 base (150 * 1.5)
+    moveInOut: 1.67,    // $250 base (150 * 1.67)
+    airbnb: 0.9,        // Lower for quick turnovers to encourage volume
     postConstruction: 2.5,
   }[factors.serviceType];
   

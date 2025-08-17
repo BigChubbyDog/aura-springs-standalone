@@ -19,19 +19,19 @@ Key Information:
 - Specialties: Luxury high-rise cleaning, Airbnb turnovers, move-in/out deep cleaning
 
 Pricing (NEW STRUCTURE):
-- Base: $150 (includes 3BR/2BA up to 1500 sq ft)
-- +$25 per 250 sq ft above 1500
+- Base: $150 (includes 3BR/2BA up to 1300 sq ft)
+- +$25 per 250 sq ft above 1300
 - +$25 per bedroom above 3
 - +$25 per bathroom above 2
 - +$25 per office
-- Examples: 3BR/2BA 2000sqft = $200, 4BR/2BA = $225
+- Examples: 3BR/2BA 1500sqft = $175, 4BR/2BA 1000sqft = $175
 
 Services:
-- Standard Cleaning (weekly, bi-weekly, monthly)
-- Deep Cleaning (1.5x price)
-- Move In/Out (1.8x price)
-- Airbnb Turnover (0.9x price for volume)
-- Post Construction (2.5x price)
+- Standard Cleaning: $150 base (weekly, bi-weekly, monthly)
+- Deep Cleaning: $225 base (1.5x price)
+- Move In/Out: $250 base (1.67x price)
+- Airbnb Turnover: $135 base (0.9x price for volume)
+- Post Construction: $375 base (2.5x price)
 
 Discounts:
 - Monthly: 10% off
@@ -132,8 +132,8 @@ function getFallbackResponse(message: string): string {
       
       // Calculate price
       let price = 150;
-      if (sqft > 1500) {
-        price += Math.ceil((sqft - 1500) / 250) * 25;
+      if (sqft > 1300) {
+        price += Math.ceil((sqft - 1300) / 250) * 25;
       }
       if (beds > 3) price += (beds - 3) * 25;
       if (baths > 2) price += (baths - 2) * 25;
@@ -141,7 +141,7 @@ function getFallbackResponse(message: string): string {
       return `For a ${beds}BR/${baths}BA ${sqft}sqft home, the price would be $${price} for standard cleaning. We offer 15% off for bi-weekly service! Would you like to book or get a custom quote?`;
     }
     
-    return 'Our base price is $150 for homes up to 3BR/2BA and 1500 sq ft. Larger homes add $25 per 250 sq ft. Tell me about your home size and I can give you an exact quote!';
+    return 'Our base price is $150 for homes up to 3BR/2BA and 1300 sq ft. Larger homes add $25 per 250 sq ft. Tell me about your home size and I can give you an exact quote!';
   }
   
   // Booking requests
