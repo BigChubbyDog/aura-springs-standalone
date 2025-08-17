@@ -38,9 +38,32 @@ Discounts:
 - Bi-weekly: 15% off
 - Weekly: 20% off
 
-Building Specialties:
-- The Quincy, 70 Rainey, 44 East Ave, The Shore, The Millenium, The Bowie
-- Special rates for tower residents
+Building Specialties (3-Mile Radius from Rainey Street):
+
+RAINEY STREET TOWERS (Our Specialty):
+- 70 Rainey (164 units) - We clean 50+ units monthly
+- 44 East Ave (200+ units) - Preferred vendor status
+- The Shore (100+ units) - Same-day service available
+- Millennium Rainey (300+ units) - Volume discounts
+- Skyhouse Austin (320 units) - Airbnb specialist
+- Windsor on the Lake (250+ units) - Concierge partnership
+
+DOWNTOWN TOWERS (1-2 miles):
+- The Austonian (180 units) - Luxury service
+- The Independent "Jenga Tower" (370 units) - Tallest in Austin
+- 360 Condos (430 units) - Student-friendly pricing
+- Spring Condos (146 units) - Eco-cleaning focus
+- The Bowie (200+ units) - Pet-friendly service
+- Fifth + West (250+ units) - Tech worker specials
+
+THE DOMAIN (2-3 miles):
+- Domain Northside towers - Corporate accounts welcome
+- Standard at Domain - Student discounts
+
+Special Tower Resident Benefits:
+- 10% off first cleaning
+- Priority same-day booking
+- Building-specific expertise (we know your fixtures!)
 
 Always:
 1. Be helpful and guide customers toward booking
@@ -152,9 +175,25 @@ function getFallbackResponse(message: string): string {
     return 'Perfect! You can book instantly at auraspringcleaning.com/booking or call Valerie at (512) 781-0527. What day works best for you?';
   }
   
-  // Tower/building specific
-  if (lower.match(/quincy|70\s*rainey|44\s*east|shore|millenium|bowie/)) {
-    return 'Excellent! We service your building regularly and offer special resident rates. Most units in your building are $175-$225. Call (512) 781-0527 to book with your resident discount!';
+  // Tower/building specific - Detailed responses for each tower
+  if (lower.match(/70\s*rainey|seventy\s*rainey/)) {
+    return 'Excellent! We\'re the preferred cleaner for 70 Rainey with 50+ units serviced monthly. Most 1BR units are $150, 2BR are $175-$200. Call (512) 781-0527 or book online with code TOWER20 for 20% off your first cleaning!';
+  }
+  
+  if (lower.match(/44\s*east|forty.?four\s*east/)) {
+    return 'Great choice! We have preferred vendor status at 44 East Ave. Standard cleaning for most units is $150-$175. We offer same-day service for your building. Book online or call (512) 781-0527!';
+  }
+  
+  if (lower.match(/shore|millennium|skyhouse|windsor/)) {
+    return 'Perfect! We service your Rainey Street tower regularly. Most units are $150-$200 depending on size. Airbnb hosts get 10% off all cleanings. Call (512) 781-0527 for your building-specific rate!';
+  }
+  
+  if (lower.match(/austonian|independent|jenga|360\s*condo|spring\s*condo|bowie|fifth.*west/)) {
+    return 'We love servicing downtown towers! Your building typically ranges $175-$250 for standard cleaning. We know your building\'s unique features and requirements. Call (512) 781-0527 for a tower resident discount!';
+  }
+  
+  if (lower.match(/domain|northside/)) {
+    return 'The Domain is within our service area! Most Domain apartments are $150-$200. We offer corporate accounts and student discounts. Book online at auraspringcleaning.com or call (512) 781-0527!';
   }
   
   // Service types
@@ -195,8 +234,15 @@ export function extractEntities(message: string): Partial<ChatContext> {
   const phoneMatch = message.match(/\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/);
   if (phoneMatch) entities.userPhone = phoneMatch[0];
   
-  // Extract building names
-  const buildings = ['quincy', '70 rainey', '44 east', 'shore', 'millenium', 'bowie'];
+  // Extract building names - Expanded list for all towers
+  const buildings = [
+    '70 rainey', 'seventy rainey',
+    '44 east', 'forty four east',
+    'shore', 'millennium', 'skyhouse', 'windsor',
+    'austonian', 'independent', 'jenga',
+    '360 condo', 'spring condo', 'bowie', 'fifth west',
+    'domain', 'northside'
+  ];
   const lower = message.toLowerCase();
   for (const building of buildings) {
     if (lower.includes(building)) {
