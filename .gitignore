@@ -50,3 +50,11 @@ staticwebapp.config.development.json
 deploy-azure-final.ps1
 deploy-with-secrets.ps1
 *.env
+
+# Firebase service account keys (NEVER COMMIT THESE!)
+serviceAccountKey.json
+**/serviceAccountKey.json
+firebase-service-account.json
+firebase-admin-sdk.json
+*.serviceaccount.json
+aura-spring-cleaning-*.json

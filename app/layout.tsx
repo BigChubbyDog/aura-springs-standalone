@@ -23,7 +23,7 @@ const Analytics = dynamic(() => import('@/components/Analytics'));
 
 const EmailCapture = dynamic(() => import('@/components/EmailCapture'));
 
-const LiveChat = dynamic(() => import('@/components/LiveChat'));
+const LiveChatAI = dynamic(() => import('@/components/LiveChatAI'));
 
 const AbandonedCartRecovery = dynamic(() => import('@/components/booking/AbandonedCartRecovery'));
 
@@ -271,7 +271,7 @@ export default function RootLayout({
         <EmailCapture variant="popup" delay={15000} />
         
         {/* Live Chat Widget */}
-        <LiveChat position="bottom-right" />
+        <LiveChatAI position="bottom-right" />
         
         {/* Abandoned Cart Recovery */}
         <AbandonedCartRecovery />

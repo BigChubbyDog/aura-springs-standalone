@@ -7,9 +7,10 @@ import { metaPixel } from '@/lib/metaPixel';
 
 export default function PricingCalculator() {
   const [factors, setFactors] = useState<PricingFactors>({
-    bedrooms: 1,
-    bathrooms: 1,
-    squareFeet: 1000,
+    bedrooms: 3,
+    bathrooms: 2,
+    offices: 0,
+    squareFeet: 1500,
     serviceType: 'standard',
     frequency: 'onetime',
     addOns: [],
@@ -77,7 +78,7 @@ export default function PricingCalculator() {
             </select>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-3 gap-4">
             <div>
               <label className="flex items-center gap-2 text-sm font-semibold text-gray-400 mb-2">
                 <Bed className="w-4 h-4" /> Bedrooms
@@ -102,6 +103,20 @@ export default function PricingCalculator() {
                 max="10"
                 value={factors.bathrooms}
                 onChange={(e) => setFactors({...factors, bathrooms: parseInt(e.target.value) || 1})}
+                className="w-full px-4 py-3 border-2 border-aura-primary-200 rounded-lg focus:border-aura-primary-500 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="flex items-center gap-2 text-sm font-semibold text-gray-400 mb-2">
+                <Home className="w-4 h-4" /> Offices
+              </label>
+              <input
+                type="number"
+                min="0"
+                max="5"
+                value={factors.offices || 0}
+                onChange={(e) => setFactors({...factors, offices: parseInt(e.target.value) || 0})}
                 className="w-full px-4 py-3 border-2 border-aura-primary-200 rounded-lg focus:border-aura-primary-500 focus:outline-none"
               />
             </div>

@@ -4,6 +4,7 @@
 export interface PricingFactors {
   bedrooms: number;
   bathrooms: number;
+  offices?: number;  // Added offices as optional
   squareFeet: number;
   serviceType: 'standard' | 'deep' | 'moveInOut' | 'airbnb' | 'postConstruction';
   frequency: 'onetime' | 'weekly' | 'biweekly' | 'monthly';
@@ -16,21 +17,17 @@ export interface PricingFactors {
 
 // Base pricing structure (competitive with Austin market)
 const BASE_PRICES = {
-  // Minimum charge for 1BR/1BA up to 1200 sq ft
+  // Base charge for up to 3BR/2BA and 1500 sq ft
   minimum: 150,
+  baseBedrooms: 3,    // Included in base price
+  baseBathrooms: 2,   // Included in base price
+  baseSqFt: 1500,     // Included in base price
   
-  // Per square foot pricing after 1200 sq ft
-  perSqFt: {
-    standard: 0.12,      // $0.12/sq ft for regular cleaning
-    deep: 0.18,          // $0.18/sq ft for deep cleaning
-    moveInOut: 0.22,     // $0.22/sq ft for move in/out
-    airbnb: 0.10,        // $0.10/sq ft for quick turnovers
-    postConstruction: 0.35, // $0.35/sq ft for construction cleanup
-  },
-  
-  // Additional charges per room
-  perBedroom: 25,  // After first bedroom
-  perBathroom: 20, // After first bathroom
+  // Incremental pricing
+  per250SqFt: 25,     // $25 for each 250 sq ft above 1500
+  perBedroom: 25,     // $25 for each bedroom above 3
+  perBathroom: 25,    // $25 for each bathroom above 2
+  perOffice: 25,      // $25 for each office
 };
 
 // Frequency discounts to encourage recurring revenue
@@ -88,26 +85,20 @@ export function calculatePrice(factors: PricingFactors): {
     timing: number;
   };
 } {
-  // Base calculation
+  // Base calculation - starts at $150 for up to 3BR/2BA and 1500 sq ft
   let basePrice = BASE_PRICES.minimum;
   
-  // Square footage pricing (tiered for larger homes)
-  const sqftOver1200 = Math.max(0, factors.squareFeet - 1200);
-  let sqftPrice = 0;
+  // Square footage pricing - $25 per 250 sq ft above 1500
+  const sqftOver1500 = Math.max(0, factors.squareFeet - BASE_PRICES.baseSqFt);
+  const sqftIncrements = Math.ceil(sqftOver1500 / 250);  // Round up to nearest 250 sq ft
+  const sqftPrice = sqftIncrements * BASE_PRICES.per250SqFt;
   
-  if (sqftOver1200 > 0) {
-    const rate = BASE_PRICES.perSqFt[factors.serviceType];
-    // Progressive pricing: increases slightly for very large homes
-    if (sqftOver1200 > 2000) {
-      sqftPrice = (2000 * rate) + ((sqftOver1200 - 2000) * rate * 1.15);
-    } else {
-      sqftPrice = sqftOver1200 * rate;
-    }
-  }
+  // Room-based pricing - $25 per bedroom above 3, $25 per bathroom above 2
+  const bedroomPrice = Math.max(0, factors.bedrooms - BASE_PRICES.baseBedrooms) * BASE_PRICES.perBedroom;
+  const bathroomPrice = Math.max(0, factors.bathrooms - BASE_PRICES.baseBathrooms) * BASE_PRICES.perBathroom;
   
-  // Room-based pricing
-  const bedroomPrice = Math.max(0, factors.bedrooms - 1) * BASE_PRICES.perBedroom;
-  const bathroomPrice = Math.max(0, factors.bathrooms - 1) * BASE_PRICES.perBathroom;
+  // Office pricing - $25 per office
+  const officePrice = (factors.offices || 0) * BASE_PRICES.perOffice;
   
   // Service type multiplier
   const serviceMultiplier = {
@@ -118,8 +109,8 @@ export function calculatePrice(factors: PricingFactors): {
     postConstruction: 2.5,
   }[factors.serviceType];
   
-  // Calculate base subtotal
-  let subtotal = (basePrice + sqftPrice + bedroomPrice + bathroomPrice) * serviceMultiplier;
+  // Calculate base subtotal (include office price)
+  let subtotal = (basePrice + sqftPrice + bedroomPrice + bathroomPrice + officePrice) * serviceMultiplier;
   
   // Location adjustment
   const locationKey = factors.location?.toLowerCase().replace(/\s+/g, '-') || 'default';
@@ -164,9 +155,9 @@ export function calculatePrice(factors: PricingFactors): {
     savings,
     breakdown: {
       base: basePrice,
-      rooms: bedroomPrice + bathroomPrice,
+      rooms: bedroomPrice + bathroomPrice + officePrice,
       sqft: Math.round(sqftPrice),
-      location: Math.round(subtotal * (locationMultiplier - 1)),
+      location: Math.round(subtotal * (locationMultiplier - 1) / serviceMultiplier),
       timing: Math.round(timeSurcharge),
     },
   };
