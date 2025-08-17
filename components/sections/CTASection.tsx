@@ -121,6 +121,7 @@ const CTASection = () => {
                 src="/images/AuraClean.svg"
                 alt="Aura Springs"
                 fill
+                sizes="96px"
                 className="object-contain filter brightness-0 invert"
               />
             </div>

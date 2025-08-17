@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image'; // Temporarily disabled for external images
 import { motion } from 'framer-motion';
 import { 
   Clock, Heart, TreePine, Waves, Dog, Coffee,
@@ -313,12 +313,10 @@ const AboutPage = () => {
               className="order-1 lg:order-2"
             >
               <div className="relative">
-                <Image
+                <img
                   src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=2000"
                   alt="Beautiful Austin home interior"
-                  width={600}
-                  height={400}
-                  className="rounded-xl shadow-2xl"
+                  className="rounded-xl shadow-2xl w-full h-auto"
                 />
                 
                 {/* Overlay Cards */}
@@ -380,11 +378,10 @@ const AboutPage = () => {
                 className="bg-white rounded-xl shadow-xl overflow-hidden"
               >
                 <div className="relative h-64">
-                  <Image
+                  <img
                     src={founder.image}
                     alt={founder.name}
-                    fill
-                    className="object-cover"
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-4 left-4 text-white">

@@ -1,0 +1,27 @@
+MOCK WEBHOOK URL FOR TESTING (This is NOT a real webhook - for demonstration only):
+
+https://outlook.office.com/webhookb2/7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d@7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d/IncomingWebhook/a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6/7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d
+
+⚠️ THIS WILL NOT WORK - IT'S JUST AN EXAMPLE!
+
+To get YOUR REAL webhook URL:
+
+1. Open Teams right now
+2. Go to any channel
+3. Click ... > Connectors > Incoming Webhook > Configure
+4. Name it "Aura Spring Cleaning"
+5. Click Create
+6. Copy the URL that appears
+
+The whole process takes less than 2 minutes!
+
+---
+
+OR, if you want to skip Teams entirely:
+
+The website is ALREADY WORKING without Teams!
+- All leads go to valerie@auraspringcleaning.com ✅
+- Customers get confirmations ✅
+- Everything is functional ✅
+
+Teams is just an OPTIONAL bonus for instant notifications.

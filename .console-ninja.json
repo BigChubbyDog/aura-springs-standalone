@@ -1,0 +1,60 @@
+{
+  "name": "Aura Spring Cleaning",
+  "enabled": true,
+  "showInlineValues": true,
+  "showTime": true,
+  "showLogLevelBadge": true,
+  "logLevels": {
+    "log": true,
+    "info": true,
+    "warn": true,
+    "error": true,
+    "debug": true,
+    "trace": true
+  },
+  "includePatterns": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx"
+  ],
+  "excludePatterns": [
+    "**/node_modules/**",
+    "**/.next/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/*.min.js"
+  ],
+  "maxLogViewerEntries": 1000,
+  "highlightErrors": true,
+  "wrapLogArguments": true,
+  "showUnhandledErrors": true,
+  "showUnhandledPromiseRejections": true,
+  "autoStart": true,
+  "autoAttach": true,
+  "dateFormat": "HH:mm:ss.SSS",
+  "outputMode": "inline-and-console",
+  "features": {
+    "inlineValues": true,
+    "hoverValues": true,
+    "autoLog": false,
+    "logPoints": true,
+    "coverageIndicators": true,
+    "performanceMetrics": true
+  },
+  "theme": {
+    "logColor": "#4CAF50",
+    "warnColor": "#FF9800",
+    "errorColor": "#F44336",
+    "infoColor": "#2196F3",
+    "debugColor": "#9C27B0"
+  },
+  "advanced": {
+    "captureStackTrace": true,
+    "showExecutionTime": true,
+    "showMemoryUsage": false,
+    "maxObjectDepth": 5,
+    "maxArrayLength": 100,
+    "maxStringLength": 1000
+  }
+}

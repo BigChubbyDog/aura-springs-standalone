@@ -1,8 +1,11 @@
 import twilio from 'twilio';
 
-// Twilio configuration
-const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER || '+15127810527';
-const BUSINESS_PHONE = '+15127810527';
+// NOTE: Primary business contact is Valerie
+// Valerie's phone: +15127810527 (512-781-0527)
+// This is her personal/business number - all customer calls go here
+// SMS/Twilio not currently configured - using email notifications instead
+const VALERIE_PHONE = '+15127810527';
+const BUSINESS_PHONE = '+15127810527'; // Valerie's number
 
 // Lazy initialize Twilio client to avoid build-time errors
 let twilioClient: ReturnType<typeof twilio> | null = null;
@@ -52,7 +55,7 @@ export async function sendSMS(message: SMSMessage): Promise<{ success: boolean; 
   try {
     const result = await client.messages.create({
       body: message.body,
-      from: TWILIO_PHONE_NUMBER,
+      from: VALERIE_PHONE, // Would need Twilio setup to work
       to: formatPhoneNumber(message.to),
       ...(message.mediaUrl && { mediaUrl: [message.mediaUrl] })
     });

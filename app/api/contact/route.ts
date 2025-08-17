@@ -36,11 +36,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Email to business - using current brand colors (green/purple)
+    // Email to Valerie - Primary contact for all leads
     const businessEmail = {
-      from: process.env.SMTP_USER || 'Mail@auraspringcleaning.com',
-      to: process.env.BUSINESS_EMAIL || 'Mail@auraspringcleaning.com',
-      subject: `New Contact Form Submission - ${serviceType}`,
+      from: process.env.SMTP_USER || 'noreply@auraspringcleaning.com',
+      to: process.env.EMAIL_TO || 'valerie@auraspringcleaning.com',
+      subject: `🆕 New Lead - ${serviceType} - ${firstName} ${lastName}`,
       html: `
         <div style="font-family: 'Inter', Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #4c673d; border-bottom: 3px solid #7c9768; padding-bottom: 10px;">
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
 
     // Confirmation email to client - using brand colors
     const clientEmail = {
-      from: process.env.SMTP_USER || 'Schedule@AuraSpringCleaning.com',
+      from: process.env.SMTP_USER || 'noreply@auraspringcleaning.com',
       to: email,
       subject: 'Thank you for contacting Aura Spring Cleaning',
       html: `
@@ -104,8 +104,8 @@ export async function POST(request: NextRequest) {
             
             <div style="background: linear-gradient(135deg, #7c9768 0%, #443474 100%); color: white; padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0;">
               <h3 style="margin: 0 0 10px 0;">Need Immediate Assistance?</h3>
-              <p style="margin: 0; font-size: 1.2rem; font-weight: bold;">(512) 781-0527</p>
-              <p style="margin: 5px 0 0; font-size: 0.9rem;">Available Mon-Sat 8am-6pm</p>
+              <p style="margin: 0; font-size: 1.2rem; font-weight: bold;">Call Valerie: (512) 781-0527</p>
+              <p style="margin: 5px 0 0; font-size: 0.9rem;">Available Mon-Fri 8am-6pm, Sat-Sun 9am-5pm</p>
             </div>
             
             <p style="color: #666; text-align: center; margin-top: 30px;">

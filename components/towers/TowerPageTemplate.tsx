@@ -87,8 +87,12 @@ const getAmenityIcon = (amenity: string) => {
 export default function TowerPageTemplate({ tower }: TowerPageTemplateProps) {
   const [showPricing, setShowPricing] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
 
-  const allImages = [tower.image, ...(tower.gallery || [])];
+  // Filter out empty strings and use fallback for missing images
+  const fallbackImage = '/images/tower-placeholder.jpg';
+  const validImages = [tower.image, ...(tower.gallery || [])].filter(img => img && img.trim() !== '');
+  const allImages = validImages.length > 0 ? validImages : [fallbackImage];
 
   const pricingTiers = [
     {
@@ -185,11 +189,16 @@ export default function TowerPageTemplate({ tower }: TowerPageTemplateProps) {
             <div className="space-y-4">
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src={allImages[selectedImage]}
+                  src={imageErrors.has(allImages[selectedImage]) ? fallbackImage : allImages[selectedImage]}
                   alt={tower.name}
                   fill
                   className="object-cover"
                   priority
+                  onError={() => {
+                    console.error(`Failed to load image: ${allImages[selectedImage]}`);
+                    setImageErrors(prev => new Set(prev).add(allImages[selectedImage]));
+                  }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute top-4 left-4 bg-white/95 backdrop-blur px-3 py-1 rounded-full">
                   <span className="text-sm font-semibold text-gray-900">
@@ -208,10 +217,15 @@ export default function TowerPageTemplate({ tower }: TowerPageTemplateProps) {
                       }`}
                     >
                       <Image
-                        src={img}
+                        src={imageErrors.has(img) ? fallbackImage : img}
                         alt={`${tower.name} ${idx + 1}`}
                         fill
                         className="object-cover"
+                        onError={() => {
+                          console.error(`Failed to load thumbnail: ${img}`);
+                          setImageErrors(prev => new Set(prev).add(img));
+                        }}
+                        sizes="80px"
                       />
                     </button>
                   ))}

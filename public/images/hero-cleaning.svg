@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" fill="none">
+  <rect width="1920" height="1080" fill="url(#gradient)"/>
+  <path d="M960 340 L1020 460 L880 460 Z" fill="#4ade80" opacity="0.8"/>
+  <circle cx="960" cy="540" r="120" fill="#22c55e" opacity="0.6"/>
+  <rect x="840" y="620" width="240" height="160" rx="20" fill="#16a34a" opacity="0.7"/>
+  <text x="960" y="540" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle">
+    Aura Spring Cleaning
+  </text>
+  <text x="960" y="590" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">
+    Austin's Premier Cleaning Service
+  </text>
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dcfce7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#86efac;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

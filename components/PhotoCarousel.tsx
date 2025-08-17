@@ -56,8 +56,9 @@ export default function PhotoCarousel({
           >
             <img
               src={image}
-              alt={`Cleaning service ${index + 1}`}
+              alt={`Professional house cleaning service in Austin - ${title || 'Aura Spring Cleaning'} photo ${index + 1}`}
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
         ))}

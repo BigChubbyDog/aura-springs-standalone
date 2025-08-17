@@ -7,8 +7,18 @@ export default function ScrollToTop() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Scroll to top when route changes
-    window.scrollTo(0, 0);
+    // Immediately scroll to top when route changes
+    // Using instant behavior for immediate response when buttons are clicked
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant' // Instant scroll for better UX on navigation
+    });
+    
+    // Also handle any hash changes
+    if (window.location.hash === '') {
+      window.scrollTo(0, 0);
+    }
   }, [pathname]);
 
   return null;

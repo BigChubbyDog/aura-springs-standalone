@@ -20,16 +20,14 @@ export default function StickyBookButton() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Only render on mobile devices
-  if (typeof window !== 'undefined' && window.innerWidth > 768) {
-    return null;
-  }
+  // Render on all devices
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
   return (
     <>
       {/* Main sticky button */}
       <div
-        className={`fixed bottom-4 right-4 z-50 transition-all duration-300 md:hidden ${
+        className={`fixed bottom-4 right-4 z-50 transition-all duration-300 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
         }`}
       >
@@ -40,7 +38,7 @@ export default function StickyBookButton() {
             aria-label="Book cleaning service"
           >
             <Calendar className="w-5 h-5" />
-            Book Now
+            Book Now - (512) 781-0527
           </button>
         ) : (
           <div className="bg-white rounded-2xl shadow-2xl p-4 space-y-3 animate-in slide-in-from-bottom-5">
@@ -82,7 +80,7 @@ export default function StickyBookButton() {
       {/* Backdrop when expanded */}
       {isExpanded && (
         <div
-          className="fixed inset-0 bg-black/20 z-40 md:hidden"
+          className="fixed inset-0 bg-black/20 z-40"
           onClick={() => setIsExpanded(false)}
         />
       )}

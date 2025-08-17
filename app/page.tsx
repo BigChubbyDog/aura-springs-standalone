@@ -30,6 +30,7 @@ import {
   Users,
 } from 'lucide-react';
 import { useState, useRef } from 'react';
+import Link from 'next/link';
 
 export default function HomePage() {
   const [showPricing, setShowPricing] = useState(false);
@@ -48,6 +49,7 @@ export default function HomePage() {
       description: 'Regular maintenance cleaning for your home',
       price: 'From $150',
       icon: <Sparkles className="h-8 w-8 text-aura-primary-500" />,
+      href: '/services/standard-cleaning',
       features: [
         'Dusting & Vacuuming',
         'Kitchen & Bathrooms',
@@ -59,6 +61,7 @@ export default function HomePage() {
       description: 'Thorough top-to-bottom home transformation',
       price: 'From $225',
       icon: <Shield className="h-8 w-8 text-aura-primary-500" />,
+      href: '/services/deep-cleaning',
       features: ['Baseboards & Trim', 'Inside Appliances', 'Light Fixtures'],
     },
     {
@@ -66,6 +69,7 @@ export default function HomePage() {
       description: 'Complete cleaning for moving transitions',
       price: 'From $270',
       icon: <Clock className="h-8 w-8 text-aura-primary-500" />,
+      href: '/services/move-in-out-cleaning',
       features: ['Empty Home Clean', 'Cabinet Interiors', 'Garage Included'],
     },
   ];
@@ -254,9 +258,11 @@ export default function HomePage() {
                       </li>
                     ))}
                   </ul>
-                  <button className="w-full rounded-lg bg-aura-primary-100 py-3 font-semibold text-aura-primary-700 transition-colors hover:bg-aura-primary-200">
-                    Learn More
-                  </button>
+                  <Link href={service.href}>
+                    <button className="w-full rounded-lg bg-aura-primary-100 py-3 font-semibold text-aura-primary-700 transition-colors hover:bg-aura-primary-200">
+                      Learn More
+                    </button>
+                  </Link>
                 </div>
               ))}
             </div>
@@ -369,12 +375,11 @@ export default function HomePage() {
               Cleaning for their home cleaning needs.
             </p>
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
-              <button
-                onClick={() => setShowPricing(true)}
-                className="rounded-xl bg-white px-8 py-4 text-lg font-bold text-aura-primary-700 shadow-xl transition-all hover:scale-105"
-              >
-                Book Your Cleaning Today
-              </button>
+              <Link href="/booking">
+                <button className="rounded-xl bg-white px-8 py-4 text-lg font-bold text-aura-primary-700 shadow-xl transition-all hover:scale-105">
+                  Book Your Cleaning Today
+                </button>
+              </Link>
               <a
                 href="tel:512-781-0527"
                 className="flex items-center justify-center gap-2 rounded-xl bg-aura-primary-800 px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:bg-aura-primary-900"

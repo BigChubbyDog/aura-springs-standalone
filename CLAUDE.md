@@ -2,6 +2,17 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## CRITICAL CREDENTIALS - ALWAYS REMEMBER
+
+### Microsoft Teams Webhook (ACTIVE)
+```
+https://adminaccountbcd.webhook.office.com/webhookb2/df9b5b12-f537-435b-a578-c6f540ae7c5c@753965c2-2a85-437e-a9c9-9f824df99584/IncomingWebhook/ade6e7bcf89a420f97b09dd6ca021bbc/85ae95d7-aee8-44ea-8e78-af97c72fa4a9/V2ChyK7Cl-K-zvRJAyxjNAJe8th0jh-73cKcm4Wdw7mfY1
+```
+
+### Primary Contact
+- **Valerie Boatman**: (512) 781-0527, valerie@auraspringcleaning.com
+- All leads and notifications go to Valerie
+
 ## Common Development Commands
 
 ### Development

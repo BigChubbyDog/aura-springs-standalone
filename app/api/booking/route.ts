@@ -133,9 +133,10 @@ async function sendBookingEmails(booking: BookingData, bookingId: string) {
   try {
     // Email to business - using brand colors (green/purple)
     const businessBookingEmail = {
-      from: process.env.SMTP_USER || 'Mail@auraspringcleaning.com',
-      to: process.env.BUSINESS_EMAIL || 'Mail@auraspringcleaning.com',
-      subject: `New Booking: ${booking.serviceType} - ${booking.customerName}`,
+      from: process.env.SMTP_USER || 'noreply@auraspringcleaning.com',
+      to: process.env.EMAIL_TO || 'valerie@auraspringcleaning.com',
+      cc: process.env.EMAIL_CC || 'dustin@auraspringcleaning.com',
+      subject: `🎉 NEW BOOKING: ${booking.serviceType} - ${booking.customerName} - $${booking.totalPrice}`,
       html: `
         <div style="font-family: 'Inter', Arial, sans-serif; max-width: 700px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #4c673d 0%, #7c9768 100%); color: white; padding: 30px; text-align: center;">
@@ -218,7 +219,7 @@ async function sendBookingEmails(booking: BookingData, bookingId: string) {
             
             <div style="text-align: center; margin: 30px 0;">
               <p style="color: #666;">Need to modify your booking?</p>
-              <p style="font-size: 1.2rem; color: #7c9768; font-weight: bold;">(512) 781-0527</p>
+              <p style="font-size: 1.2rem; color: #7c9768; font-weight: bold;">Call Valerie: (512) 781-0527</p>
             </div>
             
             <p style="color: #666; text-align: center; margin-top: 30px;">

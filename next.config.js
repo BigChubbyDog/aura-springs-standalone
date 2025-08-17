@@ -1,4 +1,11 @@
-const { withSentryConfig } = require('@sentry/nextjs');
+// Sentry is optional - only load if DSN is configured
+let withSentryConfig;
+try {
+  withSentryConfig = require('@sentry/nextjs').withSentryConfig;
+} catch (e) {
+  // Sentry not installed or configured
+  withSentryConfig = (config) => config;
+}
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -27,9 +34,41 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   
+  // Enable instrumentation
+  experimental: {
+    instrumentationHook: true,
+  },
+  
   // Image optimization
   images: {
-    domains: ['aurasprings.com', 'images.unsplash.com', 'auraspringcleaning.com', 'images.pexels.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'aurasprings.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'auraspringcleaning.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'localhost',
+        port: '3000',
+        pathname: '/**',
+      }
+    ],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -72,7 +111,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self' https://*.azurestaticapps.net https://*.stripe.com https://*.office365.com https://*.microsoft.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.stripe.com https://js.stripe.com https://*.googletagmanager.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://*.stripe.com https://*.microsoft.com https://*.office365.com https://*.google-analytics.com https://www.google-analytics.com; frame-src 'self' https://*.stripe.com https://*.office365.com https://outlook.office365.com;"
+            value: "default-src 'self' https://*.azurestaticapps.net https://*.stripe.com https://*.office365.com https://*.microsoft.com https://*.facebook.com https://*.facebook.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.stripe.com https://js.stripe.com https://*.googletagmanager.com https://*.google-analytics.com https://*.google.com https://*.googleadservices.com https://*.googlesyndication.com https://*.doubleclick.net https://connect.facebook.net https://*.facebook.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://*.stripe.com https://*.microsoft.com https://*.office365.com https://*.google-analytics.com https://www.google-analytics.com https://*.google.com https://*.doubleclick.net https://*.facebook.com https://*.facebook.net; frame-src 'self' https://*.stripe.com https://*.office365.com https://outlook.office365.com https://*.googletagmanager.com https://*.google.com https://*.doubleclick.net;"
           }
         ],
       },
@@ -207,23 +246,28 @@ if (process.env.ANALYZE === 'true') {
   config = withBundleAnalyzer(config);
 }
 
-// Wrap with Sentry
-module.exports = withSentryConfig(
-  config,
-  {
-    // For all available options, see:
-    // https://github.com/getsentry/sentry-webpack-plugin#options
-    silent: true,
-    org: 'aura-spring-cleaning',
-    project: 'javascript-nextjs',
-  },
-  {
-    // Upload source maps only in production
-    widenClientFileUpload: true,
-    transpileClientSDK: true,
-    tunnelRoute: '/monitoring',
-    hideSourceMaps: true,
-    disableLogger: true,
-    automaticVercelMonitors: true,
-  }
-);
+// Export config - wrap with Sentry only if SENTRY_DSN is configured
+if (process.env.SENTRY_DSN) {
+  module.exports = withSentryConfig(
+    config,
+    {
+      // For all available options, see:
+      // https://github.com/getsentry/sentry-webpack-plugin#options
+      silent: true,
+      org: 'aura-spring-cleaning',
+      project: 'javascript-nextjs',
+    },
+    {
+      // Upload source maps only in production
+      widenClientFileUpload: true,
+      transpileClientSDK: true,
+      tunnelRoute: '/monitoring',
+      hideSourceMaps: true,
+      disableLogger: true,
+      automaticVercelMonitors: true,
+    }
+  );
+} else {
+  // No Sentry DSN configured, export config without Sentry
+  module.exports = config;
+}

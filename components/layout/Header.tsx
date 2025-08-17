@@ -102,6 +102,7 @@ const Header = () => {
                   src="/images/AuraClean.svg"
                   alt="Aura Spring Cleaning Logo"
                   fill
+                  sizes="48px"
                   className="object-contain"
                   priority
                 />

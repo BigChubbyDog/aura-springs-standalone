@@ -11,6 +11,8 @@ import dynamic from 'next/dynamic';
 
 const StickyBookButton = dynamic(() => import('@/components/StickyBookButton'));
 
+const FloatingCTABar = dynamic(() => import('@/components/FloatingCTABar'));
+
 const Breadcrumbs = dynamic(() => import('@/components/Breadcrumbs'));
 
 const ServiceWorkerRegistration = dynamic(() => import('@/components/ServiceWorkerRegistration'));
@@ -229,6 +231,9 @@ export default function RootLayout({
         
         {/* Skip to main content for screen readers */}
         <SkipToContent />
+        
+        {/* Floating CTA Bar */}
+        <FloatingCTABar />
         
         {/* Scroll to top on page navigation */}
         <ScrollToTop />

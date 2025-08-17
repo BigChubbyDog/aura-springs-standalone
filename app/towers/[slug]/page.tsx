@@ -11,8 +11,9 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for each tower page
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const tower = getTowerById(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const tower = getTowerById(slug);
   
   if (!tower) {
     return {
@@ -40,8 +41,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function TowerPage({ params }: { params: { slug: string } }) {
-  const tower = getTowerById(params.slug);
+export default async function TowerPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const tower = getTowerById(slug);
 
   if (!tower) {
     notFound();
