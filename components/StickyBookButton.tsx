@@ -25,9 +25,9 @@ export default function StickyBookButton() {
 
   return (
     <>
-      {/* Main sticky button */}
+      {/* Main sticky button - moved to left side to avoid chat button overlap */}
       <div
-        className={`fixed bottom-4 right-4 z-50 transition-all duration-300 ${
+        className={`fixed bottom-4 left-4 z-50 transition-all duration-300 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
         }`}
       >
@@ -41,10 +41,10 @@ export default function StickyBookButton() {
             Book Now - (512) 781-0527
           </button>
         ) : (
-          <div className="bg-white rounded-2xl shadow-2xl p-4 space-y-3 animate-in slide-in-from-bottom-5">
+          <div className="bg-white rounded-2xl shadow-2xl p-4 space-y-3 animate-in slide-in-from-bottom-5 min-w-[200px]">
             <button
               onClick={() => setIsExpanded(false)}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl w-8 h-8 flex items-center justify-center"
               aria-label="Close booking options"
             >
               ×
