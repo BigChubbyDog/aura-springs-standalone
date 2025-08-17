@@ -1,0 +1,30 @@
+﻿rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read access to all documents
+    match /{document=**} {
+      allow read: if true;
+    }
+    
+    // Chat messages - allow creation but not modification
+    match /chats/{chatId}/messages/{messageId} {
+      allow create: if true;
+      allow update: if false;
+      allow delete: if false;
+    }
+    
+    // Lead storage - write only
+    match /leads/{leadId} {
+      allow create: if true;
+      allow update: if false;
+      allow read: if request.auth != null;
+    }
+    
+    // Analytics - write only
+    match /analytics/{doc} {
+      allow create: if true;
+      allow update: if true;
+      allow read: if request.auth != null;
+    }
+  }
+}
