@@ -13,6 +13,15 @@ https://adminaccountbcd.webhook.office.com/webhookb2/df9b5b12-f537-435b-a578-c6f
 - **Valerie Boatman**: (512) 781-0527, valerie@auraspringcleaning.com
 - All leads and notifications go to Valerie
 
+### Firebase Service Account (MASTER KEY)
+- **Project**: aura-spring-cleaning-ce122
+- **Service Account**: firebase-adminsdk-fbsvc@aura-spring-cleaning-ce122.iam.gserviceaccount.com
+- **Key File**: serviceAccountKey.json (in project root)
+- **Capabilities**: FULL ADMIN ACCESS - Can manage all Firebase/GCP services
+- **Powers**: Firestore, Auth, Cloud Messaging, Storage, Vertex AI, Cloud Functions
+- **Extension**: Firestore Gemini Chatbot v0.0.15 installed
+- **Security**: NEVER commit to git, server-side only
+
 ## Common Development Commands
 
 ### Development
