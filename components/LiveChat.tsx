@@ -146,7 +146,7 @@ export default function LiveChat({
     }
     
     if (lowerInput.includes('same day') || lowerInput.includes('today') || lowerInput.includes('emergency')) {
-      return 'We do offer same-day service based on availability! Please call us at (512) 781-0527 for immediate booking, or I can have someone call you back. What\'s your phone number?';
+      return 'We do offer same-day service! For fastest service, please use our online booking system at aurasprings.com/booking - you\'ll save $5! You can also text us at (737) 330-1489 for immediate assistance through Microsoft Teams.';
     }
     
     if (lowerInput.includes('eco') || lowerInput.includes('green') || lowerInput.includes('chemical')) {
@@ -161,7 +161,7 @@ export default function LiveChat({
       return 'You\'re welcome! Feel free to reach out anytime. Have a wonderful day! 🌟';
     }
     
-    return 'I\'d be happy to help with that! For the quickest assistance, you can call us at (512) 781-0527 or book online. Is there anything specific about our cleaning services you\'d like to know?';
+    return 'I\'d be happy to help with that! For the quickest assistance and $5 off, book online at aurasprings.com/booking. You can also text us at (737) 330-1489. Is there anything specific about our cleaning services you\'d like to know?';
   };
 
   // Start chat with user info

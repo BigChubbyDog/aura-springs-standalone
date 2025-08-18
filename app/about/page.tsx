@@ -533,13 +533,13 @@ const AboutPage = () => {
               <Calendar className="w-5 h-5" />
               Book Your Time Freedom
             </Link>
-            <a
-              href="tel:5127810527"
+            <Link
+              href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-green-700 text-white font-bold rounded-lg hover:bg-green-800 transition-all duration-300"
             >
               <Phone className="w-5 h-5" />
-              (512) 781-0527
-            </a>
+              Contact Us
+            </Link>
           </div>
           
           <div className="flex justify-center gap-8 text-sm">

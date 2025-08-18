@@ -14,7 +14,8 @@ import {
   Star,
   Shield,
   Award,
-  Heart
+  Heart,
+  Calendar
 } from 'lucide-react';
 
 const Footer = () => {
@@ -111,10 +112,10 @@ const Footer = () => {
             
             {/* Contact Info */}
             <div className="space-y-2">
-              <a href="tel:5127810527" className="flex items-center gap-2 text-sm text-gray-400 hover:text-[#7c9768] transition-colors">
-                <Phone className="w-4 h-4" />
-                (512) 781-0527
-              </a>
+              <Link href="/booking" className="flex items-center gap-2 text-sm text-gray-400 hover:text-[#7c9768] transition-colors">
+                <Calendar className="w-4 h-4" />
+                Book Online - Save $5
+              </Link>
               <a href="mailto:Schedule@AuraSpringCleaning.com" className="flex items-center gap-2 text-sm text-gray-400 hover:text-[#7c9768] transition-colors">
                 <Mail className="w-4 h-4" />
                 Schedule@AuraSpringCleaning.com

@@ -25,6 +25,8 @@ const EmailCapture = dynamic(() => import('@/components/EmailCapture'));
 
 const LiveChatAI = dynamic(() => import('@/components/LiveChatAI'));
 
+const AIChatBot = dynamic(() => import('@/components/AIChatBot'));
+
 const AbandonedCartRecovery = dynamic(() => import('@/components/booking/AbandonedCartRecovery'));
 
 const MetaPixelAdvancedMatching = dynamic(() => import('@/components/MetaPixelAdvancedMatching'));
@@ -272,6 +274,9 @@ export default function RootLayout({
         
         {/* Live Chat Widget */}
         <LiveChatAI position="bottom-right" />
+        
+        {/* AI Booking Assistant */}
+        <AIChatBot />
         
         {/* Abandoned Cart Recovery */}
         <AbandonedCartRecovery />
