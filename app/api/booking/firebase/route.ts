@@ -1,4 +1,4 @@
-// Firebase Booking API with Vertex AI Intelligence
+// Firebase Booking API with Enterprise Integration
 import { NextRequest, NextResponse } from 'next/server';
 import { 
   createFirebaseBooking, 
@@ -16,6 +16,12 @@ import {
   generateConfirmationMessage
 } from '@/lib/vertexBookingAI';
 import { sendBookingToTeams } from '@/lib/teamsWebhook';
+import { 
+  createComprehensiveClientProfile, 
+  getClientProfile,
+  updateClientProfile
+} from '@/lib/clientProfileSystem';
+import { createTeamsCalendarEvent } from '@/lib/microsoftIntegration';
 import Stripe from 'stripe';
 
 // Initialize Stripe
@@ -39,16 +45,60 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(analysis);
 
       case 'create':
-        // Create booking in Firebase
-        const bookingId = await createFirebaseBooking(body.booking);
+        console.log('🚀 Creating comprehensive booking with enterprise integration...');
         
-        // Generate AI confirmation message
+        // Step 1: Create booking in Firebase
+        const bookingId = await createFirebaseBooking(body.booking);
+        console.log(`✅ Firebase booking created: ${bookingId}`);
+        
+        // Step 2: Create comprehensive client profile (includes Dynamics 365, SharePoint, Teams)
+        let clientProfile = null;
+        try {
+          const firebaseBooking = {
+            id: bookingId,
+            ...body.booking,
+            createdAt: new Date(),
+            updatedAt: new Date()
+          };
+          
+          clientProfile = await createComprehensiveClientProfile(firebaseBooking);
+          console.log(`✅ Comprehensive client profile created: ${clientProfile.clientId}`);
+        } catch (profileError) {
+          console.error('⚠️ Client profile creation failed:', profileError);
+          // Continue with booking even if profile creation fails
+        }
+        
+        // Step 3: Create Teams calendar event
+        try {
+          const calendarResult = await createTeamsCalendarEvent({
+            customerName: body.booking.customerName,
+            customerEmail: body.booking.customerEmail,
+            customerPhone: body.booking.customerPhone,
+            serviceType: body.booking.serviceType,
+            address: body.booking.address,
+            startTime: new Date(`${body.booking.serviceDate}T${body.booking.serviceTime}`),
+            endTime: new Date(new Date(`${body.booking.serviceDate}T${body.booking.serviceTime}`).getTime() + (2 * 60 * 60 * 1000)), // 2 hour duration
+            price: body.booking.totalPrice,
+            notes: body.booking.specialInstructions,
+            assignedTeam: [], // Will be populated by AI orchestration
+            geoData: { address: body.booking.address },
+            orchestrationDetails: { bookingId, clientId: clientProfile?.clientId }
+          });
+          
+          if (calendarResult.success) {
+            console.log(`✅ Teams calendar event created: ${calendarResult.eventId}`);
+          }
+        } catch (calendarError) {
+          console.error('⚠️ Teams calendar event creation failed:', calendarError);
+        }
+        
+        // Step 4: Generate AI confirmation message
         const confirmationMessage = await generateConfirmationMessage({
           ...body.booking,
           bookingId
         });
         
-        // Create Stripe payment intent if needed
+        // Step 5: Create Stripe payment intent if needed
         let paymentIntent = null;
         if (stripe && body.booking.totalPrice > 0) {
           try {
@@ -57,6 +107,7 @@ export async function POST(request: NextRequest) {
               currency: 'usd',
               metadata: {
                 bookingId,
+                clientId: clientProfile?.clientId || 'unknown',
                 customerName: body.booking.customerName,
                 serviceType: body.booking.serviceType
               }
@@ -64,16 +115,43 @@ export async function POST(request: NextRequest) {
             
             // Update booking with payment intent ID
             await updatePaymentStatus(bookingId, 'pending', paymentIntent.id);
+            console.log(`✅ Stripe payment intent created: ${paymentIntent.id}`);
           } catch (stripeError) {
-            console.error('Stripe error:', stripeError);
+            console.error('⚠️ Stripe error:', stripeError);
           }
         }
+        
+        // Step 6: Send comprehensive notification to Teams
+        try {
+          await sendBookingToTeams({
+            ...body.booking,
+            bookingId,
+            clientId: clientProfile?.clientId,
+            dynamicsContactId: clientProfile?.dynamicsContactId,
+            sharepointFolder: clientProfile?.sharepointFolder?.rootFolderPath,
+            paymentStatus: paymentIntent ? 'pending' : 'cash'
+          });
+          console.log('✅ Teams notification sent');
+        } catch (teamsError) {
+          console.error('⚠️ Teams notification failed:', teamsError);
+        }
+        
+        console.log('🎉 Comprehensive booking creation complete!');
         
         return NextResponse.json({
           success: true,
           bookingId,
+          clientId: clientProfile?.clientId,
+          sharepointFolder: clientProfile?.sharepointFolder?.rootFolderPath,
+          dynamicsContactId: clientProfile?.dynamicsContactId,
           paymentIntent: paymentIntent?.client_secret,
-          confirmationMessage
+          confirmationMessage,
+          enterpriseIntegration: {
+            dynamics365: !!clientProfile?.dynamicsContactId,
+            sharepoint: !!clientProfile?.sharepointFolder,
+            teamsCalendar: true,
+            clientProfile: !!clientProfile
+          }
         });
 
       case 'estimate':

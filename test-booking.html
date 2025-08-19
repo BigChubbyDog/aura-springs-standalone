@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Booking System</h1>
+    
+    <form id="bookingForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="Test Customer" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="test@example.com" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" value="512-555-0100" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="date">Service Date:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="time">Service Time:</label>
+            <select id="time" name="time" required>
+                <option value="">Select Time</option>
+                <option value="9:00 AM">9:00 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="1:00 PM">1:00 PM</option>
+                <option value="2:00 PM">2:00 PM</option>
+                <option value="3:00 PM">3:00 PM</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="service">Service Type:</label>
+            <select id="service" name="service" required>
+                <option value="standard">Standard Cleaning</option>
+                <option value="deep">Deep Cleaning</option>
+                <option value="moveInOut">Move In/Out</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" value="123 Test St, Austin, TX 78701" required>
+        </div>
+        
+        <button type="submit">Submit Test Booking</button>
+    </form>
+    
+    <div id="result"></div>
+    
+    <script>
+        // Set minimum date to today
+        const dateInput = document.getElementById('date');
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        dateInput.min = tomorrow.toISOString().split('T')[0];
+        dateInput.value = tomorrow.toISOString().split('T')[0];
+        
+        // Handle form submission
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                customerName: document.getElementById('name').value,
+                customerEmail: document.getElementById('email').value,
+                customerPhone: document.getElementById('phone').value,
+                serviceDate: document.getElementById('date').value,
+                serviceTime: document.getElementById('time').value,
+                serviceType: document.getElementById('service').value,
+                address: document.getElementById('address').value,
+                bedrooms: 2,
+                bathrooms: 2,
+                squareFeet: 1500,
+                totalPrice: 150,
+                specialInstructions: 'Test booking from test page'
+            };
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>Submitting booking...</p>';
+            
+            try {
+                // Try Firebase endpoint first (what the form uses)
+                let response = await fetch('http://localhost:3003/api/booking/firebase', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ 
+                        action: 'create',
+                        booking: formData 
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h3>✅ Booking Successful!</h3>
+                            <p>Booking ID: ${result.bookingId}</p>
+                            <p>Check your email for confirmation.</p>
+                            <h4>Integration Status:</h4>
+                            <ul>
+                                <li>Dynamics 365: ${result.integrationStatus?.dynamics365?.success ? '✅' : '❌'}</li>
+                                <li>Email: ${result.integrationStatus?.email?.success ? '✅' : '❌'}</li>
+                                <li>Calendar: ${result.integrationStatus?.calendar?.success ? '✅' : '❌'}</li>
+                                <li>Teams: ${result.integrationStatus?.teams?.success ? '✅' : '❌'}</li>
+                            </ul>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h3>❌ Booking Failed</h3>
+                            <p>${result.error || 'Unknown error occurred'}</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h3>❌ Connection Error</h3>
+                        <p>${error.message}</p>
+                        <p>Make sure the server is running on port 3003</p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -7,6 +7,7 @@ import {
 } from '@/lib/microsoftIntegration';
 import { syncBookingToDynamics } from '@/lib/dynamics365Integration';
 import { sendBookingToTeams } from '@/lib/teamsWebhook';
+import { processBookingThroughEcosystem } from '@/lib/microsoftEcosystemIntegration';
 
 // Create Stripe instance at runtime to avoid build-time errors
 function getStripeInstance(): Stripe | null {
@@ -74,18 +75,25 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Process booking in Microsoft 365
+    // Process booking through entire Microsoft ecosystem
+    const ecosystemResults = await processBookingThroughEcosystem({
+      ...booking,
+      bookingId: bookingId
+    });
+    console.log('Microsoft Ecosystem Results:', ecosystemResults);
+    
+    // Also process through legacy integrations for backwards compatibility
     const m365Results = await processNewBooking(booking);
     console.log('M365 Integration Results:', m365Results);
     
-    // Sync to Dynamics 365 CRM
+    // Sync to Dynamics 365 CRM (legacy)
     const dynamicsResults = await syncBookingToDynamics(booking);
     console.log('Dynamics 365 Integration Results:', dynamicsResults);
     
     // Send enhanced booking emails
     await sendBookingEmails(booking, bookingId);
     
-    // Send notification to Teams
+    // Send notification to Teams (legacy)
     const teamsResult = await sendBookingToTeams({
       ...booking,
       bookingId: bookingId
@@ -99,16 +107,26 @@ export async function POST(request: NextRequest) {
       bookingId: bookingId,
       paymentIntent: paymentIntent?.client_secret,
       integrations: {
-        m365: m365Results,
-        dynamics365: {
-          success: dynamicsResults.success,
-          contactCreated: !!dynamicsResults.contact,
-          leadCreated: !!dynamicsResults.lead,
-          opportunityCreated: !!dynamicsResults.opportunity,
-          appointmentCreated: !!dynamicsResults.appointment
+        ecosystem: {
+          overall: ecosystemResults.overall,
+          dynamics365: ecosystemResults.dynamics365,
+          sharepoint: ecosystemResults.sharepoint,
+          teams: ecosystemResults.teams,
+          email: ecosystemResults.email,
+          powerAutomate: ecosystemResults.powerAutomate
         },
-        emailSent: true,
-        teamsNotification: teamsResult?.success || false
+        legacy: {
+          m365: m365Results,
+          dynamics365: {
+            success: dynamicsResults.success,
+            contactCreated: !!dynamicsResults.contact,
+            leadCreated: !!dynamicsResults.lead,
+            opportunityCreated: !!dynamicsResults.opportunity,
+            appointmentCreated: !!dynamicsResults.appointment
+          },
+          emailSent: true,
+          teamsNotification: teamsResult?.success || false
+        }
       },
       booking: {
         ...booking,

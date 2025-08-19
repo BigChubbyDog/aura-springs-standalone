@@ -62,3 +62,6 @@ firebase-service-account.json
 firebase-admin-sdk.json
 *.serviceaccount.json
 aura-spring-cleaning-*.json
+
+# Scripts with secrets
+scripts/set-env-secrets.ps1
